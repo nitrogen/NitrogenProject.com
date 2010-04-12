@@ -48,7 +48,7 @@ top_right() ->
             calls, as well as improved packaging and OTP
             compliance. 
             <p>
-            Read <a href='/whatsnew'>What's New in Nitrogen 2.x &raquo;</a>
+            <b><a href='/whatsnew'>What's New in Nitrogen 2.x &raquo;</a></b>
             "
         ]}
     ].
