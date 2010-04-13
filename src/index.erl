@@ -20,7 +20,6 @@ layout() ->
 
 top_left() ->
     [
-        #p{},
         #image { class=green_head, image="./images/green_head.png" }
     ].
 
