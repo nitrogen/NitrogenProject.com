@@ -86,7 +86,7 @@ NitrogenClass.prototype.$validate_and_serialize = function(validationGroup) {
 	    is_valid = false;
 	} else {
 	    // Skip any unchecked radio boxes.
-	    if (element.type == "radio" && !element.checked) continue;
+	    if ((element.type == "radio" || element.type=="checkbox") && !element.checked) continue;
 
 	    var full_id = this.$make_id(element);
 	    var value = element.value;
@@ -106,13 +106,15 @@ NitrogenClass.prototype.$make_id = function(element) {
     var a = [];
     var re = new RegExp("\.wfid_(.[^\\s]*)", "g");
     while(element && element.className) {
-	var matches = element.className.match(/wfid_([^\s])+/g);
-	a.unshift.apply(a, matches);
-	element = element.parentNode;		
-    }
-    
+        var matches = element.className.match(/wfid_([^\s])+/g);
+        if (matches) {
+            a.unshift.apply(a, matches);
+        }       
+        element = element.parentNode;
+    }  
     return a.join(".");
 }
+
 
 /*** AJAX METHODS ***/
 
@@ -143,6 +145,7 @@ NitrogenClass.prototype.$do_event = function(validationGroup, eventContext, extr
 		    type:'post',
 		    data: params,
 		    dataType: 'text',
+                    cache: false,
 		    success: function(data, textStatus) {
 			n.$event_is_running = false;
 			eval(data);
@@ -174,6 +177,7 @@ NitrogenClass.prototype.$do_system_event = function(eventContext) {
 	       type:'post',
 	       data: params,
 	       dataType: 'text',
+               cache: false,
 	       success: function(data, textStatus) {
 		   n.$system_event_is_running = false;
 		   // A system event shouldn't clobber the pageContext.
