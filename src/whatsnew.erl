@@ -158,7 +158,7 @@ right() ->
         "
         <p>
         Nitrogen now receives all requests through <a
-        href='http://github.com/rklophaus/SimpleBridge'>SimpleBridge</a>,
+        href='http://github.com/nitrogen/simple_bridge'>SimpleBridge</a>,
         a layer that unifies the interface to various Erlang HTTP
         servers. (The list currently includes Mochiweb, Yaws, Inets,
         and Misultin.)

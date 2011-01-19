@@ -64,7 +64,7 @@ top() ->
             
             #p{},
             "
-            Fork Nitrogen on <a href='http://github.com/rklophaus/nitrogen'>GitHub</a>.
+            Fork Nitrogen on <a href='http://github.com/nitrogen/nitrogen'>GitHub</a>.
             "
         ]},
 

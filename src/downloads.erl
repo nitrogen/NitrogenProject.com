@@ -77,9 +77,9 @@ right() ->
                 #image { image="/images/downloads/erlang_logo.png" }
             ]},
             #span { class=title, text="Source Code" },
-            #link { url="http://github.com/rklophaus/nitrogen/tarball/v2.0.4", text="Download Nitrogen 2.0.4 source (.tar.gz)" },
-            #link { url="http://github.com/rklophaus/nitrogen/tarball/master", text="Download Latest Code (.tar.gz)" },
-            #link { url="http://github.com/rklophaus/nitrogen", text="Nitrogen repository on GitHub" },
+            #link { url="http://github.com/nitrogen/nitrogen/tarball/v2.0.4", text="Download Nitrogen 2.0.4 source (.tar.gz)" },
+            #link { url="http://github.com/nitrogen/nitrogen/tarball/master", text="Download Latest Code (.tar.gz)" },
+            #link { url="http://github.com/nitrogen/nitrogen", text="Nitrogen repository on GitHub" },
             #link { url="http://github.com/vim/nitrogen_elements", text="Community Repository of Nitrogen Elements" }
         ]},
 
@@ -125,11 +125,11 @@ right() ->
                 #image { image="/images/downloads/erlang_logo.png" }
             ]},
             #span { class=title, text="Old Source Code" },
-            #link { url="http://github.com/rklophaus/nitrogen/tarball/v2.0.3", text="Download Nitrogen 2.0.3 source (.tar.gz)" },
-            #link { url="http://github.com/rklophaus/nitrogen/tarball/v2.0.2", text="Download Nitrogen 2.0.2 source (.tar.gz)" },
-            #link { url="http://github.com/rklophaus/nitrogen/tarball/v2.0.1", text="Download Nitrogen 2.0.1 source (.tar.gz)" },
-            #link { url="http://github.com/rklophaus/nitrogen/tarball/v2.0.0", text="Download Nitrogen 2.0.0 source (.tar.gz)" },
-            #link { url="http://github.com/rklophaus/nitrogen/tarball/v1.0", text="Download Nitrogen 1.0 source (.tar.gz)" }
+            #link { url="http://github.com/nitrogen/nitrogen/tarball/v2.0.3", text="Download Nitrogen 2.0.3 source (.tar.gz)" },
+            #link { url="http://github.com/nitrogen/nitrogen/tarball/v2.0.2", text="Download Nitrogen 2.0.2 source (.tar.gz)" },
+            #link { url="http://github.com/nitrogen/nitrogen/tarball/v2.0.1", text="Download Nitrogen 2.0.1 source (.tar.gz)" },
+            #link { url="http://github.com/nitrogen/nitrogen/tarball/v2.0.0", text="Download Nitrogen 2.0.0 source (.tar.gz)" },
+            #link { url="http://github.com/nitrogen/nitrogen/tarball/v1.0", text="Download Nitrogen 1.0 source (.tar.gz)" }
         ]}
     ].
 
