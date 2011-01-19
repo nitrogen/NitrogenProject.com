@@ -1,9 +1,3 @@
 *.dump
-.DS_Store
-coverage
-.hgignore
-*.beam
-rel/nitrogen
-TAGS
-builds
+deps/*
 scratch/*
