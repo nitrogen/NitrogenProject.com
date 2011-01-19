@@ -4,7 +4,7 @@
 -export([
     start_link/0,
     init/1,
-    do/1
+    loop/1
 ]).
 
 %% Helper macro for declaring children of supervisor
@@ -22,27 +22,33 @@ start_link() ->
 %% ===================================================================
 
 init([]) ->
-    {ok, Port} = application:get_env(port),
-    
-    io:format("Starting NitrogenProject.com on port ~p.~n", [Port]),
-    
-    inets:start(),
-    {ok, Pid} = inets:start(httpd, [
-        {port, Port},
-        {server_name, "nitrogen"},
-        {server_root, "."},
-        {document_root, "./static"},
-        {modules, [?MODULE]},
-        {mime_types, [{"css", "text/css"}, {"js", "text/javascript"}, {"html", "text/html"}]}
-    ]),
-    link(Pid),
-
+    %% Start the Process Registry...
     application:start(nprocreg),
+    
+    %% Start Mochiweb...
+    application:load(mochiweb),
+    {ok, BindAddress} = application:get_env(bind_address),
+    {ok, Port} = application:get_env(port),
+    {ok, ServerName} = application:get_env(server_name),
+    {ok, DocRoot} = application:get_env(document_root),
+
+    io:format("Starting Mochiweb Server (~s) on ~s:~p, root: '~s'~n", [ServerName, BindAddress, Port, DocRoot]),
+
+    % Start Mochiweb...
+    Options = [
+        {name, ServerName},
+        {ip, BindAddress}, 
+        {port, Port},
+        {loop, fun ?MODULE:loop/1}
+    ],
+    mochiweb_http:start(Options),
+
     {ok, { {one_for_one, 5, 10}, []} }.
 
-do(Info) ->
-    RequestBridge = simple_bridge:make_request(inets_request_bridge, Info),
-    ResponseBridge = simple_bridge:make_response(inets_response_bridge, Info),
+loop(Req) ->
+    {ok, DocRoot} = application:get_env(document_root),
+    RequestBridge = simple_bridge:make_request(mochiweb_request_bridge, {Req, DocRoot}),
+    ResponseBridge = simple_bridge:make_response(mochiweb_response_bridge, {Req, DocRoot}),
     nitrogen:init_request(RequestBridge, ResponseBridge),
 
     %% Uncomment for basic authentication...
