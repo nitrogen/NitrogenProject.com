@@ -41,11 +41,12 @@ left() ->
         <li>Inets - Lightweight HTTP server built into Erlang.
         </ul>
         <p>
-        Either Mochiweb or Yaws is recommended for production
-        use. Whichever one you choose is up to personal preference,
-        but Inets is not recommended for running in production because
-        it does not yet include content-caching/expiration headers, which
-        can cause slow loadtimes.
+        Either Mochiweb, Webmachine, or Yaws is recommended for
+        production use. Whichever one you choose is up to personal
+        preference, but Inets is not recommended for running in
+        production because it does not yet include
+        content-caching/expiration headers, which can cause slow
+        loadtimes.
         <p>
         These packages were generated from Nitrogen source code by running 
         <b>make package_inets</b>, <b>make package_mochiweb</b>, 
