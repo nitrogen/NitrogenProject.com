@@ -13,4 +13,5 @@ clean:
 
 run:
 	erl -pa ebin ./deps/*/ebin ./deps/*/include \
+	-name nitrogen@127.0.0.1 \
 	-eval "application:start(nitrogen_website)."
