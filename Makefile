@@ -1,5 +1,16 @@
-compile: 
-	erl -make
+all: get-deps compile
+
+get-deps:
+	./rebar get-deps
+
+compile:
+	./rebar compile
+	(cd static; rm -rf nitrogen; mkdir nitrogen; cp -r ../deps/nitrogen_core/www/* nitrogen)
+	(cd static; rm -rf doc; mkdir doc; cp -r ../deps/nitrogen_core/doc/html/* doc)
 
 clean:
-	rm -rf ./ebin/*.beam
+	./rebar clean
+
+run:
+	erl -pa ebin ./deps/*/ebin ./deps/*/include \
+	-eval "application:start(nitrogen_website)."

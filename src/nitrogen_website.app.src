@@ -1,0 +1,10 @@
+{application, nitrogen_website, [
+    {description,  "NitrogenProject.com Website"},
+    {vsn,          "1"},
+    {applications, [kernel, stdlib]},
+    {registered, []},
+    {mod, {nitrogen_website_app, []}},
+    {env, [
+        {port, 8000}
+    ]}  
+]}.

@@ -1,9 +1,10 @@
-{application,quickstart,
-             [{description,"Nitrogen Quickstart"},
-              {vsn,"2.0.4"},
-              {applications,[kernel,stdlib,sasl,nitrogen_core,nprocreg,
-                             simple_bridge]},
+{application,nitrogen_website,
+             [{description,"NitrogenProject.com Website"},
+              {vsn,"1"},
+              {applications,[kernel,stdlib]},
               {registered,[]},
+              {mod,{nitrogen_website_app,[]}},
+              {env,[{port,8000}]},
               {modules,[basic_auth_callback_mod,common,community,demos,
                         demos_advancedcontrols1,demos_advancedcontrols2,
                         demos_ajax,demos_api,demos_binding1,demos_binding2,
@@ -18,5 +19,5 @@
                         demos_sorting1,demos_sorting2,demos_state,
                         demos_textbox_autocomplete,demos_upload,
                         demos_validation,demos_viewsource,downloads,index,
-                        learn,linecount,nitrogen_init,nitrogen_mochiweb,
-                        quickstart_app,whatsnew]}]}.
+                        learn,linecount,nitrogen_website_app,
+                        nitrogen_website_sup,whatsnew]}]}.
