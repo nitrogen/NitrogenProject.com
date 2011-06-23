@@ -49,6 +49,7 @@ middle() ->
 	#link { text="User Notices", url="/demos/notices" }, #br{}, 
 	#link { text="Validation", url="/demos/validation" }, #br{},
   #link { text="Autocompletion", url="/demos/textbox_autocomplete" }, #br{}, 
+  #link { text="Grid Layout", url="/demos/grid" }, #br{}, 
 
 	#h2 { text="Drag, Drop & Sort" },
 	#p{},
@@ -87,6 +88,6 @@ right() ->
 	#p{},
 	#link { text="Set Content Type", url="/demos/contenttype" }, #br{},
 	#link { text="HTTP Headers", url="/demos/headers" }, #br{},
-    	#link { text="Security", url="/demos/security" }, #br{},
-        #link { text="State", url="/demos/state" }
+ 	#link { text="Security", url="/demos/security" }, #br{},
+  #link { text="State", url="/demos/state" }
     ].	

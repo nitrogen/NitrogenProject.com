@@ -14,7 +14,7 @@
                         demos_binding3,demos_binding4,demos_comet1,
                         demos_comet2,demos_comet3,demos_contenttype,
                         demos_contenttype_image,demos_continuations,
-                        demos_dragdrop,demos_effects,demos_headers,
+                        demos_dragdrop,demos_effects,demos_grid,demos_headers,
                         demos_jquerypaths,demos_notices,demos_postback,
                         demos_proxied,demos_radio,demos_remove,demos_replace,
                         demos_security,demos_security_login,
