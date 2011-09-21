@@ -132,8 +132,8 @@ right() ->
 
 	"
         <p>
-        Nitrogen was created by <a href='http://rklophaus.com'>Rusty
-        Klophaus</a> (@rklophaus).  It is in active development, and
+        Nitrogen was created by <a href='http://rusty.io.com'>Rusty
+        Klophaus</a> (@rustyio).  It is in active development, and
         is available for use under the MIT License.
         ",
 
@@ -167,7 +167,7 @@ right() ->
             #listitem { text="Yurii Rashkovskii (@yrashk)" },
             #listitem { text="Ville Koivula" },
             #listitem { text="Manuel Duran Aguete" },
-            #listitem { text="Jesse Gumm" },
+            #listitem { text="Jesse Gumm (@jessegumm)" },
             #listitem { text="Jan-Felix Wittmann" },
             #listitem { text="Martin Sivak" }
         ]}
