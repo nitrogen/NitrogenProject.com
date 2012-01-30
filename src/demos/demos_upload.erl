@@ -40,7 +40,15 @@ right() ->
 	#p{},
 	"This example hides he upload button. When the user selects a file it will automatically start uploading.",
 	#p{},
-	#upload { tag=myUpload1, show_button=false }	
+	#upload { tag=myUpload1, show_button=false },
+
+	#hr{},
+
+	#h3{ text="Upload Example #3" },
+	#p{},
+	"This example is drag and drop enabled for browsers that support it (Chrome, Firefox). Further it's enabled for multiple files",
+	#p{},
+	#upload{ tag=myUpload1, show_button=false, multiple=true, droppable=true }
     ].
 
 event(_) -> ok.
