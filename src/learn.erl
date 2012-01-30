@@ -93,15 +93,15 @@ left() ->
         #h2 { text="Technology Stack" },
         #h3 { text="Mac, Linux, Windows, etc." },
         #p{},
-        "	
-        Any platform that can	run Erlang can also run Nitrogen, including Mac, Linux, Unix, and Windows (among others). 
-        Nitrogen does not contain	any platform specific code. 
+        "   
+        Any platform that can   run Erlang can also run Nitrogen, including Mac, Linux, Unix, and Windows (among others). 
+        Nitrogen does not contain   any platform specific code. 
         ",
         
-        #h3 { text="Mochiweb, Yaws, or Inets for Serving" },
+        #h3 { text="Mochiweb, Yaws, Webmachine, or Inets for Serving" },
         #p{},
         "
-        Nitrogen supports the three most popular Erlang web servers equally: Mochiweb, Yaws, and Inets. 
+        Nitrogen supports some of the most popular Erlang web servers equally: Mochiweb, Yaws, Webmachine, and Inets. 
         Nitrogen abstracts out the server specific code, meaning that you write your application on 
         one http server and seamlessly transfer to a different http server without changing a thing.
         ",
@@ -130,11 +130,11 @@ right() ->
         
         #h2 { text="About Nitrogen" },
 
-	"
+    "
         <p>
-        Nitrogen was created by <a href='http://rusty.io.com'>Rusty
-        Klophaus</a> (@rustyio).  It is in active development, and
-        is available for use under the MIT License.
+        Nitrogen was created by <a href='http://rusty.io'>Rusty
+        Klophaus</a> (<a href='http://www.twitter.com/rustyio'>@rustyio</a>).
+        It is in active development and is available for use under the MIT License.
         ",
 
         "
@@ -142,35 +142,77 @@ right() ->
         Twitter: <a href='http://twitter.com/nitrogenproject'>@nitrogenproject</a>
         ",
 
-	#h2 { text="Thanks!" },
+        #h2 { text="Official Maintainers"},
+        #p{},
+        #list { body = [
+            lists:map(fun(C) ->
+                #listitem { body=format_contrib(C) }
+            end,maintainers())
+        ] },
+
+        #h2 { text="Thanks!" },
 
         #p{},
-	"Thanks to the many people who have helped make Nitrogen better, including:",
+        "Thanks to the many people who have helped make Nitrogen better, including:",
 
         #p{},
         #list { body=[
-            #listitem { text="Chris Williams (@voodootikigod)" },
-            #listitem { text="Joel Reymont (@wagerlabs)" },
-            #listitem { text="Tom McNulty" },
-            #listitem { text="Martin Scholl (@zeit_geist)" },
-            #listitem { text="Dave Peticolas" },
-            #listitem { text="Jon Gretar Borgthorsson (@jongretar)" },
-            #listitem { text="Dan Bravender (@dbravender)" },
-            #listitem { text="Taavi Talvik" },
-            #listitem { text="Torbjorn Tornkvist (@kruskakli)" },
-            #listitem { text="Marius A. Eriksen (@marius)" },
-            #listitem { text="Michael Mullis" },
-            #listitem { text="John Dragos" },
-            #listitem { text="Benjamin Nortier (@bjnortier)" },
-            #listitem { text="Jay Doane" },
-            #listitem { text="Robert Schonberger" },
-            #listitem { text="Yurii Rashkovskii (@yrashk)" },
-            #listitem { text="Ville Koivula" },
-            #listitem { text="Manuel Duran Aguete" },
-            #listitem { text="Jesse Gumm (@jessegumm)" },
-            #listitem { text="Jan-Felix Wittmann" },
-            #listitem { text="Martin Sivak" }
-        ]}
+            lists:map(fun(C) ->
+                #listitem { body=format_contrib(C) }
+            end,thanks())
+        ] }
     ].
+
+format_contrib({Name}) ->
+    Name;
+format_contrib({Name,TwitterName}) ->
+    [
+        Name, 
+        " (",twitter(TwitterName),")"
+    ];
+format_contrib({Name,URL,TwitterName}) ->
+    [
+        #link{url=URL,text=Name},
+        " (",twitter(TwitterName),")"
+    ];
+format_contrib({Name,URL,TwitterName,Role}) ->
+    [
+        Role,": ",format_contrib({Name,URL,TwitterName})
+    ].
+
+
+maintainers() ->
+    [ 
+        {"Rusty Klophaus","http://rusty.io","rustyio","Creator"},
+        {"Jesse Gumm","http://sigma-star.com/page/jesse","jessegumm","Maintainer"}
+    ].
+
+thanks() ->
+    [
+        {"Chris Williams","voodootikigod"},
+        {"Joel Reymond","wagerlabs"},
+        {"Tom McNulty"},
+        {"Martin Scholl","zeit_geist"},
+        {"Dave Peticolas"},
+        {"Jon Gretar Borgthorsson","jongregar"},
+        {"Dan Bravender","dbravender"},
+        {"Taavi Talvik"},
+        {"Torbjorn Tornkvist","kruskakli"},
+        {"Marius A. Eriksen","marius"},
+        {"Michael Mullis"},
+        {"John Dragos"},
+        {"Benjamin Nortier","bjnortier"},
+        {"Jay Doane"},
+        {"Robert Schonberger"},
+        {"Yurii Rashkovskii","yrashk"},
+        {"Ville Koivula"},
+        {"Manuel Duran Aguete"},
+        {"Jan-Felix Wittmann"},
+        {"Martin Sivak"}
+    ].
+        
+
+twitter(Username) ->
+    #link{url="http://twitter.com/#!/" ++ Username,text=["@",Username]}.
 
 event(_) -> ok.
