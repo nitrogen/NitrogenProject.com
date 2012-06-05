@@ -37,11 +37,12 @@ left() ->
         <ul>
         <li>Mochiweb - HTTP server developed by Bob Ippolito/MochiMedia.</li>
         <li>Yaws - HTTP server developed by Claes \"Klacke\" Wikstrom.</li>
+        <li>Cowboy - HTTP server developed by Loïc Hoguin.</li>
         <li>Webmachine - HTTP resource server developed by Basho Technologies (runs on Mochiweb under the hood.)</li>
         <li>Inets - Lightweight HTTP server built into Erlang.
         </ul>
         <p>
-        Either Mochiweb, Webmachine, or Yaws is recommended for
+        Either Mochiweb, Webmachine, Cowboy, or Yaws is recommended for
         production use. Whichever one you choose is up to personal
         preference, but Inets is not recommended for running in
         production because it does not yet include
