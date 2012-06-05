@@ -98,10 +98,10 @@ left() ->
         Nitrogen does not contain   any platform specific code. 
         ",
         
-        #h3 { text="Mochiweb, Yaws, Webmachine, or Inets for Serving" },
+        #h3 { text="Mochiweb, Yaws, Cowboy, Webmachine, or Inets for Serving" },
         #p{},
         "
-        Nitrogen supports some of the most popular Erlang web servers equally: Mochiweb, Yaws, Webmachine, and Inets. 
+        Nitrogen supports some of the most popular Erlang web servers equally: Mochiweb, Yaws, Cowboy, Webmachine, and Inets. 
         Nitrogen abstracts out the server specific code, meaning that you write your application on 
         one http server and seamlessly transfer to a different http server without changing a thing.
         ",
@@ -208,7 +208,20 @@ thanks() ->
         {"Ville Koivula"},
         {"Manuel Duran Aguete"},
         {"Jan-Felix Wittmann"},
-        {"Martin Sivak"}
+        {"Martin Sivak"},
+		{"Mattias Holmlund"},
+		{"Loïc Hoguin","lhoguin"},
+		{"Justin Kirby"},
+		{"Lorant Kurthy"},
+		{"Jonas Ådahl"},
+		{"Susan Potter","susanpotter"},
+		{"Rado Kozmer","rkozmer"},
+		{"Tuncer Ayaz"},
+		{"Steffan Panning"},
+		{"James Pharaoh"},
+		{"Sergei Lebedev"},
+		{"Milan Svoboda"},
+		{"Jenő I. Hajdu"}
     ].
         
 
