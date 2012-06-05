@@ -16,7 +16,7 @@ header(Selected) ->
 footer() ->
     #panel { class=credits, body=[
         "
-        Copyright &copy; 2008-2010 <a href='http://rklophaus.com'>Rusty Klophaus</a>. 
+        Copyright &copy; 2008-2012 <a href='http://rusty.io'>Rusty Klophaus</a>. 
         <img src='/images/MiniSpaceman.png' style='vertical-align: middle;' />
         Released under the MIT License.
         "
