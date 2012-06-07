@@ -53,5 +53,6 @@ loop(Req) ->
 
     %% Uncomment for basic authentication...
     %% nitrogen:handler(http_basic_auth_security_handler, basic_auth_callback_mod),
+    nitrogen:handler(website_config_handler, []),
 
     nitrogen:run().
