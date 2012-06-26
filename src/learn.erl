@@ -119,9 +119,8 @@ right() ->
         
         "
         <p>
-        Nitrogen documentation is available for <a
-        href='/doc/index.html'>browsing online</a>.  It is also
-        included in the source code under <i>/doc/html</i>, and
+        <a href='/doc/index.html'>Nitrogen documentation</a> is available for 
+		browsing online.  It is also included in the source code under <i>/doc/html</i>, and
         is packaged in all binary downloads.
         
         <p>
