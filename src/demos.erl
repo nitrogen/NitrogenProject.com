@@ -75,6 +75,7 @@ right() ->
         #link { text="AJAX Updates", url="/demos/ajax" }, #br{}, 
         #link { text="AJAX Replace", url="/demos/replace" }, #br{},
         #link { text="AJAX Remove", url="/demos/remove" }, #br{},
+        #link { text="Spinner", url="/demos/spinner" }, #br{},
         #link { text="JQuery Paths", url="/demos/jquerypaths" }, #br{}, 
         #link { text="Javascript API", url="/demos/api" }, #br{},
 
