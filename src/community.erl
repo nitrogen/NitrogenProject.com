@@ -33,7 +33,7 @@ top_sections() ->
         {false,false,"Questions","stackoverflow.gif","http://stackoverflow.com/questions/tagged/nitrogen","Ask and answer questions at <a href='http://stackoverflow.com/questions/tagged/nitrogen'>StackOverflow</a>."},
         {false,false,"Chat","freenode.png","irc://chat.freenode.net#nitrogen","Join <code>#nitrogen</code> on <a href='irc://chat.freenode.net#nitrogen'>irc.freenode.net</a>."},
         {false,false,"Bugs","github-issues.png","http://github.com/nitrogen/nitrogen/issues","Submit feature requests and file bugs using <a href='http://github.com/nitrogen/nitrogen/issues'>GitHub Issues</a>."},
-        {false,true,"Contribute","github.png","http://github.com/nitrogen/nitrogen","Fork Nitrogen on <a href='http://github.com/nitrogen/nitrogen'>GitHub</a>. Pull requests are welcome!"}
+        {false,true,"Contribute","github.png","http://github.com/nitrogen","Fork Nitrogen on <a href='http://github.com/nitrogen/nitrogen'>GitHub</a>. Pull requests are welcome!"}
     ].
 
 top() -> 
