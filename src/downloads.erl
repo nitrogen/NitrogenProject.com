@@ -1,3 +1,4 @@
+% vim: ts=4 sw=4 et
 -module (downloads).
 -include_lib ("nitrogen_core/include/wf.hrl").
 -compile(export_all).
@@ -8,6 +9,7 @@ title() -> "Downloads".
 
 layout() -> 
     #container_12 { body=[
+        index:github_fork(),
         #grid_12 { class=header, body=common:header(downloads) },
         #grid_clear {},
 

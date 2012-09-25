@@ -1,3 +1,4 @@
+% vim: sw=4 ts=4 et
 -module (learn).
 -include_lib ("nitrogen_core/include/wf.hrl").
 -compile(export_all).
@@ -10,6 +11,7 @@ headline() -> "Learn More".
 
 layout() ->
     #container_12 { body=[
+        index:github_fork(),
         #grid_12 { class=header, body=common:header(learn) },
         #grid_clear {},
 
@@ -120,7 +122,7 @@ right() ->
         "
         <p>
         <a href='/doc/index.html'>Nitrogen documentation</a> is available for 
-		browsing online.  It is also included in the source code under <i>/doc/html</i>, and
+        browsing online.  It is also included in the source code under <i>/doc/html</i>, and
         is packaged in all binary downloads.
         
         <p>
@@ -208,19 +210,19 @@ thanks() ->
         {"Manuel Duran Aguete"},
         {"Jan-Felix Wittmann"},
         {"Martin Sivak"},
-		{"Mattias Holmlund"},
-		{"Loïc Hoguin","lhoguin"},
-		{"Justin Kirby"},
-		{"Lorant Kurthy"},
-		{"Jonas Ådahl"},
-		{"Susan Potter","susanpotter"},
-		{"Rado Kozmer","rkozmer"},
-		{"Tuncer Ayaz"},
-		{"Steffan Panning"},
-		{"James Pharaoh"},
-		{"Sergei Lebedev"},
-		{"Milan Svoboda"},
-		{"Jenő I. Hajdu"}
+        {"Mattias Holmlund"},
+        {"Loïc Hoguin","lhoguin"},
+        {"Justin Kirby"},
+        {"Lorant Kurthy"},
+        {"Jonas Ådahl"},
+        {"Susan Potter","susanpotter"},
+        {"Rado Kozmer","rkozmer"},
+        {"Tuncer Ayaz"},
+        {"Steffan Panning"},
+        {"James Pharaoh"},
+        {"Sergei Lebedev"},
+        {"Milan Svoboda"},
+        {"Jenő I. Hajdu"}
     ].
         
 
