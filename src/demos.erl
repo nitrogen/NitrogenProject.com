@@ -9,7 +9,7 @@ title() -> "Demos".
 
 layout() -> 
     #container_12 { body=[
-        index:github_fork(),
+        common:github_fork(),
         #grid_12 { alpha=true, omega=true, class=header, body=common:header(demos) },
         #grid_clear {},
 

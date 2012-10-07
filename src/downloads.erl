@@ -9,7 +9,7 @@ title() -> "Downloads".
 
 layout() -> 
     #container_12 { body=[
-        index:github_fork(),
+        common:github_fork(),
         #grid_12 { class=header, body=common:header(downloads) },
         #grid_clear {},
 

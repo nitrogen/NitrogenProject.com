@@ -7,19 +7,10 @@ main() -> #template { file="./templates/grid.html" }.
 
 title() -> "Nitrogen Web Framework for Erlang".
 
-github_fork() ->
-    #link{style="position:relative",url="https://github.com/nitrogen",body=[
-        #image{
-            image="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png",
-            style="position:absolute; top:0; left: 0; border: 0;z-index:1000",
-            alt="Fork me on GitHub"
-        }
-    ]}.
-
 
 layout() ->
     #container_12 { body=[
-        github_fork(),
+        common:github_fork(),
         #grid_12 { class=header, body=common:header(home) },
         #grid_clear {},
 

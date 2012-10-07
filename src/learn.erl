@@ -11,7 +11,7 @@ headline() -> "Learn More".
 
 layout() ->
     #container_12 { body=[
-        index:github_fork(),
+        common:github_fork(),
         #grid_12 { class=header, body=common:header(learn) },
         #grid_clear {},
 
@@ -111,7 +111,7 @@ left() ->
         #h3 { text="JQuery/JQuery UI for Javascript and Effects" },
         #p{},
         "
-        Nitrogen uses JQuery and the JQuery UI library for client side Javascript.
+        Nitrogen uses JQuery and the JQuery UI library for client side Javascript and the JQuery Mobile library for mobile development.
         "
     ].
 
