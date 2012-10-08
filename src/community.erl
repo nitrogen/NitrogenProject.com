@@ -87,6 +87,12 @@ articles() ->
     [
         #h1 { text="Articles" },
 
+        #h2 { text="January 2011" },
+        #p{},
+
+        #link { text="Following the Nitrogen Tutorial", url="http://followingthesystemtutorial.blogspot.com/2011/01/nitrogen-erlang-web-application.html"}, 
+        #p{},
+
         #h2 { text="December 2010" },
         #p{},
 
