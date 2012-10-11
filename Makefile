@@ -15,4 +15,5 @@ run:
 	erl -pa ebin ./deps/*/ebin ./deps/*/include \
 	-config "app.config" \
 	-name nitrogen@127.0.0.1 \
+	-sync sync_mode nitrogen \
 	-eval "application:start(nitrogen_website)."
