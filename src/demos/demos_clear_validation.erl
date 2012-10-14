@@ -14,10 +14,10 @@ left() ->
     [
         "
         <p>
-        Due to the heavily dynamic nature of Nitrogen, Nitrogen provides a
+        Due to the heavily dynamic nature of Nitrogen, we provide a
         convenient mechanism for deactivating validators that have been added
         to form controls. Without this functionality, you're bound to run into
-        javascript errors when forms fields get dynamically removed from the
+        javascript errors when form fields get dynamically removed from the
         page that have previously had validators added to them.
 
         <p>
