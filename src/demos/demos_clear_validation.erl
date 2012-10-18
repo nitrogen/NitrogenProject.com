@@ -47,7 +47,7 @@ right() ->
         #button{id=button,postback=click,text="Submit"},
         #hr{},
         #button{id=clear_all,postback=clear,text="Clear All Validators"},
-        #button{id=clear_text,postback={clear,text},text="Clear Name Validator"},
+        #button{id=clear_text,postback={clear,name},text="Clear Name Validator"},
         #button{id=clear_dd,postback={clear,dd},text="Clear Dropdown Validator"},
         #br{},#br{},
         #button{id=attach,postback=attach,text="Re-attach Validators"}

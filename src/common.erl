@@ -24,7 +24,7 @@ footer() ->
     ]}.
 
 github_fork() ->
-    #link{style="position:relative",url="https://github.com/nitrogen",body=[
+    #link{style="position:absolute;top:0; left:0;",url="https://github.com/nitrogen",body=[
         #image{
             image="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png",
             style="position:absolute; top:0; left: 0; border: 0;z-index:1000",
