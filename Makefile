@@ -1,10 +1,12 @@
-all: get-deps compile
+all: get-deps compile copy-static
 
 get-deps:
 	./rebar get-deps
 
 compile:
 	./rebar compile
+
+copy-static:
 	(cd static; rm -rf nitrogen; mkdir nitrogen; cp -r ../deps/nitrogen_core/www/* nitrogen)
 	(cd static; rm -rf doc; mkdir doc; cp -r ../deps/nitrogen_core/doc/html/* doc)
 
