@@ -3,6 +3,29 @@
 -include_lib ("nitrogen_core/include/wf.hrl").
 -compile(export_all).
 
+-define(UNIX_SERVERS,[
+        {cowboy,"Cowboy"},
+        {inets,"Inets"},
+        {mochiweb,"Mochiweb"},
+        {webmachine,"Webmachine"},
+        {yaws,"Yaws"}
+    ]).
+
+-define(WINDOWS_SERVERS,[
+        {cowboy,"Cowboy"},
+        {inets,"Inets"},
+        {mochiweb,"Mochiweb"}
+    ]).
+
+-define(VERSIONS, [
+        "2.1.0",
+        "2.0.4",
+        "2.0.3",
+        "2.0.2",
+        "2.0.1",
+        "2.0.0",
+        "1.0"]).
+
 main() -> #template { file="./templates/grid.html" }.
 
 title() -> "Downloads".
@@ -26,9 +49,10 @@ layout() ->
 headline() -> "Downloads".
 
 left() -> 
+    CurVer = hd(?VERSIONS),    
     [
         " 
-        Select a link to the right to download the Nitrogen 2.0
+        Select a link to the right to download the Nitrogen ",CurVer,"
         environment for your platform. Each download is a self-contained
         installation of Nitrogen that includes both Erlang and a web 
         server. (In other words, you don't need to have Erlang installed 
@@ -62,8 +86,40 @@ left() ->
         " 
     ].
 
+%% Servers is tuple list = [{"Mochiweb",mochiweb},...]
+list_download_links(PlatformLabel,PlatformPath,Version,Ext,Servers) ->
+    [format_download_link(PlatformLabel,PlatformPath,Version,Ext,Server) || Server <- Servers].
+
+format_download_link(PlatformLabel,PlatformPath,Version,Ext,{ServerPath,ServerName}) ->
+    URL = wf:to_list([
+        "http://downloads.nitrogenproject.com.s3.amazonaws.com",
+        "/",Version,"/",PlatformPath,
+        "/nitrogen-",Version,"-",ServerPath,Ext
+    ]),
+    Label = wf:to_list([
+        "Nitrogen ",Version," for ",PlatformLabel," on ",ServerName
+    ]),
+
+    #link {
+        class=link,
+        url=URL,
+        text=Label
+    }.
+
+list_source_download_links(Versions) ->
+    [format_source_download_link(V) || V <- Versions].
+
+format_source_download_link(Version) ->
+    #link{
+        class=link,
+        url=wf:to_list(["http://github.com/nitrogen/nitrogen/tarball/v",Version]),
+        text=wf:to_list(["Download Nitrogen ",Version," source (.tar.gz)"])
+    }.
+
 
 right() ->
+    [CurrentVersion | OldVersions] = ?VERSIONS,
+
     [
         #panel { class=platform, body=[
             #panel { class=logo, body=[
@@ -82,9 +138,9 @@ right() ->
                 #image { image="/images/downloads/erlang_logo.png" }
             ]},
             #span { class=title, text="Source Code" },
-            #link { url="http://github.com/nitrogen/nitrogen/tarball/v2.1.0", text="Download Nitrogen 2.1.0 source (.tar.gz)" },
+            list_source_download_links([CurrentVersion]),
             #link { url="http://github.com/nitrogen/nitrogen/tarball/master", text="Download Latest Code (.tar.gz)" },
-            #link { url="http://github.com/nitrogen/nitrogen", text="Nitrogen repository on GitHub" },
+            #link { url="http://github.com/nitrogen", text="Master Nitrogen repositories on GitHub" },
             #link { url="http://github.com/vim/nitrogen_elements", text="Community Repository of Nitrogen Elements" }
         ]},
 
@@ -95,12 +151,8 @@ right() ->
             #panel { class=logo, body=[
                 #image { image="/images/downloads/mac_logo.png" }
             ]},
-            #span { class=title, text="Mac OSX 10.5+ Binaries" },
-            #link { class=link, url="http://files.nitrogenproject.com.s3.amazonaws.com/mac/nitrogen-2.1.0-mochiweb.tar.gz", text="Nitrogen 2.1.0 for Mac OSX on Mochiweb" },
-            #link { class=link, url="http://files.nitrogenproject.com.s3.amazonaws.com/mac/nitrogen-2.1.0-cowboy.tar.gz", text="Nitrogen 2.1.0 for Mac OSX on Cowboy" },
-            #link { class=link, url="http://files.nitrogenproject.com.s3.amazonaws.com/mac/nitrogen-2.1.0-webmachine.tar.gz", text="Nitrogen 2.1.0 for Mac OSX on Webmachine" },
-            #link { class=link, url="http://files.nitrogenproject.com.s3.amazonaws.com/mac/nitrogen-2.1.0-yaws.tar.gz", text="Nitrogen 2.1.0 for Mac OSX on Yaws" },
-            #link { class=link, url="http://files.nitrogenproject.com.s3.amazonaws.com/mac/nitrogen-2.1.0-inets.tar.gz", text="Nitrogen 2.1.0 for Mac OSX on Inets" }
+            #span { class=title, text="Mac OSX 10.6+ Binaries" },
+            list_download_links("Mac OSX", "mac/64bit", CurrentVersion, ".tar.gz", ?UNIX_SERVERS)
         ]},
 
         #panel { class=clear },
@@ -110,11 +162,7 @@ right() ->
                 #image { image="/images/downloads/linux_logo.png" }
             ]},
             #span { class=title, text="Linux 64-bit Binaries" },
-            #link { class=link, url="http://files.nitrogenproject.com.s3.amazonaws.com/linux/nitrogen-2.1.0-mochiweb.tar.gz", text="Nitrogen 2.1.0 for Linux on Mochiweb" },
-            #link { class=link, url="http://files.nitrogenproject.com.s3.amazonaws.com/linux/nitrogen-2.1.0-cowboy.tar.gz", text="Nitrogen 2.1.0 for Linux on Cowboy" },
-            #link { class=link, url="http://files.nitrogenproject.com.s3.amazonaws.com/linux/nitrogen-2.1.0-webmachine.tar.gz", text="Nitrogen 2.1.0 for Linux on Webmachine" },
-            #link { class=link, url="http://files.nitrogenproject.com.s3.amazonaws.com/linux/nitrogen-2.1.0-yaws.tar.gz", text="Nitrogen 2.1.0 for Linux on Yaws" },
-            #link { class=link, url="http://files.nitrogenproject.com.s3.amazonaws.com/linux/nitrogen-2.1.0-inets.tar.gz", text="Nitrogen 2.1.0 for Linux on Inets" }
+            list_download_links("Linux", "linux/64bit", CurrentVersion, ".tar.gz", ?UNIX_SERVERS)
         ]},
 
         #panel { class=clear },
@@ -124,9 +172,7 @@ right() ->
                 #image { image="/images/downloads/windows_logo.png" }
             ]},
             #span { class=title, text="Windows Binaries" },
-            #link { class=link, url="http://files.nitrogenproject.com.s3.amazonaws.com/win/nitrogen-2.1.0-mochiweb.zip", text="Nitrogen 2.1.0 for Windows on Mochiweb" },
-            #link { class=link, url="http://files.nitrogenproject.com.s3.amazonaws.com/win/nitrogen-2.1.0-cowboy.zip", text="Nitrogen 2.1.0 for Windows on Cowboy" },
-            #link { class=link, url="http://files.nitrogenproject.com.s3.amazonaws.com/win/nitrogen-2.1.0-inets.zip", text="Nitrogen 2.1.0 for Windows on Inets" }
+            list_download_links("Windows","win/32bit", CurrentVersion, "-win.zip", ?WINDOWS_SERVERS)
         ]},
 
         #panel { class=clear },
@@ -137,12 +183,7 @@ right() ->
                 #image { image="/images/downloads/erlang_logo.png" }
             ]},
             #span { class=title, text="Old Source Code" },
-            #link { url="http://github.com/nitrogen/nitrogen/tarball/v2.0.4", text="Download Nitrogen 2.0.4 source (.tar.gz)" },
-            #link { url="http://github.com/nitrogen/nitrogen/tarball/v2.0.3", text="Download Nitrogen 2.0.3 source (.tar.gz)" },
-            #link { url="http://github.com/nitrogen/nitrogen/tarball/v2.0.2", text="Download Nitrogen 2.0.2 source (.tar.gz)" },
-            #link { url="http://github.com/nitrogen/nitrogen/tarball/v2.0.1", text="Download Nitrogen 2.0.1 source (.tar.gz)" },
-            #link { url="http://github.com/nitrogen/nitrogen/tarball/v2.0.0", text="Download Nitrogen 2.0.0 source (.tar.gz)" },
-            #link { url="http://github.com/nitrogen/nitrogen/tarball/v1.0", text="Download Nitrogen 1.0 source (.tar.gz)" }
+            list_source_download_links(OldVersions)
         ]}
     ].
 
