@@ -35,17 +35,20 @@ top_right() ->
             "
         ]},
 
-        #p { class="section_title", body="DOWNLOAD NITROGEN 2.x" },
+        #p { class="section_title", body="DOWNLOAD NITROGEN 2.1.0" },
         #p { class="section", body=[
             #link { url="/downloads", body=#image { image="/images/downloads/mac_logo.png" }},
-        #link { url="/downloads", body=#image { image="/images/downloads/windows_logo.png" }},
+            #link { url="/downloads", body=#image { image="/images/downloads/windows_logo.png" }},
             #link { url="/downloads", body=#image { image="/images/downloads/linux_logo.png" }},
-        #link { url="/downloads", body=#image { image="/images/downloads/erlang_logo.png" }}
+            #link { url="/downloads", body=#image { image="/images/downloads/erlang_logo.png" }}
         ]},
 
         #p { class="section_title", body="LATEST NEWS" },
         #p { class="section", body=[
             "
+            Nitrogen 2.1.0 Released! <b><a href='/downloads'>Download it now &raquo;</a></b><br>
+            or <b><a href=''>Read the announcement &raquo;</a></b>
+            <p>
             Learn how to develop a Nitrogen application<br>
             with the <b><a href='/doc/tutorial.html'>Nitrogen Tutorial &raquo;</a></b>
             <p>
