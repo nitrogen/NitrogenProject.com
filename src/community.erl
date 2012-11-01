@@ -16,9 +16,9 @@ layout() ->
         #grid_10 { alpha=true, omega=true, prefix=1, suffix=1, class=headline, body=headline() },
         #grid_clear {},
 
-        #grid_10 { alpha=true, prefix=1, suffix=1, omega=1, body=top() },
+        #grid_12 { alpha=true, prefix=0, suffix=0, omega=1, body=top() },
 
-        #grid_10 { alpha=true, prefix=1, suffix=1, omega=1, body=articles() },
+        #grid_12 { alpha=true, prefix=0, suffix=0, omega=1, body=articles() },
         #grid_clear {},
 
         #grid_12 { alpha=true, omega=true, body=common:footer() }
@@ -29,16 +29,17 @@ headline() ->
 
 top_sections() ->
     [
-        {true,false,"Discussion","googlegroups.gif","http://groups.google.com/group/nitrogenweb","Subscribe to the <a href='http://groups.google.com/group/nitrogenweb'>Nitrogen Google Group</a>."},
-        {false,false,"Questions","stackoverflow.gif","http://stackoverflow.com/questions/tagged/nitrogen","Ask and answer questions at <a href='http://stackoverflow.com/questions/tagged/nitrogen'>StackOverflow</a>."},
+        {true,false,"Discussion","googlegroups.gif","http://groups.google.com/group/nitrogenweb","Subscribe to the <a target=_blank href='http://groups.google.com/group/nitrogenweb'>Nitrogen Google Group</a>."},
+        {false,false,"Questions","stackoverflow.gif","http://stackoverflow.com/questions/tagged/nitrogen","Ask and answer questions at <a target=_blank href='http://stackoverflow.com/questions/tagged/nitrogen'>StackOverflow</a>."},
         {false,false,"Chat","freenode.png","irc://chat.freenode.net#nitrogen","Join <code>#nitrogen</code> on <a href='irc://chat.freenode.net#nitrogen'>irc.freenode.net</a>."},
-        {false,false,"Bugs","github-issues.png","http://github.com/nitrogen/nitrogen/issues","Submit feature requests and file bugs using <a href='http://github.com/nitrogen/nitrogen/issues'>GitHub Issues</a>."},
-        {false,true,"Contribute","github.png","http://github.com/nitrogen","Fork Nitrogen on <a href='http://github.com/nitrogen/nitrogen'>GitHub</a>. Pull requests are welcome!"}
+        {false,false,"Bugs","github-issues.png","http://github.com/nitrogen/nitrogen/issues","Submit feature requests and file bugs using <a target=_blank href='http://github.com/nitrogen/nitrogen/issues'>GitHub Issues</a>."},
+        {false,false,"Contribute","github.png","http://github.com/nitrogen","Fork Nitrogen on <a target=_blank href='http://github.com/nitrogen/nitrogen'>GitHub</a>. Pull requests are welcome!"},
+        {false,true,"Summaries","ohloh.png","https://www.ohloh.net/p/nitrogen-web-framework","See code, contribution, contributor, trends, and other project summaries on <a target=_blank href='https://www.ohloh.net/p/nitrogen-web-framework'>Ohloh</a>."}
     ].
 
 top() -> 
     [
-        #grid_10 { alpha=true, omega=true, body=[
+        #grid_12 { alpha=true, omega=true, body=[
             #hr {}
         ]},
         #grid_clear{},
@@ -47,7 +48,7 @@ top() ->
             #grid_2 { alpha=Alpha, omega=Omega, body=[
                 #h2 { text=Header },
                 #p{},
-                #link{url=LogoUrl,body=#image{image="/images/" ++ Logo}},
+                #link{new=true,url=LogoUrl,body=#image{image="/images/" ++ Logo}},
                 #p{},
                 Desc
             ]}
@@ -55,13 +56,13 @@ top() ->
 
         #grid_clear {},
 
-        #grid_10 { alpha=true, omega=true, body=[
+        #grid_12 { alpha=true, omega=true, body=[
             #hr {}
         ]},
 
         #grid_clear {},
         
-        #grid_10 { alpha=true, omega=true, body=[
+        #grid_12 { alpha=true, omega=true, body=[
             #h2 { text="Donate" },
             
             #p{},
@@ -78,7 +79,7 @@ top() ->
 
         #grid_clear{},
         
-        #grid_10 { alpha=true, omega=true, body=[
+        #grid_12 { alpha=true, omega=true, body=[
             #hr {}
         ]}
     ].
