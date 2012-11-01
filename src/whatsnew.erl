@@ -1,3 +1,4 @@
+% vim: ts=4 sw=4 et
 -module (whatsnew).
 -include_lib ("nitrogen_core/include/wf.hrl").
 -compile(export_all).
@@ -31,7 +32,7 @@ top() ->
         " 
         <p> 
         Nitrogen 2.x is the result of hundreds of hours of development
-        over the past year, and offers many improvements over Nitrogen
+        over the past years, and offers many improvements over Nitrogen
         1.0. Here are the highlights. Behind the scenes, the codebase
         is simpler, cleaner, and better documented, and offers a great
         runway for future versions of Nitrogen.
@@ -47,7 +48,11 @@ left() ->
         "
         <p>
         Nitrogen 2.x includes great new elements, and improvements to old elements and actions:
-        
+       
+        <p>
+        Significantly improved support for jQuery Mobile, allowing you
+        to make adding mobile versions of your application much easier.
+         
         <p>
         The <code>#api{}</code> element allows you to expose a
         Javascript API that will trigger a postback when called. You
@@ -60,7 +65,9 @@ left() ->
         upload has started, and includes the node() on which the
         upload is stored, allowing you to handle uploads in an
         application running on multiple Nitrogen servers. See the <a
-        href='/demos/upload'>File Upload Demo</a>.
+        href='/demos/upload'>File Upload Demo</a>. As of version 2.1.0,
+        The <code>#upload</code> element now support multiple file uploads,
+        progress bars, and even a drag and drop interface.
 
         <p>
         The <code>#grid{}</code> element provides a Nitrogen interface
@@ -69,6 +76,16 @@ left() ->
         <p> 
         The <code>#template{}</code> element now caches the parsed
         template, eliminating unnecessary disk hits.
+
+        <p>
+        The <code>#restful_form{}</code> element allows you to easily
+        build RESTful forms, allowing for a simpler interface to build
+        forms that will safely degrade if the client does not support
+        Javascript.
+
+        <p>
+        The <code>#wizard</code> element allows you to easily build
+        step-by-step multi-page wizards.
 
         <p>
         Existing elements, including <code>#droppable{}</code>,
@@ -160,8 +177,8 @@ right() ->
         Nitrogen now receives all requests through <a
         href='http://github.com/nitrogen/simple_bridge'>SimpleBridge</a>,
         a layer that unifies the interface to various Erlang HTTP
-        servers. (The list currently includes Mochiweb, Yaws, Inets,
-        and Misultin.)
+        servers. (The list currently includes Mochiweb, Yaws, Cowboy, 
+        Webmachine, Inets, and the deprecated Misultin.)
 
         <p> 
         This makes the Nitrogen codebase cleaner, and allows you to
@@ -179,12 +196,14 @@ right() ->
         #h2 { text="Better Packaging" },
         "
         <p>
-        Using <a href='http://bitbucket.org/basho/rebar/'>Rebar</a> (an
+        Using <a href='http://github.com/basho/rebar/'>Rebar</a> (an
         Erlang build and packaging tool by <a
-        href='http://twitter.com/dizzyco'>Dave Smith</a>), Nitrogen
+        href='http://twitter.com/dizzyd'>Dave Smith</a>), Nitrogen
         now supports a cleaner, completely self-contained project
         structure. There are 'make' commands to build Nitrogen
-        projects that run under Mochiweb, Yaws, or Inets.
+        projects that run under Mochiweb, Yaws, Webmachine, Cowboy,
+        or Inets. (Misultin is left out due to it being deprecated by
+        its creator)
         
         <p>
         The <code>bin/nitrogen</code> script in the project allows you

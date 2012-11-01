@@ -8,6 +8,7 @@ header(Selected) ->
         #link { id=home, url='/', text="HOME" },
         #link { id=downloads, url='/downloads', text="DOWNLOADS" },
         #link { id=demos, url='/demos', text="DEMOS" },
+		#link { id=docs, url='/doc/index.html', text="DOCUMENTATION" },
         #link { id=learn, url='/learn', text="LEARN MORE" },
         #link { id=community, url='/community', text="GET INVOLVED" }
     ]}.
@@ -16,9 +17,17 @@ header(Selected) ->
 footer() ->
     #panel { class=credits, body=[
         "
-        Copyright &copy; 2008-2010 <a href='http://rklophaus.com'>Rusty Klophaus</a>. 
+        Copyright &copy; 2008-2012 <a href='http://rusty.io'>Rusty Klophaus</a>. 
         <img src='/images/MiniSpaceman.png' style='vertical-align: middle;' />
         Released under the MIT License.
         "
     ]}.
 
+github_fork() ->
+    #link{style="position:absolute;top:0; left:0;",url="https://github.com/nitrogen",body=[
+        #image{
+            image="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png",
+            style="position:absolute; top:0; left: 0; border: 0;z-index:1000",
+            alt="Fork me on GitHub"
+        }
+    ]}.

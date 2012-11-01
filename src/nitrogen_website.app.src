@@ -1,6 +1,6 @@
 {application, nitrogen_website, [
     {description,  "NitrogenProject.com Website"},
-    {vsn,          "1"},
+    {vsn,          "2.1.0"},
     {applications, [kernel, stdlib]},
     {registered, []},
     {mod, {nitrogen_website_app, []}},

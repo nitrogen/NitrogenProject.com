@@ -1,3 +1,4 @@
+% vim: sw=4 ts=4 et
 -module (learn).
 -include_lib ("nitrogen_core/include/wf.hrl").
 -compile(export_all).
@@ -10,6 +11,7 @@ headline() -> "Learn More".
 
 layout() ->
     #container_12 { body=[
+        common:github_fork(),
         #grid_12 { class=header, body=common:header(learn) },
         #grid_clear {},
 
@@ -98,10 +100,10 @@ left() ->
         Nitrogen does not contain   any platform specific code. 
         ",
         
-        #h3 { text="Mochiweb, Yaws, Webmachine, or Inets for Serving" },
+        #h3 { text="Mochiweb, Yaws, Cowboy, Webmachine, or Inets for Serving" },
         #p{},
         "
-        Nitrogen supports some of the most popular Erlang web servers equally: Mochiweb, Yaws, Webmachine, and Inets. 
+        Nitrogen supports some of the most popular Erlang web servers equally: Mochiweb, Yaws, Cowboy, Webmachine, and Inets. 
         Nitrogen abstracts out the server specific code, meaning that you write your application on 
         one http server and seamlessly transfer to a different http server without changing a thing.
         ",
@@ -109,7 +111,7 @@ left() ->
         #h3 { text="JQuery/JQuery UI for Javascript and Effects" },
         #p{},
         "
-        Nitrogen uses JQuery and the JQuery UI library for client side Javascript.
+        Nitrogen uses JQuery and the JQuery UI library for client side Javascript and the JQuery Mobile library for mobile development.
         "
     ].
 
@@ -119,9 +121,8 @@ right() ->
         
         "
         <p>
-        Nitrogen documentation is available for <a
-        href='/doc/index.html'>browsing online</a>.  It is also
-        included in the source code under <i>/doc/html</i>, and
+        <a href='/doc/index.html'>Nitrogen documentation</a> is available for 
+        browsing online.  It is also included in the source code under <i>/doc/html</i>, and
         is packaged in all binary downloads.
         
         <p>
@@ -208,7 +209,21 @@ thanks() ->
         {"Ville Koivula"},
         {"Manuel Duran Aguete"},
         {"Jan-Felix Wittmann"},
-        {"Martin Sivak"}
+        {"Martin Sivak"},
+        {"Mattias Holmlund"},
+        {"Loïc Hoguin","lhoguin"},
+        {"Justin Kirby"},
+        {"Lorant Kurthy"},
+        {"Jonas Ådahl"},
+        {"Susan Potter","susanpotter"},
+        {"Rado Kozmer","rkozmer"},
+        {"Tuncer Ayaz"},
+        {"Steffan Panning"},
+        {"James Pharaoh"},
+        {"Sergei Lebedev"},
+        {"Milan Svoboda"},
+        {"Jenő I. Hajdu"},
+        {"Maxim Sothatsky"}
     ].
         
 

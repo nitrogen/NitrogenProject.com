@@ -1,3 +1,4 @@
+% vim: sw=4 ts=4 et
 -module (community).
 -include_lib ("nitrogen_core/include/wf.hrl").
 -compile(export_all).
@@ -8,15 +9,16 @@ title() -> "Get Involved".
 
 layout() -> 
     #container_12 { body=[
+        common:github_fork(),
         #grid_12 { alpha=true, omega=true, class=header, body=common:header(community) },
         #grid_clear {},
 
         #grid_10 { alpha=true, omega=true, prefix=1, suffix=1, class=headline, body=headline() },
         #grid_clear {},
 
-        #grid_10 { alpha=true, prefix=1, suffix=1, omega=1, body=top() },
+        #grid_12 { alpha=true, prefix=0, suffix=0, omega=1, body=top() },
 
-        #grid_10 { alpha=true, prefix=1, suffix=1, omega=1, body=articles() },
+        #grid_12 { alpha=true, prefix=0, suffix=0, omega=1, body=articles() },
         #grid_clear {},
 
         #grid_12 { alpha=true, omega=true, body=common:footer() }
@@ -25,58 +27,42 @@ layout() ->
 headline() -> 
     "Get Involved".
 
+top_sections() ->
+    [
+        {true,false,"Discussion","googlegroups.gif","http://groups.google.com/group/nitrogenweb","Subscribe to the <a target=_blank href='http://groups.google.com/group/nitrogenweb'>Nitrogen Google Group</a>."},
+        {false,false,"Questions","stackoverflow.gif","http://stackoverflow.com/questions/tagged/nitrogen","Ask and answer questions at <a target=_blank href='http://stackoverflow.com/questions/tagged/nitrogen'>StackOverflow</a>."},
+        {false,false,"Chat","freenode.png","irc://chat.freenode.net#nitrogen","Join <code>#nitrogen</code> on <a href='irc://chat.freenode.net#nitrogen'>irc.freenode.net</a>."},
+        {false,false,"Bugs","github-issues.png","http://github.com/nitrogen/nitrogen/issues","Submit feature requests and file bugs using <a target=_blank href='http://github.com/nitrogen/nitrogen/issues'>GitHub Issues</a>."},
+        {false,false,"Contribute","github.png","http://github.com/nitrogen","Fork Nitrogen on <a target=_blank href='http://github.com/nitrogen/nitrogen'>GitHub</a>. Pull requests are welcome!"},
+        {false,true,"Summaries","ohloh.png","https://www.ohloh.net/p/nitrogen-web-framework","See code, contribution, contributor, trends, and other project summaries on <a target=_blank href='https://www.ohloh.net/p/nitrogen-web-framework'>Ohloh</a>."}
+    ].
+
 top() -> 
     [
-        #grid_10 { alpha=true, omega=true, body=[
+        #grid_12 { alpha=true, omega=true, body=[
             #hr {}
         ]},
         #grid_clear{},
 
-        #grid_3 { alpha=true, body=[
-            #h2 { text="Newsgroup" },
-        
-            #p{},
-            "
-            Subscribe to the <a href='http://groups.google.com/group/nitrogenweb'>Nitrogen Google Group</a>.
-            "
-        ]},
-
-        #grid_2 { body=[
-            #h2 { text="IRC" },
-            
-            #p{},
-            "
-            Join <code>#nitrogen</code> on irc.freenode.net.
-            "
-        ]},
-
-        #grid_2 { body=[
-            #h2 { text="Bugs" },
-            
-            #p{},
-            "
-            Submit feature requests and file bugs at <a href='http://nitrogen.lighthouseapp.com'>Lighthouse</a>.
-            "
-        ]},
-
-        #grid_3 { omega=true, body=[
-            #h2 { text="Contribute Code" },
-            
-            #p{},
-            "
-            Fork Nitrogen on <a href='http://github.com/nitrogen/nitrogen'>GitHub</a>.
-            "
-        ]},
+        lists:map(fun({Alpha,Omega,Header,Logo,LogoUrl,Desc}) ->
+            #grid_2 { alpha=Alpha, omega=Omega, body=[
+                #h2 { text=Header },
+                #p{},
+                #link{new=true,url=LogoUrl,body=#image{image="/images/" ++ Logo}},
+                #p{},
+                Desc
+            ]}
+        end,top_sections()),
 
         #grid_clear {},
 
-        #grid_10 { alpha=true, omega=true, body=[
+        #grid_12 { alpha=true, omega=true, body=[
             #hr {}
         ]},
 
         #grid_clear {},
         
-        #grid_10 { alpha=true, omega=true, body=[
+        #grid_12 { alpha=true, omega=true, body=[
             #h2 { text="Donate" },
             
             #p{},
@@ -93,7 +79,7 @@ top() ->
 
         #grid_clear{},
         
-        #grid_10 { alpha=true, omega=true, body=[
+        #grid_12 { alpha=true, omega=true, body=[
             #hr {}
         ]}
     ].
@@ -101,6 +87,20 @@ top() ->
 articles() ->
     [
         #h1 { text="Articles" },
+
+        #h2 { text="January 2011" },
+        #p{},
+
+        #link { text="Following the Nitrogen Tutorial", url="http://followingthesystemtutorial.blogspot.com/2011/01/nitrogen-erlang-web-application.html"}, 
+        #p{},
+
+        #h2 { text="December 2010" },
+        #p{},
+
+        #link { text="Jesse Gumm's Nitrogen 2.x presentation at the Chicago Erlang User Group", url="https://docs.google.com/present/view?id=dc37wnrq_7hqpqc6gv"},
+        " [", #link{ text="Code", url="https://github.com/choptastic/nitrogen-demo"}, "]",
+
+        #p{},
 
         #h2 { text="March 2010" },
         

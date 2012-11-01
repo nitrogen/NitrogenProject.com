@@ -1,6 +1,30 @@
+% vim: ts=4 sw=4 et
 -module (downloads).
 -include_lib ("nitrogen_core/include/wf.hrl").
 -compile(export_all).
+
+-define(UNIX_SERVERS,[
+        {cowboy,"Cowboy"},
+        {inets,"Inets"},
+        {mochiweb,"Mochiweb"},
+        {webmachine,"Webmachine"},
+        {yaws,"Yaws"}
+    ]).
+
+-define(WINDOWS_SERVERS,[
+        {cowboy,"Cowboy"},
+        {inets,"Inets"},
+        {mochiweb,"Mochiweb"}
+    ]).
+
+-define(VERSIONS, [
+        "2.1.0",
+        "2.0.4",
+        "2.0.3",
+        "2.0.2",
+        "2.0.1",
+        "2.0.0",
+        "1.0"]).
 
 main() -> #template { file="./templates/grid.html" }.
 
@@ -8,6 +32,7 @@ title() -> "Downloads".
 
 layout() -> 
     #container_12 { body=[
+        common:github_fork(),
         #grid_12 { class=header, body=common:header(downloads) },
         #grid_clear {},
 
@@ -24,9 +49,10 @@ layout() ->
 headline() -> "Downloads".
 
 left() -> 
+    CurVer = hd(?VERSIONS),    
     [
         " 
-        Select a link to the right to download the Nitrogen 2.0
+        Select a link to the right to download the Nitrogen ",CurVer,"
         environment for your platform. Each download is a self-contained
         installation of Nitrogen that includes both Erlang and a web 
         server. (In other words, you don't need to have Erlang installed 
@@ -37,11 +63,12 @@ left() ->
         <ul>
         <li>Mochiweb - HTTP server developed by Bob Ippolito/MochiMedia.</li>
         <li>Yaws - HTTP server developed by Claes \"Klacke\" Wikstrom.</li>
+        <li>Cowboy - HTTP server developed by Loïc Hoguin.</li>
         <li>Webmachine - HTTP resource server developed by Basho Technologies (runs on Mochiweb under the hood.)</li>
         <li>Inets - Lightweight HTTP server built into Erlang.
         </ul>
         <p>
-        Either Mochiweb, Webmachine, or Yaws is recommended for
+        Either Mochiweb, Webmachine, Cowboy, or Yaws is recommended for
         production use. Whichever one you choose is up to personal
         preference, but Inets is not recommended for running in
         production because it does not yet include
@@ -49,8 +76,9 @@ left() ->
         loadtimes.
         <p>
         These packages were generated from Nitrogen source code by running 
-        <b>make package_inets</b>, <b>make package_mochiweb</b>, 
-        <b>make package_webmachine</b> and <b>make package_yaws</b>.
+        <b>make package_inets</b>, <b>make package_cowboy</b>, 
+        <b>make package_mochiweb</b>, <b>make package_webmachine</b> and 
+        <b>make package_yaws</b>.
         <p>
         Alternatively, if you plan on contributing to the Nitrogen
         source code, you can download the source tree from GitHub.
@@ -58,8 +86,40 @@ left() ->
         " 
     ].
 
+%% Servers is tuple list = [{"Mochiweb",mochiweb},...]
+list_download_links(PlatformLabel,PlatformPath,Version,Ext,Servers) ->
+    [format_download_link(PlatformLabel,PlatformPath,Version,Ext,Server) || Server <- Servers].
+
+format_download_link(PlatformLabel,PlatformPath,Version,Ext,{ServerPath,ServerName}) ->
+    URL = wf:to_list([
+        "http://downloads.nitrogenproject.com.s3.amazonaws.com",
+        "/",Version,"/",PlatformPath,
+        "/nitrogen-",Version,"-",ServerPath,Ext
+    ]),
+    Label = wf:to_list([
+        "Nitrogen ",Version," for ",PlatformLabel," on ",ServerName
+    ]),
+
+    #link {
+        class=link,
+        url=URL,
+        text=Label
+    }.
+
+list_source_download_links(Versions) ->
+    [format_source_download_link(V) || V <- Versions].
+
+format_source_download_link(Version) ->
+    #link{
+        class=link,
+        url=wf:to_list(["http://github.com/nitrogen/nitrogen/tarball/v",Version]),
+        text=wf:to_list(["Download Nitrogen ",Version," source (.tar.gz)"])
+    }.
+
 
 right() ->
+    [CurrentVersion | OldVersions] = ?VERSIONS,
+
     [
         #panel { class=platform, body=[
             #panel { class=logo, body=[
@@ -78,9 +138,9 @@ right() ->
                 #image { image="/images/downloads/erlang_logo.png" }
             ]},
             #span { class=title, text="Source Code" },
-            #link { url="http://github.com/nitrogen/nitrogen/tarball/v2.0.4", text="Download Nitrogen 2.0.4 source (.tar.gz)" },
+            list_source_download_links([CurrentVersion]),
             #link { url="http://github.com/nitrogen/nitrogen/tarball/master", text="Download Latest Code (.tar.gz)" },
-            #link { url="http://github.com/nitrogen/nitrogen", text="Nitrogen repository on GitHub" },
+            #link { url="http://github.com/nitrogen", text="Master Nitrogen repositories on GitHub" },
             #link { url="http://github.com/vim/nitrogen_elements", text="Community Repository of Nitrogen Elements" }
         ]},
 
@@ -91,11 +151,18 @@ right() ->
             #panel { class=logo, body=[
                 #image { image="/images/downloads/mac_logo.png" }
             ]},
-            #span { class=title, text="Mac OSX 10.5+ Binaries" },
-            #link { class=link, url="http://files.nitrogenproject.com.s3.amazonaws.com/mac/nitrogen-2.0.4-mochiweb.tar.gz", text="Nitrogen 2.0.4 for Mac OSX on Mochiweb" },
-            #link { class=link, url="http://files.nitrogenproject.com.s3.amazonaws.com/mac/nitrogen-2.0.4-webmachine.tar.gz", text="Nitrogen 2.0.4 for Mac OSX on Webmachine" },
-            #link { class=link, url="http://files.nitrogenproject.com.s3.amazonaws.com/mac/nitrogen-2.0.4-yaws.tar.gz", text="Nitrogen 2.0.4 for Mac OSX on Yaws" },
-            #link { class=link, url="http://files.nitrogenproject.com.s3.amazonaws.com/mac/nitrogen-2.0.4-inets.tar.gz", text="Nitrogen 2.0.4 for Mac OSX on Inets" }
+            #span { class=title, text="Mac OSX 10.6+ Binaries" },
+            list_download_links("Mac OSX", "mac/64bit", CurrentVersion, ".tar.gz", ?UNIX_SERVERS)
+        ]},
+
+        #panel { class=clear },
+
+        #panel { class=platform, body=[
+            #panel { class=logo, body=[
+                #image { image="/images/downloads/linux_logo.png" }
+            ]},
+            #span { class=title, text="Linux 64-bit Binaries" },
+            list_download_links("Linux", "linux/64bit", CurrentVersion, ".tar.gz", ?UNIX_SERVERS)
         ]},
 
         #panel { class=clear },
@@ -104,33 +171,19 @@ right() ->
             #panel { class=logo, body=[
                 #image { image="/images/downloads/windows_logo.png" }
             ]},
-            #link { class=link, url="http://files.nitrogenproject.com.s3.amazonaws.com/win/nitrogen-2.0.3-inets.zip", text="Nitrogen 2.0.3 for Windows on Inets" }
+            #span { class=title, text="Windows Binaries" },
+            list_download_links("Windows","win/32bit", CurrentVersion, "-win.zip", ?WINDOWS_SERVERS)
         ]},
 
         #panel { class=clear },
 
-        #panel { class=platform, body=[
-            #panel { class=logo, body=[
-                #image { image="/images/downloads/linux_logo_gray.png" }
-            ]},
-            #span { class=title, text="Linux Binaries Coming Soon" },
-            #span { class=link, text="Nitrogen 2.0.4 for Linux on Mochiweb" },
-            #span { class=link, text="Nitrogen 2.0.4 for Linux on Yaws" },
-            #span { class=link, text="Nitrogen 2.0.4 for Linux on Inets" }
-        ]},
-
-        #panel { class=clear },
 
         #panel { class=platform, body=[
             #panel { class=logo, body=[
                 #image { image="/images/downloads/erlang_logo.png" }
             ]},
             #span { class=title, text="Old Source Code" },
-            #link { url="http://github.com/nitrogen/nitrogen/tarball/v2.0.3", text="Download Nitrogen 2.0.3 source (.tar.gz)" },
-            #link { url="http://github.com/nitrogen/nitrogen/tarball/v2.0.2", text="Download Nitrogen 2.0.2 source (.tar.gz)" },
-            #link { url="http://github.com/nitrogen/nitrogen/tarball/v2.0.1", text="Download Nitrogen 2.0.1 source (.tar.gz)" },
-            #link { url="http://github.com/nitrogen/nitrogen/tarball/v2.0.0", text="Download Nitrogen 2.0.0 source (.tar.gz)" },
-            #link { url="http://github.com/nitrogen/nitrogen/tarball/v1.0", text="Download Nitrogen 1.0 source (.tar.gz)" }
+            list_source_download_links(OldVersions)
         ]}
     ].
 
