@@ -225,7 +225,7 @@ thanks() ->
         {"Sergei Lebedev"},
         {"Milan Svoboda"},
         {"Jenő I. Hajdu"},
-        {"Maxim Sothatsky"}
+        {"Maxim Sokhatsky","5HT"}
     ].
         
 
