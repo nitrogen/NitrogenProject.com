@@ -88,6 +88,19 @@ articles() ->
     [
         #h1 { text="Articles" },
 
+        #h2 { text="December 2012"},
+        #p{},
+        #link { text="How to create custom Nitrogen elements using Tabs control as example.",url="http://rshestakov.wordpress.com/2012/12/31/how-to-create-custom-nitrogen-elements-using-tabs-control-as-example/"},
+        #p{},
+        #link { text="How to set up a Nitrogen project by hand, by manually specifying the dependencies", url="http://rshestakov.wordpress.com/2012/12/30/how-to-install-nitrogen/"},
+        #p{},
+
+        #h2 { text="September 2012"},
+        #p{},
+
+        #link { text="IEEE Internet Computing, The Functional Web: The Nitrogen Web Framework", url="http://steve.vinoski.net/pdf/IC-Nitrogen_Web_Framework.pdf"},
+        #p{},
+
         #h2 { text="January 2011" },
         #p{},
 
