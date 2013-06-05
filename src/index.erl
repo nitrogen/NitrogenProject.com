@@ -47,7 +47,7 @@ top_right() ->
         #p { class="section", body=[
             "
             Nitrogen 2.1.0 Released! <b><a href='/downloads'>Download it now &raquo;</a></b><br>
-            or <b><a href=''>Read the announcement &raquo;</a></b>
+            or <b><a href='https://groups.google.com/forum/?hl=en&fromgroups=#!topic/nitrogenweb/WGQNPqBhxJs'>Read the announcement &raquo;</a></b>
             <p>
             Learn how to develop a Nitrogen application<br>
             with the <b><a href='/doc/tutorial.html'>Nitrogen Tutorial &raquo;</a></b>

@@ -70,10 +70,10 @@ top() ->
             Do you use Nitrogen? Help fund Nitrogen development.
             <p>
             <a href='http://www.pledgie.com/campaigns/2057'><img alt='Click here to lend your support to: nitrogen and make a donation at www.pledgie.com !' src='http://www.pledgie.com/campaigns/2057.png?skin_name=chrome' border='0' /></a>
-            <p>
+ <!--           <p>
             Alternatively, show your appreciation by sending books, t-shirts, mugs, gadgets, and other shwag to:
             <p>
-            Basho Technologies / Rusty Klophaus / 196 Broadway / Cambridge, MA 02139
+            Basho Technologies / Rusty Klophaus / 196 Broadway / Cambridge, MA 02139-->
             "
         ]},
 

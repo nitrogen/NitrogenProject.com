@@ -133,9 +133,12 @@ right() ->
 
     "
         <p>
-        Nitrogen was created by <a href='http://rusty.io'>Rusty
+        Nitrogen was created in 2008 by <a href='http://rusty.io'>Rusty
         Klophaus</a> (<a href='http://www.twitter.com/rustyio'>@rustyio</a>).
-        It is in active development and is available for use under the MIT License.
+        In June 2011, <a href='http://sigma-star.com/page/jesse/'>Jesse Gumm</a>
+        (<a href='http://www.twitter.com/jessegumm'>@jessegumm</a>) took over
+        as project lead. It is in active development and is available for use
+        under the MIT License.
         ",
 
         "
@@ -184,8 +187,7 @@ format_contrib({Name,URL,TwitterName,Role}) ->
 
 maintainers() ->
     [ 
-        {"Rusty Klophaus","http://rusty.io","rustyio","Creator"},
-        {"Jesse Gumm","http://sigma-star.com/page/jesse","jessegumm","Maintainer"}
+        {"Jesse Gumm","http://sigma-star.com/page/jesse","jessegumm","Project Leader"}
     ].
 
 thanks() ->
