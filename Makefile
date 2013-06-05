@@ -3,6 +3,9 @@ all: get-deps compile copy-static
 get-deps:
 	./rebar get-deps
 
+update-deps:
+	./rebar update-deps
+
 compile:
 	./rebar compile
 

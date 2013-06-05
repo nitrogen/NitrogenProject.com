@@ -88,6 +88,33 @@ articles() ->
     [
         #h1 { text="Articles" },
 
+        #h2 { text="April 2013"},
+        #p{},
+        #link { text="N2O, a fork of Nitrogen featuring Websockets and Tied exclusively to Cowboy", url="https://github.com/5HT/n2o"},
+        #p{},
+
+        #h2 { text="March 2013"},
+        #p{},
+        #link { text="How to build a live datagrid with Nitrogen", url="http://rshestakov.wordpress.com/2013/03/24/how-to-build-a-live-datagrid-with-nitrogen/"},
+        #p{},
+        #link { text="How to draw graphviz graphs with Nitrogen", url="http://rshestakov.wordpress.com/2013/03/09/how-to-draw-graphviz-graphs-with-nitrogen/"},
+        #p{},
+
+        #h2 { text="February 2013"},
+        #p{},
+        "How Nitrogen processes requests ",
+        #link{text="Part 1", url="http://rshestakov.wordpress.com/2013/02/17/how-nitrogen-processes-requests/"}, ", ",
+        #link{text="Part 2", url="http://rshestakov.wordpress.com/2013/02/20/how-nitrogen-processes-requests-part-2/"}, ", ",
+        #link{text="Part 3", url="http://rshestakov.wordpress.com/2013/02/23/how-nitrogen-processes-requests-part-3/"},
+        #p{},
+
+        #h2 { text="January 2013"},
+        #p{},
+        #link { text="Proper password hashing with Erlang and Nitrogen", url="http://sigma-star.com/blog/post/proper-password-hashing-in-erlang-with"},
+        #p{},
+        #link { text="How to use HTML5 History API with Nitrogen", url="http://rshestakov.wordpress.com/2013/01/03/how-to-use-html5-history-api-with-nitrogen/"},
+
+
         #h2 { text="December 2012"},
         #p{},
         #link { text="How to create custom Nitrogen elements using Tabs control as example.",url="http://rshestakov.wordpress.com/2012/12/31/how-to-create-custom-nitrogen-elements-using-tabs-control-as-example/"},
@@ -110,7 +137,7 @@ articles() ->
         #h2 { text="December 2010" },
         #p{},
 
-        #link { text="Jesse Gumm's Nitrogen 2.x presentation at the Chicago Erlang User Group", url="https://docs.google.com/present/view?id=dc37wnrq_7hqpqc6gv"},
+        #link { text="Nitrogen 2.x presentation at the Chicago Erlang User Group", url="https://docs.google.com/present/view?id=dc37wnrq_7hqpqc6gv"},
         " [", #link{ text="Code", url="https://github.com/choptastic/nitrogen-demo"}, "]",
 
         #p{},
