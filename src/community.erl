@@ -90,7 +90,7 @@ articles() ->
 
         #h2 { text="April 2013"},
         #p{},
-        #link { text="N2O, a fork of Nitrogen featuring Websockets and Tied exclusively to Cowboy", url="https://github.com/5HT/n2o"},
+        #link { text="N2O, an experimental fork of Nitrogen featuring Websockets", url="https://github.com/5HT/n2o"},
         #p{},
 
         #h2 { text="March 2013"},
