@@ -54,6 +54,7 @@ middle() ->
         #link { text="Autocompletion", url="/demos/textbox_autocomplete" }, #br{}, 
         #link { text="RESTful Forms", url="/demos/restful" }, #br{},
         #link { text="HTML and Custom Encoding", url="/demos/htmlencode"},#br{},
+        #link { text="Recaptcha", url="/demos/recaptcha"},#br{},
 
         #h2 { text="Drag, Drop & Sort" },
         #p{},
