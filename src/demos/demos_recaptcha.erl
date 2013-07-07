@@ -31,7 +31,6 @@ right() ->
         #is_required{text="Name is required"}
     ]}),
     [
-        % Set up the form...
         #label {text="Enter your name"},
         #textbox{ id=name, placeholder="Bruce Wayne", text=""},
         #br{},
