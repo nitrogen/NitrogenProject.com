@@ -37,8 +37,8 @@ right() ->
         #recaptcha{ id=my_recaptcha, button_id=recaptcha_button, button_label="Tell us your human name", tag=human_verifier}
     ].
 
-recaptcha_event(human_verifier, error) ->
-    wf:wire(#alert{text="WAIT JUST A DARN MINUTE, THAT'S NOT RIGHT! TRY AGAIN, SILLY ROBOT!"}),
+recaptcha_event(human_verifier, {error, ErrorMessage}) ->
+    wf:wire(#alert{text="WAIT JUST A DARN MINUTE! TRY AGAIN, SILLY ROBOT! " ++ ErrorMessage}),
     ok;
 recaptcha_event(human_verifier, ok) ->
     wf:wire(#alert{text="Congrats, you've verified that you are human"}),
