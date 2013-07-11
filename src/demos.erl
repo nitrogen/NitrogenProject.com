@@ -52,6 +52,7 @@ middle() ->
         #link { text="Validation", url="/demos/validation" }, #br{},
         #link { text="Dynamically Removing Validation", url="/demos/clear_validation"}, #br{},
         #link { text="Autocompletion", url="/demos/textbox_autocomplete" }, #br{}, 
+        #link { text="Wizard", url="/demos/wizard" },#br{},
         #link { text="RESTful Forms", url="/demos/restful" }, #br{},
         #link { text="HTML and Custom Encoding", url="/demos/htmlencode"},#br{},
         #link { text="Recaptcha", url="/demos/recaptcha"},#br{},
