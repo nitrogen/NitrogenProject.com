@@ -92,6 +92,10 @@ right() ->
         #link { text="Multiple Comets with Graceful Exit", url="/demos/comet3" }, #br{},
         #link { text="Continuations", url="/demos/continuations" }, #br{},
 
+        #h2 { text="Mobile Integration" },
+        #p{},
+        #link { text="Side Panel", url="/demos/mobile_panel" },#br{},
+
         #h2 { text="Advanced Topics" },
         #p{},
         #link { text="Set Content Type", url="/demos/contenttype" }, #br{},
