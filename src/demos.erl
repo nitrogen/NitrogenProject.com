@@ -95,6 +95,9 @@ right() ->
         #h2 { text="Mobile Integration" },
         #p{},
         #link { text="Side Panel", url="/demos/mobile_panel" },#br{},
+        #link { text="Mobile Lists", url="/demos/mobile_list" },#br{},
+        #link { text="Mobile Controls with Postbacks", url="/demos/mobile_controls" },#br{},
+        #link { text="Mobile Collapsibles", url="/demos/mobile_collapsibles" },#br{},
 
         #h2 { text="Advanced Topics" },
         #p{},
