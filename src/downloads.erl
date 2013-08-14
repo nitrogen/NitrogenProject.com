@@ -18,6 +18,7 @@
     ]).
 
 -define(VERSIONS, [
+        "2.2.0",
         "2.1.0",
         "2.0.4",
         "2.0.3",
@@ -141,7 +142,7 @@ right() ->
             list_source_download_links([CurrentVersion]),
             #link { url="http://github.com/nitrogen/nitrogen/tarball/master", text="Download Latest Code (.tar.gz)" },
             #link { url="http://github.com/nitrogen", text="Master Nitrogen repositories on GitHub" },
-            #link { url="http://github.com/vim/nitrogen_elements", text="Community Repository of Nitrogen Elements" }
+            #link { url="http://github.com/rshestakov/nitrogen_elements", text="Community Repository of Nitrogen Elements" }
         ]},
 
         #panel { class=clear },
