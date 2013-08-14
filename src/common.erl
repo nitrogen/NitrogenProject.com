@@ -15,9 +15,11 @@ header(Selected) ->
 
 
 footer() ->
+	{Year,_,_} = date(),
+	YearStr = integer_to_list(Year),
     #panel { class=credits, body=[
         "
-        Copyright &copy; 2008-2012 <a href='http://www.nitrogenproject.com'>Nitrogen Web Framework</a>. 
+        Copyright &copy; 2008-",YearStr," <a href='http://www.nitrogenproject.com'>Nitrogen Web Framework</a>. 
         <img src='/images/MiniSpaceman.png' style='vertical-align: middle;' />
         Released under the MIT License.
         "
