@@ -34,29 +34,28 @@ top_right() ->
             develop interactive web applications in full-stack Erlang.
             "
         ]},
-
-        #p { class="section_title", body="DOWNLOAD NITROGEN 2.1.0" },
-        #p { class="section", body=[
-            #link { url="/downloads", body=#image { image="/images/downloads/mac_logo.png" }},
-            #link { url="/downloads", body=#image { image="/images/downloads/windows_logo.png" }},
-            #link { url="/downloads", body=#image { image="/images/downloads/linux_logo.png" }},
-            #link { url="/downloads", body=#image { image="/images/downloads/erlang_logo.png" }}
+        #p { class="section_title", body=""},
+        #p { class="section section_download", body=[
+            #link { url="/downloads", class="big_download_button", body=[
+                <<"Download Nitrogen <u>&#9660;</u>">>
+            ]},
+            #br{},
+            #link {url="/downloads", body=[
+                #image { image="/images/downloads/erlang_logo.png" },
+                #image { image="/images/downloads/mac_logo.png" },
+                #image { image="/images/downloads/linux_logo.png" },
+                #image { image="/images/downloads/windows_logo.png" },
+                #image { image="/images/downloads/freebsd_logo.png" },
+                #image { image="/images/downloads/raspberrypi_logo.png" }
+            ]}
         ]},
 
         #p { class="section_title", body="LATEST NEWS" },
-        #p { class="section", body=[
-            "
-            Nitrogen 2.1.0 Released! <b><a href='/downloads'>Download it now &raquo;</a></b><br>
-            or <b><a href='https://groups.google.com/forum/?hl=en&fromgroups=#!topic/nitrogenweb/WGQNPqBhxJs'>Read the announcement &raquo;</a></b>
-            <p>
-            Learn how to develop a Nitrogen application<br>
-            with the <b><a href='/doc/tutorial.html'>Nitrogen Tutorial &raquo;</a></b>
-            <p>
-            Nitrogen 2.x adds great new elements, actions, and API
-            calls, as well as improved packaging and OTP
-            compliance. 
-            <p>
-            <b><a href='/whatsnew'>What's New in Nitrogen 2.x &raquo;</a></b>
-            "
-        ]}
+        #panel{class=twitter_button_wrapper,body=[
+            <<"<a href=\"https://twitter.com/nitrogenproject\" data-show-count=\"false\" class=\"twitter-follow-button\" data-dnt=\"true\">Follow @nitrogenproject</a>
+        <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=\"//platform.twitter.com/widgets.js\";fjs.parentNode.insertBefore(js,fjs);}}(document,\"script\",\"twitter-wjs\");</script>">>
+        ]},
+
+        <<"<a class=\"twitter-timeline\" height=400 data-tweet-limit=3 data-aria-polite=\"assertive\" data-chrome=\"noborders noheader nofooter transparent\" href=\"https://twitter.com/nitrogenproject\" data-widget-id=\"368136432696586240\">Tweets by @nitrogenproject</a>
+    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+\"://platform.twitter.com/widgets.js\";fjs.parentNode.insertBefore(js,fjs);}}(document,\"script\",\"twitter-wjs\");</script>">>
     ].

@@ -209,6 +209,52 @@ hr {
     margin-right: 25px;
 }
 
+.section_download {
+    text-align:center;
+}
+
+.section_download img {
+    width:50px;
+    height:50px;
+    margin-right:13px;
+    margin-left:13px;
+}
+
+a.big_download_button:link,
+a.big_download_button:visited {
+    display:block;
+    width:440px;
+    font-size:22pt;
+    font-weight:bold;
+    background-color: #5cb85c;
+    border-radius: 5px;
+    border:1px outset #5cb85c;
+    color: #fff;
+    padding: 10px;
+    text-transform: uppercase;
+    text-align:center;
+    text-shadow: #000 1px 1px 1px;
+    box-shadow: #000 4px 4px 4px;
+}
+a.big_download_button:hover {
+    background:#4cae4c; 
+    color: #fff;
+}
+a.big_download_button:active {
+    background: #FC2752;
+    color: #fff;
+}
+
+.download_dropdown_wrapper {
+}
+
+.download_dropdown_wrapper select {
+    font-size:12pt;
+    background: #fff;
+    border:1px solid #777;
+    border-radius:2px;
+    width:350px;
+}
 
 .platform {
     line-height: 2em;
@@ -219,19 +265,48 @@ hr {
 .platform .logo {
     float: left;
     width: 100px;
-    height: 140px;
+    height: 180px;
     text-align: center;
     padding-right: 20px;
+    margin-bottom:20px;
+}
+
+.platform .doc_logo {
+    height:100px;
 }
 
 .platform .title {
     display: block;
     font-weight: bold;
+    font-size:1.5em;
 }
 
 .platform .link {
     display: block;
 }
+
+.server_help_toggle {
+    font-size:1.3em;
+    font-weight:bold;
+}
+
+.help b {
+    font-size:1.2em;
+}
+
+.help {
+    border: 1px solid #999;
+    background: #f7f7f7;
+    border-radius: 5px;
+    padding:4px;
+
+}
+
+.twitter_button_wrapper {
+    text-align:right;
+}
+
+.
 
 /***** GOOGLE CHARTS *****/
 

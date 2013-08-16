@@ -1,6 +1,14 @@
+% vim: ts=4 sw=4 et
 -module(common).
 -include_lib ("nitrogen_core/include/wf.hrl").
 -compile(export_all).
+
+platform() ->
+    UA = wf:header(user_agent),
+    Parsed = useragent:parse(UA),
+    OS = proplists:get_value(os, Parsed, []),
+    _Platform = proplists:get_value(family, OS).
+
 
 header(Selected) ->
     wf:wire(Selected, #add_class { class=selected }),
@@ -8,15 +16,14 @@ header(Selected) ->
         #link { id=home, url='/', text="HOME" },
         #link { id=downloads, url='/downloads', text="DOWNLOADS" },
         #link { id=demos, url='/demos', text="DEMOS" },
-		#link { id=docs, url='/doc/index.html', text="DOCUMENTATION" },
+        #link { id=docs, url='/doc/index.html', text="DOCUMENTATION" },
         #link { id=learn, url='/learn', text="LEARN MORE" },
         #link { id=community, url='/community', text="GET INVOLVED" }
     ]}.
 
-
 footer() ->
-	{Year,_,_} = date(),
-	YearStr = integer_to_list(Year),
+    {Year,_,_} = date(),
+    YearStr = integer_to_list(Year),
     #panel { class=credits, body=[
         "
         Copyright &copy; 2008-",YearStr," <a href='http://www.nitrogenproject.com'>Nitrogen Web Framework</a>. 
