@@ -47,11 +47,12 @@ left() ->
         #h2 { text="New Elements" },
         "
         <p>
-        Nitrogen 2.x includes great new elements, and improvements to old elements and actions:
-       
+        Nitrogen 2.x includes great new elements, deployment methods, and improvements to old elements and actions:
+
         <p>
-        Significantly improved support for jQuery Mobile, allowing you
-        to make adding mobile versions of your application much easier.
+        Significantly improved support for jQuery Mobile, including
+        mobile-specific elements, allowing you to make adding mobile versions
+        of your application much easier.
          
         <p>
         The <code>#api{}</code> element allows you to expose a
@@ -142,6 +143,16 @@ left() ->
 
 right() ->
     [
+        #h2 { text="Plugin System" },
+        "
+        <p>
+        Easily add custom elements, actions, and more to your Nitrogen apps
+        with Nitrogen's <a href='/docs/plugins.html'>plugin system</a>. You can
+        <a href='https://github.com/choptastic/sample_nitrogen_plugin'>Create your
+        own plugin</a>, then add your plugin to our
+        <a href='https://github.com/nitrogen/nitrogen/wiki/Nitrogen-Plugins'>List of
+        Nitrogen Plugins</a>.",
+    
         #h2 { text="Comet Pools" },
         "
         <p>
@@ -193,7 +204,7 @@ right() ->
         ",
 
 
-        #h2 { text="Better Packaging" },
+        #h2 { text="Better Packaging and Deployment" },
         "
         <p>
         Using <a href='http://github.com/basho/rebar/'>Rebar</a> (an
@@ -202,9 +213,29 @@ right() ->
         now supports a cleaner, completely self-contained project
         structure. There are 'make' commands to build Nitrogen
         projects that run under Mochiweb, Yaws, Webmachine, Cowboy,
-        or Inets. (Misultin is left out due to it being deprecated by
-        its creator)
-        
+        or Inets.        
+
+        <p>
+        You can deploy Nitrogen in one of three simple ways:
+        <ul>
+            <li>
+            <b>Full Erlang Releases</b>: Complete and self-contained
+            package of Nitrogen which includes a proper OTP structure, start
+            scripts, and a complete Erlang installation.
+            </li>
+
+            <li>
+            <b>Slim Erlang Releases</b>: All the bells and whistles of a full
+            Erlang release (start scripts, OTP structure), but is much smaller
+            because it doesn't require Erlang to be installed
+            </li>
+
+            <li>
+            <b>Embeddable Nitrogen:</b>: Easily add a Nitrogen front-end to an
+            existing application using the `embed` script.
+            </li>
+        </ul>
+
         <p>
         The <code>bin/nitrogen</code> script in the project allows you
         to bring a node up and down in either background or console
@@ -212,9 +243,10 @@ right() ->
         generate a page, element, or action, and recompile code on a
         headless server.
         
+
         <p>
         Additionally, this support is used to provide binary packages
-        for popular OS's. See the <a href='/downloads'>downloads</a> page.
+        for popular OSes1. See the <a href='/downloads'>downloads</a> page.
         ",
 
         
