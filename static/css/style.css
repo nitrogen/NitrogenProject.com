@@ -209,6 +209,10 @@ hr {
     margin-right: 25px;
 }
 
+.section_date {
+    color: #777;
+}
+
 .section_download {
     text-align:center;
 }
@@ -249,7 +253,7 @@ a.big_download_button:active {
 }
 
 .download_dropdown_wrapper select {
-    font-size:12pt;
+    font-size:14pt;
     background: #fff;
     border:1px solid #777;
     border-radius:2px;

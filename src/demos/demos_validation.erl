@@ -1,3 +1,4 @@
+% vim: ts=4 sw=4 et
 -module (demos_validation).
 -include_lib ("nitrogen_core/include/wf.hrl").
 -compile(export_all).
@@ -10,7 +11,7 @@ headline() -> "Validation".
 
 left() -> 
     [
-        "
+        <<"
         <p>
         Nitrogen allows you to declare validation roles on elements
         that are fired during a postback using the
@@ -18,9 +19,14 @@ left() ->
         
         <p>
         The form to the right requires a valid name and email address,
-        and matching passwords of at least 6 characters.
+        matching passwords of at least 6 characters, and validating that an
+        entered number is an integer, and is between a specified range.
 
-        ",
+        <p>
+        It also demonstrates attaching a validation message to a different
+        Nitrogen Element (in this case attaching the validator for the 'number'
+        textbox to the continue button)
+        ">>,
         linecount:render()
     ].
 
@@ -33,19 +39,23 @@ right() ->
         #label { text="Email Address" },
         #textbox { id=emailTextBox, next=passwordTextBox },
 
-        #p{},	
+        #p{},   
         #label { text="Password" },
         #password { id=passwordTextBox, next=confirmTextBox },
 
-        #p{},	
+        #p{},   
         #label { text="Confirm" },
         #password { id=confirmTextBox, next=otherTextBox },
 
-        #p{},	
-        #label { text="Other" },
-        #textbox { id=otherTextBox, next=continueButton },
+        #p{},   
+        #label { text="Other (no validation)" },
+        #textbox { id=otherTextBox, next=numberTextBox },
 
-        #p{},	
+        #p{},
+        #label { text="Enter a number from 1 to 10: " },
+        #textbox { id=numberTextBox, next=continueButton },
+
+        #p{},   
         #button { id=continueButton, text="Continue", postback=continue }
     ],
 
@@ -67,7 +77,12 @@ right() ->
     wf:wire(continueButton, confirmTextBox, #validate { validators=[
         #is_required { text="Required." },
         #confirm_password { password=passwordTextBox, text="Passwords must match." }
-    ]}),	
+    ]}),
+    
+    wf:wire(continueButton, numberTextBox, #validate { attach_to=continueButton, validators=[
+        #is_required { text="A Number is Required (note this is attached to the button instead)"},
+        #is_integer { text="This must be a number between 1 and 10", min=1, max=10}
+    ]}),
 
     Body.
 

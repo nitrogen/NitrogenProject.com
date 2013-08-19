@@ -190,7 +190,16 @@ platform_dropdown(Default) ->
 
 right() ->
     DefaultPlatform = real_platform(common:platform()),
+    CurrentVersion = hd(?ALL_VERSIONS),
     [
+        #h2 { text=["The Latest Version of Nitrogen: ",CurrentVersion]},
+        "See what's new this version in ",
+        #link {
+            url="https://github.com/nitrogen/nitrogen/blob/master/CHANGELOG.markdown",
+            text="The CHANGELOG",
+            new=true
+        },
+
         #h2 { text="Choose your platform for download"},
         #panel { class=download_dropdown_wrapper, body=[
             platform_dropdown(DefaultPlatform)
