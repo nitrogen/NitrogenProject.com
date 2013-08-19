@@ -25,7 +25,10 @@ left() ->
         <p>
         It also demonstrates attaching a validation message to a different
         Nitrogen Element (in this case attaching the validator for the 'number'
-        textbox to the continue button)
+        textbox to the continue button).
+
+        Finally, it demonstrates using the invalid_event/1 functionality
+        introduced in 2.2.0, for triggering events when validators fail.
         ">>,
         linecount:render()
     ].
@@ -58,7 +61,13 @@ right() ->
         #textbox { id=numberTextBox, next=continueButton },
 
         #p{},   
-        #button { id=continueButton, text="Continue", postback=continue }
+        #button {
+            id=continueButton,
+            text="Continue",
+            handle_invalid=true,
+            on_invalid=#alert{text="At least one validator failed client-side (meaning it didn't need to try the server)"},
+            postback=continue
+        }
     ],
 
     wf:wire(continueButton, nameTextBox, #validate { validators=[
@@ -87,6 +96,9 @@ right() ->
     ]}),
 
     Body.
+
+event_invalid(continue) ->
+    wf:wire(#alert{text="A validator failed when checking the server"}).
 
 event(continue) ->
     Name = wf:q(nameTextBox),
