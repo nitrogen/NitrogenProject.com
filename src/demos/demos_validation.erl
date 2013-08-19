@@ -32,6 +32,8 @@ left() ->
 
 right() -> 
     Body = [
+        #flash{},
+
         #label { text="Name" },
         #textbox { id=nameTextBox, next=emailTextBox },
 
