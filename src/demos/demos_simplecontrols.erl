@@ -1,3 +1,4 @@
+%% vim: ts=4 sw=4 et
 -module (demos_simplecontrols).
 -include_lib ("nitrogen_core/include/wf.hrl").
 -compile(export_all).
@@ -10,46 +11,54 @@ headline() -> "Simple Controls".
 
 left() ->
     [
-        "
-        <p>
-        Nitrogen lets you build HTML using Erlang record syntax. For
-        example, a Level-1 Header is specified as:
+    <<"
+    <p>
+    Nitrogen lets you build HTML using Erlang record syntax. For
+    example, a Level-1 Header is specified as:
 
-        <p>
-        <pre>#h1 { text=\"My Header\" }</pre>
-        
-        <p>
-        This page lists some of the simple HTML elements included in
-        Nitrogen.
+    <p>
+    <pre>#h1 { text=\"My Header\" }</pre>
 
-        ", 
-        linecount:render() 
-    ].
+    <p>
+    This page lists some of the simple HTML elements included in
+    Nitrogen.
+    ">>, 
+    linecount:render() 
+].
 
 middle() -> 
     [
-	#h1 { text="Header 1"},
-	#h2 { text="Header 2"},
-	#h3 { text="Header 3"},
-	#p{},
-	#hr{},
+        #h1 { text="Header 1"},
+        #h2 { text="Header 2"},
+        #h3 { text="Header 3"},
+        #h4 { body=[
+            "Header 4 ",
+            #image{image="/images/MiniSpaceman.png"},
+            " with an image in it"
+        ]},
+        #p{},
+        #hr{},
 
-	#h2 { text="Forms" },
-	#p{},
-	#label { text="TextBox" },
-	#textbox { text="This is a textbox." }, 
+        #h2 { text="Forms" },
+        #p{},
+        #label { text="TextBox" },
+        #textbox { text="This is a textbox." }, 
 
-	#p{},
-	#label { text="DatePicker Textbox" },
-	#datepicker_textbox {  }, 
+        #p{},
+        #label { text="Readonly TextBox" },
+        #textbox { text="This is a readonly textbox.", readonly=true }, 
 
-	#p{},	
-	#label { text="TextArea" },
-	#textarea { text="This is a textarea." }, 
+        #p{},
+        #label { text="DatePicker Textbox" },
+        #datepicker_textbox {  }, 
 
-	#p{},	
-	#label { text="Password Box" },
-	#password { text="Password" },
+        #p{},   
+        #label { text="TextArea" },
+        #textarea { text="This is a textarea." }, 
+
+        #p{},   
+        #label { text="Password Box" },
+        #password { text="Password" },
 
         #p{},
         #dropdown { options=[
@@ -57,39 +66,39 @@ middle() ->
             #option { text="Option 1" },
             #option { text="Option 2" },
             #option { text="Option 3" }
-	]},
+        ]},
 
         #p{},
-	#radiogroup { body=[
+        #radiogroup { body=[
             #radio { id=myRadio1, text="Option 1", value="1", checked=true }, #br{},
             #radio { id=myRadio2, text="Option 2", value="2" }, #br{},
             #radio { id=myRadio3, text="Option 3", value="3" }, #br{},
             #radio { id=myRadio4, text="Option 4", value="4" }
-	]},
+        ]},
 
         #p{},
-	#checkbox { text="Checkbox", checked=true },
+        #checkbox { text="Checkbox", checked=true },
 
         #p{},
-	#button { text="Button" }
+        #button { text="Button" },
+        #button { text="Disabled Button", disabled=true }
     ].
 
 right() -> 
     [
         #p{},
-	#h2 { text="Lists" },
-	#list { body=[
+        #h2 { text="Lists" },
+        #list { body=[
             #listitem { text="List Item 1" },
             #listitem { text="List Item 2" },
             #listitem { body=#checkbox { text="List Item 3" }}
-	]},
+        ]},
 
-	#list { numbered=true, body=[
+        #list { numbered=true, body=[
             #listitem { text="List Item 1" },
             #listitem { text="List Item 2" },
             #listitem { body=#checkbox { text="List Item 3" }}
-	]},
-
+        ]},
         #h2 { text="Gravatars"},
         #gravatar{ email="RKlophaus@Gmail.com", size="100", rating="x" }, 
         #p{},
