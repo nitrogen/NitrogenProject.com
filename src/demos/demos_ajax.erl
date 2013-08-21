@@ -51,7 +51,7 @@ event(click) ->
     Message = wf:q(theMessage),
 
     % Replace old contents of this cell...
-    wf:update(updateCell, #panel { body=Message }),
+    wf:update(updateCell, Message),
 
     % Insert at the top of this cell...
     wf:insert_top(topCell, #panel { body=Message, actions=#show { effect=puff }}),
