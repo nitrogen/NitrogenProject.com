@@ -50,9 +50,9 @@ top_right() ->
             ]}
         ]},
 
-        #p { class="section_title", body="ANNOUNCEMENTS" },
+        #p { class="section_title", body="MAJOR ANNOUNCEMENTS" },
         #p { class=section, body=[
-            #span{ class=section_date, text="20 August 2013"},
+            #time{ class=section_date, text="29 August 2013", datetime="2013-08-29"},
             #br{},
             <<"
             Nitrogen 2.2.0 Released!
