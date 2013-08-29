@@ -1,13 +1,17 @@
 # NitrogenProject.com Website
 
-This is the public repo for the NitrogenProject.com website. 
+[![Build Status](https://travis-ci.org/nitrogen/NitrogenProject.com.png?branch=master)](https://travis-ci.org/nitrogen/NitrogenProject.com)
 
-You can clone this and run it locally to have a local browsable copy
-of the Nitrogen documentation, as well as to see an example of how you
-can embed Nitrogen inside other applications.
+This is the public repo for the
+[NitrogenProject.com](http://nitrogenproject.com) website. 
+
+You can clone this and run it locally to have a local browsable copy of the
+Nitrogen [documentation](http://nitrogenproject.com/doc/index.html), as well as
+to see an example of how you can embed Nitrogen inside other applications.
 
 To get started, simply run:
 
+```bash
     git clone git://github.com/nitrogen/NitrogenProject.com.git
 
     cd NitrogenProject.com
@@ -15,3 +19,4 @@ To get started, simply run:
     make run
 
     open http://localhost:8000
+```
