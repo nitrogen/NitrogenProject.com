@@ -24,8 +24,10 @@ $(DEPS_PLT):
 	@echo 
 	@(dialyzer --output_plt $(DEPS_PLT) --build_plt --apps $(DEPS) -r ./deps/)
 
-dialyzer: compile $(DEPS_PLT)
+dialyzer: get-deps compile $(DEPS_PLT)
 	@(dialyzer --fullpath --plt $(DEPS_PLT) -Wrace_conditions -r ./ebin)
+
+travis: dialyzer
 
 run:
 	erl -pa ebin ./deps/*/ebin ./deps/*/include \
