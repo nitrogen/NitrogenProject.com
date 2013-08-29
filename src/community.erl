@@ -16,9 +16,9 @@ layout() ->
         #grid_10 { alpha=true, omega=true, prefix=1, suffix=1, class=headline, body=headline() },
         #grid_clear {},
 
-        #grid_12 { alpha=true, prefix=0, suffix=0, omega=1, body=top() },
+        #grid_12 { alpha=true, prefix=0, suffix=0, omega=true, body=top() },
 
-        #grid_12 { alpha=true, prefix=0, suffix=0, omega=1, body=articles() },
+        #grid_12 { alpha=true, prefix=0, suffix=0, omega=true, body=articles() },
         #grid_clear {},
 
         #grid_12 { alpha=true, omega=true, body=common:footer() }
