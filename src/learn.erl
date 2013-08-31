@@ -239,11 +239,26 @@ thanks() ->
         {"Milan Svoboda"},
         {"Jenő I. Hajdu"},
         {"Maxim Sokhatsky","5HT"},
-        {"Roman Shestakov","rshestakov"}
+        {"Roman Shestakov","rshestakov"},
+        {"Witeman Zheng"},
+        {"Chan Sisowath"},
+        {"Florent Gallaire"},
+        {"Dmitriy Kargapolov"},
+        {"Andrii Zadorozhnii"},
+        {"Evan Miller","evmill"},
+        {"Alice Blitter Copper"},
+        {"Petr Kozorezov"},
+        {"Nikolay Garanko"},
+        {"Paul Khusainov"},
+        {"David N. Welton","davidnwelton"},
+        {"Tobias Herre"},
+        {"Josh Pyle"},
+        {"Niclas Axelsson"},
+        {"Evgeny M."}
     ].
         
 
 twitter(Username) ->
-    #link{url="http://twitter.com/#!/" ++ Username,text=["@",Username]}.
+    #link{url=["http://twitter.com/",Username],text=["@",Username]}.
 
 event(_) -> ok.
