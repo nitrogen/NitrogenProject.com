@@ -14,7 +14,8 @@
 -define(WINDOWS_SERVERS,[
         {cowboy,"Cowboy"},
         {inets,"Inets"},
-        {mochiweb,"Mochiweb"}
+        {mochiweb,"Mochiweb"},
+        {webmachine,"Webmachine"}
     ]).
 
 -define(ALL_VERSIONS, [
