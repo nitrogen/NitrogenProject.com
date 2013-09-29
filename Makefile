@@ -34,6 +34,5 @@ run:
 	-config "app.config" \
 	-name nitrogen@127.0.0.1 \
 	-env ERL_FULLSWEEP_AFTER 0 \
-	-sync sync_mode nitrogen \
 	-eval "inets:start()" \
 	-eval "application:start(nitrogen_website)."
