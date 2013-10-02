@@ -1,12 +1,12 @@
 {application, nitrogen_website, [
     {description,  "NitrogenProject.com Website"},
-    {vsn,          "2.1.0"},
+    {vsn,          "2.2.0"},
     {applications, [kernel, stdlib]},
     {registered, []},
     {mod, {nitrogen_website_app, []}},
     {env, [
         {bind_address, "0.0.0.0"},
-        {port, 8000},
+        {port, 8001},
         {server_name, nitrogen_website},
         {document_root, "./static"}
     ]}  
