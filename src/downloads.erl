@@ -266,7 +266,7 @@ platform_downloads(Platform) ->
                         #image { image=["/images/downloads/",Platform,"_logo.png"] }
                     ]},
                     #span { class=title, text=[PlatformName," Binaries"] },
-                    list_download_links(PlatformName,[Platform,"/",Bits], CurrentVersion,Suffix,Servers),
+                    list_download_links(PlatformName,Platform, CurrentVersion,Suffix,Servers),
                     <<"(includes Erlang compiled for ">>,PlatformName,<<"/">>,Bits,<<")">>
                 ]}
             ]

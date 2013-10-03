@@ -52,7 +52,7 @@ top_right() ->
 
         #p { class="section_title", body="MAJOR ANNOUNCEMENTS" },
         #p { class=section, body=[
-            #time{ class=section_date, text="29 August 2013", datetime="2013-08-29"},
+            #time{ class=section_date, text="October 3rd, 2013", datetime="2013-10-03"},
             #br{},
             <<"
             Nitrogen 2.2.0 Released!
