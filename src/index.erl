@@ -57,7 +57,7 @@ top_right() ->
             <<"
             Nitrogen 2.2.0 Released!
             <!--Read the <a href=''>announcement</a>,-->
-            View the <a href='https://raw.github.com/nitrogen/nitrogen/master/CHANGELOG.markdown'>changelog</a>,
+            View the <a href='https://github.com/nitrogen/nitrogen/blob/master/CHANGELOG.markdown'>changelog</a>,
             or <b><a href='/downloads'>Download it now &raquo;</a></b>">>
         ]},
         #p { class="section_title", body="LATEST TWEETS" },
