@@ -6,7 +6,7 @@
     {mod, {nitrogen_website_app, []}},
     {env, [
         {bind_address, "0.0.0.0"},
-        {port, 8001},
+        {port, 8000},
         {server_name, nitrogen_website},
         {document_root, "./static"}
     ]}  
