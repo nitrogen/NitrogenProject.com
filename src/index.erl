@@ -56,9 +56,17 @@ top_right() ->
             #br{},
             <<"
             Nitrogen 2.2.1 Released!
-            <!--Read the <a href=''>announcement</a>,-->
+            Read the <a href='https://groups.google.com/d/msg/nitrogenweb/jTgH611hRSo/IbEyfCe5D1wJ'>announcement</a>,
             View the <a href='https://github.com/nitrogen/nitrogen/blob/master/CHANGELOG.markdown'>changelog</a>,
-            or <b><a href='/downloads'>Download it now &raquo;</a></b>">>
+            or <b><a href='/downloads'>Download it now &raquo;</a></b>
+            ">>
+        ]},
+        #p { class=section, body=[
+            #time{ class=section_date, text="October 3rd, 2013", datetime="2013-10-03"},
+            #br{},
+            <<"
+            Nitrogen 2.2.0 Released!
+            ">>
         ]},
         #p { class="section_title", body="LATEST TWEETS" },
         #panel{class=twitter_button_wrapper,body=[
