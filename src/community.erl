@@ -86,7 +86,25 @@ top() ->
 
 articles() ->
     [
-        #h1 { text="Articles" },
+        #h1 { text="Articles and Talks and Presentations" },
+        #h2 { text="October 2013"},
+        #p{},
+        #link { text="Erlang and Web Scale Panel (Chicago Erlang Factory Lite)", url="http://www.youtube.com/watch?v=hxfyUa9wvZo"},
+
+        #h2 { text="September 2013"},
+        #link { text="Introduction to Erlang Web Frameworks (Milwaukee Functional Programming User Group)", url="http://www.youtube.com/watch?v=HdkRzeOjexc"},
+        " [", #link { text="Slides", url="http://slides.sigma-star.com/view/Ninja-Erlang-Web#/" },"]",
+        #p{},
+
+        #link { text="Why Nitrogen Plugins?", url="http://sigma-star.com/blog/post/why-nitrogen-plugins"},
+        #h2 { text="August 2013"},
+        #p{},
+        #link { text="Embedding Nitrogen into an Existing Application", url="http://sigma-star.com/blog/post/embedding-nitrogen"},
+        #p{},
+        #h2 { text="June 2013"},
+        #p{},
+        #link { text="Taming Erlang's New Slim Releases for Nitrogen", url="http://sigma-star.com/blog/post/nitrogen-slim-release"},
+        #p{},
 
         #h2 { text="April 2013"},
         #p{},
@@ -233,6 +251,9 @@ articles() ->
         #h1 { text="Projects on Github" },
 
         #p{},
+        #link { text="http://github.com/choptastic/LobsterDraw", url="http://github.com/choptatic/LobsterDraw"},
+        " - Nitrogen-based drawing game (like Pictionary) made for Spawnfest 2011",
+        #p{},
         #link { text="http://github.com/kungfooguru/beerenthusiasts", url="http://github.com/kungfooguru/beerenthusiasts" },
         " - Homebrewing and beer lovers webapp written in Erlang and using Nitrogen, Couchdb and Mnesia.",
 
@@ -249,6 +270,6 @@ articles() ->
         " - Basic To-Do list app in Nitrogen",
 
         #p{},
-        "Wrote an article that you would like to add to this list? <a href='mailto:nitrogenframework@gmail.com'>Email Rusty</a>."
+        "Wrote an article that you would like to add to this list? <a href='mailto:gumm@sigma-star.com'>Email Jesse</a>."
     ].
 
