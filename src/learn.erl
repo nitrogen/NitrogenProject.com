@@ -254,7 +254,7 @@ thanks() ->
         {"Tobias Herre"},
         {"Josh Pyle"},
         {"Niclas Axelsson"},
-        {"Evgeny M."}
+        {"Evgeny M."},
         {"Boris Resnick"},
         {"Piotr Nosek"},
         {"Stefan Zegenhagen"}
