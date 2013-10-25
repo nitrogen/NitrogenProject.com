@@ -28,14 +28,17 @@ body() ->
         #textbox{id=url, type=url},
         #br{},
 
-        #label{text="Mobile Slider (Toggle)"},
-        #mobile_toggle{
-            on_text="On",
-            off_text="Off",
-            selected=off,
-            id=slider,
-            width=200
-        },
+        #panel{data_fields=[{role, fieldcontain}],body=[
+            #label{text="Mobile Slider (Toggle)", for=toggle},
+            #mobile_toggle{
+                html_id=toggle,
+                on_text="On",
+                off_text="Off",
+                selected=off,
+                id=slider,
+                width=200
+            }
+        ]},
         #br{},
         #label{text="Range Element"},
         #range{id=range,min=10,max=100,step=10,value=50},
