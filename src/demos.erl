@@ -98,6 +98,7 @@ right() ->
         #link { text="Mobile Lists", url="/demos/mobile_list" },#br{},
         #link { text="Mobile Controls with Postbacks", url="/demos/mobile_controls" },#br{},
         #link { text="Mobile Collapsibles", url="/demos/mobile_collapsibles" },#br{},
+        #link { text="Dynamically adding Mobile Elements", url="/demos/mobile_controls2" },#br{},
 
         #h2 { text="Advanced Topics" },
         #p{},
