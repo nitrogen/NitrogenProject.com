@@ -78,6 +78,7 @@ right() ->
         #p{},
         #link { text="Effects", url="/demos/effects" }, #br{}, 
         #link { text="Postbacks", url="/demos/postback" }, #br{}, 
+        #link { text="Priority Wiring", url="/demos/priority_wiring"}, #br{},
         #link { text="AJAX Updates", url="/demos/ajax" }, #br{}, 
         #link { text="AJAX Replace", url="/demos/replace" }, #br{},
         #link { text="AJAX Remove", url="/demos/remove" }, #br{},
