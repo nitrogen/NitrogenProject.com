@@ -5,7 +5,11 @@
 
 platform() ->
     UA = wf:header(user_agent),
-    Parsed = useragent:parse(UA),
+    %% Below is a hack for quickstart so it diesn't rely on having the useragent dep.
+    Parsed = case erlang:function_exported(useragent, parse, 1) of
+        true -> useragent:parse(UA);
+        false -> [{os, [{family, linux}]}]
+    end,
     OS = proplists:get_value(os, Parsed, []),
     _Platform = proplists:get_value(family, OS).
 
