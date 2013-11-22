@@ -52,13 +52,20 @@ top_right() ->
 
         #p { class="section_title", body="MAJOR ANNOUNCEMENTS" },
         #p { class=section, body=[
+            #time{ class=section_date, text="November 22nd, 2013", datetime="2013-11-22"},
+            #br{},
+            <<"
+            Nitrogen 2.2.2 Released!
+            View the <a href='https://github.com/nitrogen/nitrogen/blob/master/CHANGELOG.markdown'>changelog</a>,
+            or <b><a href='/downloads'>Download it now &raquo;</a></b>
+            ">>
+        ]},
+        #p { class=section, body=[
             #time{ class=section_date, text="October 18th, 2013", datetime="2013-10-18"},
             #br{},
             <<"
             Nitrogen 2.2.1 Released!
-            Read the <a href='https://groups.google.com/d/msg/nitrogenweb/jTgH611hRSo/IbEyfCe5D1wJ'>announcement</a>,
-            View the <a href='https://github.com/nitrogen/nitrogen/blob/master/CHANGELOG.markdown'>changelog</a>,
-            or <b><a href='/downloads'>Download it now &raquo;</a></b>
+            Read the <a href='https://groups.google.com/d/msg/nitrogenweb/jTgH611hRSo/IbEyfCe5D1wJ'>announcement</a>
             ">>
         ]},
         #p { class=section, body=[

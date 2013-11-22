@@ -2,3 +2,5 @@
 deps/*
 scratch/*
 *~
+.deps_plt
+*.sw?
