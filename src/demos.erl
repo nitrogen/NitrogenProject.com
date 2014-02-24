@@ -92,6 +92,7 @@ right() ->
         #link { text="Chatroom with Comet", url="/demos/comet2" }, #br{},
         #link { text="Multiple Comets with Graceful Exit", url="/demos/comet3" }, #br{},
         #link { text="Continuations", url="/demos/continuations" }, #br{},
+        #link { text="Synchronized Panels (using comet)", url="/demos/sync_panel" },#br{},
 
         #h2 { text="Mobile Integration" },
         #p{},
