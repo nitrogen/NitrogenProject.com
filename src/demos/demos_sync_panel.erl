@@ -42,9 +42,9 @@ left() ->
         linecount:render()
     ].
 
-%% Notice how we use the fun ?MODULE:render_function/0 syntax rather than just
-%% fun render_function/0? This is to ensure that when the module is recompiled
-%% that the new version of render_function/0 will be called.
+%% Notice how we use the fun ?MODULE:body_function/0 syntax rather than just
+%% fun body_function/0? This is to ensure that when the module is recompiled
+%% that the new version of body_function/0 will be called.
 right() -> 
     _Body = [
         #label { text="Click some buttons" },
@@ -52,7 +52,7 @@ right() ->
             style="border: dotted 2px black",
             pool=demo_sync_panel,
             triggers=[update_sync_panel],
-            render_fun=fun ?MODULE:render_function/0
+            body_fun=fun ?MODULE:body_function/0
         },
         #button{postback={message, 1}, text="Msg 1"},
         #button{postback={message, 2}, text="Msg 2"},
@@ -62,15 +62,15 @@ right() ->
         #button{postback={message, 6}, text="Msg 6"}
     ].
 
-%% render_function() is referenced by the render_fun attribute in the
+%% body_function() is referenced by the body_fun attribute in the
 %% #sync_panel{} element above. It will simply read the contents from our
 %% "database" and prepare nitrogen elements to be used as the body of the
 %% panel. This function is basically no different than any other function you
 %% might use to define the body of a page element, except that instead of
-%% calling it, for example with #panel{body=render_function()}, you'll instead
-%% assign it to the #sync_panel.render_fun field and it will be called and used
+%% calling it, for example with #panel{body=body_function()}, you'll instead
+%% assign it to the #sync_panel.body_fun field and it will be called and used
 %% to refresh the contents whenever its triggered to.
-render_function() ->
+body_function() ->
     Msg = read_contents(),
     [
         #span{style="font-weight:bold", text="Boromir Says: "},
