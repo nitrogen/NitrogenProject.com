@@ -3,13 +3,7 @@
 -compile(export_all).
 
 main() -> 
-	case wf:q(postD) of 
-   		undefined ->
-   			#template { file="./templates/demos46.html" };
-   		_ ->
-   		   wf:header("Content-Disposition", "attachement; filename=\"nitrogen.jpeg\""),
-   		   demos_contenttype_image:main()
-   	end.
+    #template { file="./templates/demos46.html" }.
 
 title() -> "Content Type".
 
@@ -24,9 +18,9 @@ left() ->
         from a Nitrogen module.
 
         <p>
-	View the <a
-	href=viewsource?module=demos_contenttype_image>source code</a>
-	of demos_contenttype_image.erl to see how it's done.
+        View the <a
+        href=viewsource?module=demos_contenttype_image>source code</a>
+        of demos_contenttype_image.erl to see how it's done.
         ",
         linecount:render()
     ].
@@ -34,12 +28,7 @@ left() ->
 right() -> 
     [
         #image { image="/demos/contenttype/image" },
-        [#restful_form{ 
-                                          action = "/demos_contenttype",
-                                          target = new,
-                                          body = [#hidden{id=postD, text = "Post"},
-                                                  #restful_submit{text = "Response Header Example"}]
-                                         }
+        #link { text="Download Image", url="/demos/contenttype/image?download=1" }
     ].
-	
+    
 event(_) -> ok.
