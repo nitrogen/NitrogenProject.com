@@ -104,8 +104,8 @@ right() ->
 
         #h2 { text="Advanced Topics" },
         #p{},
-        #link { text="Set Content Type", url="/demos/contenttype" }, #br{},
-        #link { text="HTTP Headers", url="/demos/headers" }, #br{},
+        #link { text="Set Content Type and Response Headers", url="/demos/contenttype" }, #br{},
+        #link { text="Request HTTP Headers", url="/demos/headers" }, #br{},
         #link { text="Security", url="/demos/security" }, #br{},
         #link { text="State", url="/demos/state" }
     ].  
