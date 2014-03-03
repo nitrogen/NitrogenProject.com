@@ -5,9 +5,9 @@
 main() -> 
     #template { file="./templates/demos46.html" }.
 
-title() -> "Content Type".
+title() -> "Content Type and Headers".
 
-headline() -> "Content Type".
+headline() -> "Content Type and Headers".
 
 left() -> 
     [
@@ -16,6 +16,12 @@ left() ->
         In a pinch, you can use Nitrogen to dynamically serve content
         other than HTML. The image to the right is served as raw data
         from a Nitrogen module.
+
+        <p>
+        Also, this shows how you can use the <code>wf:header/2</code>
+        function to dynamically set the headers, and in this case, use the
+        \"Content-Disposition\" header to make the browser download a file
+        rather than displaying it in the browser directly.
 
         <p>
         View the <a
