@@ -2,7 +2,14 @@
 -include_lib ("nitrogen_core/include/wf.hrl").
 -compile(export_all).
 
-main() -> #template { file="./templates/demos46.html" }.
+main() -> 
+	case wf:q(postD) of 
+   		undefined ->
+   			#template { file="./templates/demos46.html" };
+   		_ ->
+   		   wf:header("Content-Disposition", "attachement; filename=\"nitrogen.jpeg\""),
+   		   demos_contenttype_image:main()
+   	end.
 
 title() -> "Content Type".
 
@@ -26,7 +33,13 @@ left() ->
 
 right() -> 
     [
-        #image { image="/demos/contenttype/image" }
+        #image { image="/demos/contenttype/image" },
+        [#restful_form{ 
+                                          action = "/demos_contenttype",
+                                          target = new,
+                                          body = [#hidden{id=postD, text = "Post"},
+                                                  #restful_submit{text = "Response Header Example"}]
+                                         }
     ].
 	
 event(_) -> ok.
