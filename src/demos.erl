@@ -46,6 +46,7 @@ middle() ->
         #link { text="Simple Controls", url="/demos/simplecontrols" }, #br{}, 
         #link { text="In-Place Textbox", url="/demos/advancedcontrols1" }, #br{}, 
         #link { text="Google Charts", url="/demos/advancedcontrols2" }, #br{}, 
+        #link { text="QR Codes", url="/demos/qr" }, #br{}, 
         #link { text="Sparkline", url="/demos/sparkline" },#br{},
         #link { text="Radio Buttons", url="/demos/radio" }, #br{}, 
         #link { text="File Uploading", url="/demos/upload" }, #br{}, 
