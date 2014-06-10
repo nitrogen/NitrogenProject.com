@@ -86,7 +86,13 @@ top() ->
 
 articles() ->
     [
+
         #h1 { text="Articles and Talks and Presentations" },
+
+        #h2 { text="February 2014"},
+        #p{},
+        #link { text="Simple Realtime Synchronization with Nitrogen's #sync_panel Element", url="http://sigma-star.com/blog/post/sync_panel" },
+
         #h2 { text="October 2013"},
         #p{},
         #link { text="Erlang and Web Scale Panel (Chicago Erlang Factory Lite)", url="http://www.youtube.com/watch?v=hxfyUa9wvZo"},
