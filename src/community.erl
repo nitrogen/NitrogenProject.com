@@ -88,6 +88,10 @@ articles() ->
     [
 
         #h1 { text="Articles and Talks and Presentations" },
+    
+        #h2 { text="July 2014"},
+        #p{},
+        #link { text="Deploying a Nitrogen App on Heroku", url="http://cstar.io/2014/07/02/nitrogen-on-heroku.html"},
 
         #h2 { text="February 2014"},
         #p{},
