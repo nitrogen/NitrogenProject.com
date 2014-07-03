@@ -42,19 +42,20 @@ middle() ->
         #h2 { text="Forms" },
         #p{},
         #label { text="TextBox" },
-        #textbox { text="This is a textbox." }, 
+        #textbox { id=textbox, text="This is a textbox." }, 
 
         #p{},
         #label { text="Readonly TextBox" },
-        #textbox { text="This is a readonly textbox.", readonly=true }, 
+        #textbox { text="This is a readonly textbox.", readonly=true, next=date_textbox }, 
+        #link{ text="Skip Link", click=#alert{text="This textbox will be skipped when tabbing from the readonly textbox to the datepicker textbox"}},
 
         #p{},
         #label { text="DatePicker Textbox" },
-        #datepicker_textbox {  }, 
+        #datepicker_textbox { id=date_textbox  }, 
 
         #p{},   
-        #label { text="TextArea" },
-        #textarea { text="This is a textarea." }, 
+        #label { text="TextArea (tabs are trapped on this textarea)" },
+        #textarea { text="This is a textarea.", trap_tabs=true },
 
         #p{},   
         #label { text="Password Box" },
@@ -69,6 +70,13 @@ middle() ->
         ]},
 
         #p{},
+        #dropdown { id=multiple, multiple=true, options=[
+            #option { text="Multiselect 1" },
+            #option { text="Multiselect 2" },
+            #option { text="Multiselect 3" }
+        ]},
+
+        #p{},
         #radiogroup { body=[
             #radio { id=myRadio1, text="Option 1", value="1", checked=true }, #br{},
             #radio { id=myRadio2, text="Option 2", value="2" }, #br{},
@@ -80,7 +88,7 @@ middle() ->
         #checkbox { text="Checkbox", checked=true },
 
         #p{},
-        #button { text="Button" },
+        #button { text="Button", postback=postback },
         #button { text="Disabled Button", disabled=true }
     ].
 
@@ -105,4 +113,6 @@ right() ->
         #gravatar{ email="dan.bravender@test.com", size="100", default="wavatar" }
     ].
 
-event(_) -> ok.
+event(postback) ->
+    wf:wire(#alert{text=wf:q(textbox)}),
+    wf:wire(#alert{text=wf:qs(multiple)}).

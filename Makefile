@@ -16,6 +16,8 @@ copy-static:
 clean:
 	./rebar clean
 
+upgrade: update-deps compile copy-static
+
 DEPS_PLT=$(CURDIR)/.deps_plt
 DEPS=erts kernel stdlib sasl
 

@@ -86,7 +86,22 @@ top() ->
 
 articles() ->
     [
+
         #h1 { text="Articles and Talks and Presentations" },
+    
+        #h2 { text="July 2014"},
+        #p{},
+        #link { text="Deploying a Nitrogen App on Heroku", url="http://cstar.io/2014/07/02/nitrogen-on-heroku.html"},
+        
+        #h2{ text="June 2014"},
+        #p{},
+        #link { text="SimpleBridge Talk at Chicago Erlang User Group", url="http://slides.sigma-star.com/view/SimpleBridge-Full#/"},
+        " [", #link { text="demo project", url="https://github.com/nitrogen/simple_bridge_demo"}, "]",
+
+        #h2 { text="February 2014"},
+        #p{},
+        #link { text="Simple Realtime Synchronization with Nitrogen's #sync_panel Element", url="http://sigma-star.com/blog/post/sync_panel" },
+
         #h2 { text="October 2013"},
         #p{},
         #link { text="Erlang and Web Scale Panel (Chicago Erlang Factory Lite)", url="http://www.youtube.com/watch?v=hxfyUa9wvZo"},

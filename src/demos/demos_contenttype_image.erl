@@ -3,8 +3,19 @@
 -compile(export_all).
 
 main() -> 
+    %% Set the content-type of the image
     wf:content_type("image/png"),
-    binary_to_list(image_data()).
+
+    %% If we have a "download" query-string parameter set (or if the POST data
+    %% contained a field called "download" set to "1"), then we also set the
+    %% content-disposition header to tell the browser to download.
+    %%
+    case wf:q("download") of
+        "1" -> wf:header("Content-Disposition", "attachement; filename=\"nitrogen.jpeg\"");
+        _ -> do_nothing
+    end,
+
+    image_data().
 
 event(_) -> ok.
 

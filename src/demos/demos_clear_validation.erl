@@ -12,7 +12,7 @@ headline() -> title().
 
 left() ->
     [
-        "
+        << "
         <p>
         Due to the heavily dynamic nature of Nitrogen, we provide a
         convenient mechanism for deactivating validators that have been added
@@ -26,7 +26,8 @@ left() ->
         to disable individual validators, or disable all validators, as well as
         providing a method for re-attaching the validators after they've been
         removed
-        "
+        ">>,
+         linecount:render() 
     ].
           
 

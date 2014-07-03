@@ -46,6 +46,7 @@ middle() ->
         #link { text="Simple Controls", url="/demos/simplecontrols" }, #br{}, 
         #link { text="In-Place Textbox", url="/demos/advancedcontrols1" }, #br{}, 
         #link { text="Google Charts", url="/demos/advancedcontrols2" }, #br{}, 
+        #link { text="QR Codes", url="/demos/qr" }, #br{}, 
         #link { text="Sparkline", url="/demos/sparkline" },#br{},
         #link { text="Radio Buttons", url="/demos/radio" }, #br{}, 
         #link { text="File Uploading", url="/demos/upload" }, #br{}, 
@@ -78,6 +79,7 @@ right() ->
         #p{},
         #link { text="Effects", url="/demos/effects" }, #br{}, 
         #link { text="Postbacks", url="/demos/postback" }, #br{}, 
+        #link { text="Priority Wiring", url="/demos/priority_wiring"}, #br{},
         #link { text="AJAX Updates", url="/demos/ajax" }, #br{}, 
         #link { text="AJAX Replace", url="/demos/replace" }, #br{},
         #link { text="AJAX Remove", url="/demos/remove" }, #br{},
@@ -91,6 +93,7 @@ right() ->
         #link { text="Chatroom with Comet", url="/demos/comet2" }, #br{},
         #link { text="Multiple Comets with Graceful Exit", url="/demos/comet3" }, #br{},
         #link { text="Continuations", url="/demos/continuations" }, #br{},
+        #link { text="Synchronized Panels (using comet)", url="/demos/sync_panel" },#br{},
 
         #h2 { text="Mobile Integration" },
         #p{},
@@ -98,11 +101,12 @@ right() ->
         #link { text="Mobile Lists", url="/demos/mobile_list" },#br{},
         #link { text="Mobile Controls with Postbacks", url="/demos/mobile_controls" },#br{},
         #link { text="Mobile Collapsibles", url="/demos/mobile_collapsibles" },#br{},
+        #link { text="Dynamically adding Mobile Elements", url="/demos/mobile_controls2" },#br{},
 
         #h2 { text="Advanced Topics" },
         #p{},
-        #link { text="Set Content Type", url="/demos/contenttype" }, #br{},
-        #link { text="HTTP Headers", url="/demos/headers" }, #br{},
+        #link { text="Set Content Type and Response Headers", url="/demos/contenttype" }, #br{},
+        #link { text="Request HTTP Headers", url="/demos/headers" }, #br{},
         #link { text="Security", url="/demos/security" }, #br{},
         #link { text="State", url="/demos/state" }
     ].  

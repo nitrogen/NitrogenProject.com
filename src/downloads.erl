@@ -19,6 +19,7 @@
     ]).
 
 -define(ALL_VERSIONS, [
+        "2.2.2",
         "2.2.1",
         "2.2.0",
         "2.1.0",
@@ -268,7 +269,7 @@ platform_downloads(Platform) ->
                     ]},
                     #span { class=title, text=[PlatformName," Binaries"] },
                     list_download_links(PlatformName,Platform, CurrentVersion,Suffix,Servers),
-                    <<"(includes Erlang compiled for ">>,PlatformName,<<"/">>,Bits,<<")">>
+                    <<"(includes Erlang R16B02 compiled for ">>,PlatformName,<<"/">>,Bits,<<")">>
                 ]}
             ]
     end.
