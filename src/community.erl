@@ -96,7 +96,7 @@ articles() ->
         #h2{ text="June 2014"},
         #p{},
         #link { text="SimpleBridge Talk at Chicago Erlang User Group", url="http://slides.sigma-star.com/view/SimpleBridge-Full#/"},
-        #link { text="[demo project]", url="https://github.com/nitrogen/simple_bridge_demo"},
+        " [", #link { text="demo project", url="https://github.com/nitrogen/simple_bridge_demo"}, "]",
 
         #h2 { text="February 2014"},
         #p{},
