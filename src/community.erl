@@ -266,19 +266,22 @@ articles() ->
         #h1 { text="Projects on Github" },
 
         #p{},
-        #link { text="http://github.com/choptastic/LobsterDraw", url="http://github.com/choptatic/LobsterDraw"},
+        #link { text="http://github.com/CoBug/cobug.org", url="http://github.com/CoBug/cobug.org"},
+        " - Homepage source code for CoBug, the Colorado BSD User Group",
+        #p{},
+        #link { text="http://github.com/choptastic/sliderl", url="http://github.com/choptastic/sliderl"},
+        " - Sliderl a simple markdown slideshow server written with Nitrogen and Reveal.js",
+
+        #p{},
+        #link { text="http://github.com/choptastic/LobsterDraw", url="http://github.com/choptastic/LobsterDraw"},
         " - Nitrogen-based drawing game (like Pictionary) made for Spawnfest 2011",
         #p{},
-        #link { text="http://github.com/kungfooguru/beerenthusiasts", url="http://github.com/kungfooguru/beerenthusiasts" },
+        #link { text="http://github.com/tsloughter/beerenthusiasts", url="http://github.com/tsloughter/beerenthusiasts" },
         " - Homebrewing and beer lovers webapp written in Erlang and using Nitrogen, Couchdb and Mnesia.",
 
         #p{},
         #link { text="http://github.com/Joony/erlang-nitrogen-user-login", url="http://github.com/Joony/erlang-nitrogen-user-login" },
         " - A simple user login example.",
-
-        #p{},
-        #link { text="http://github.com/baphled/chatterl_nitrogen/", url="http://github.com/baphled/chatterl_nitrogen/" },
-        " - Chatterl web frontend using Nitrogen",
 
         #p{},
         #link { text="http://github.com/marksands/Nitro-To-Do/", url="http://github.com/marksands/Nitro-To-Do/" },
