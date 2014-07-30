@@ -1,3 +1,4 @@
+%% vim: ts=4 sw=4 et
 -module (demos_contenttype_image).
 -include_lib ("nitrogen_core/include/wf.hrl").
 -compile(export_all).
@@ -6,13 +7,18 @@ main() ->
     %% Set the content-type of the image
     wf:content_type("image/png"),
 
-    %% If we have a "download" query-string parameter set (or if the POST data
-    %% contained a field called "download" set to "1"), then we also set the
-    %% content-disposition header to tell the browser to download.
-    %%
-    case wf:q("download") of
-        "1" -> wf:header("Content-Disposition", "attachement; filename=\"nitrogen.jpeg\"");
-        _ -> do_nothing
+    %% If we have a "mode" query-string parameter set (or if the POST data
+    %% contained a field called "mode"), then we also set the
+    %% content-disposition header to tell the browser to download.  If it's set
+    %% to "download_as", we'll use the wf:download_as function, and if it's set
+    %% to "content_disposition", we'll set a raw header.
+    case wf:q("mode") of
+        "download_as" ->
+            wf:download_as("nitrogen-download-as.jpeg");
+        "content_disposition" ->
+            wf:header("Content-Disposition", "attachement; filename=\"nitrogen-content-disposition.jpeg\"");
+        _ ->
+            do_nothing
     end,
 
     image_data().
