@@ -1,3 +1,4 @@
+%% vim: ts=4 sw=4 et
 -module (demos_contenttype).
 -include_lib ("nitrogen_core/include/wf.hrl").
 -compile(export_all).
@@ -21,7 +22,9 @@ left() ->
         Also, this shows how you can use the <code>wf:header/2</code>
         function to dynamically set the headers, and in this case, use the
         \"Content-Disposition\" header to make the browser download a file
-        rather than displaying it in the browser directly.
+        rather than displaying it in the browser directly. We also demonstrate
+        the <code>wf:download_as/1</code> function, which is a shortcut to set
+        the \"Content-Disposition\" header.
 
         <p>
         View the <a
@@ -34,7 +37,10 @@ left() ->
 right() -> 
     [
         #image { image="/demos/contenttype/image" },
-        #link { text="Download Image", url="/demos/contenttype/image?download=1" }
+        #br{},
+        #link { text="Download Image (using wf:header/2)", url="/demos/contenttype/image?mode=content_disposition"},
+        #br{},
+        #link { text="Download Image (using wf:download_as/1)", url="/demos/contenttype/image?mode=download_as" }
     ].
     
 event(_) -> ok.
