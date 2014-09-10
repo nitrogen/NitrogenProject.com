@@ -19,6 +19,10 @@ left() ->
         alternatively some delegate module) with the element's tag.
         This allows you to use the power of Erlang pattern matching to
         build an event-driven application.
+
+        Nitrogen postbacks will execute sequentially in the order they are
+        pressed, meaning if one postback is taking a while, clicking another
+        postback will be delayed until the first postback completes.
         ",
         linecount:render()
     ].
@@ -45,9 +49,16 @@ right() ->
 	]},
 
 	#p{},	
-	#span { text="Mouse Over Me", actions=#event { type=mouseover, postback=span_mousedover } }
+	#span { text="Mouse Over Me", actions=#event { type=mouseover, postback=span_mousedover } },
+    #p{},
+    #button { text="Click for a slow postback (takes 5 seconds)", postback=slow}
     ].	
 
+event(slow) ->
+    timer:sleep(5000),
+    wf:wire(#alert { text="slow" }),
+    ok;
+	
 event(EventInfo) ->
     wf:wire(#alert { text=wf:f("~p", [EventInfo]) }),
     ok.
