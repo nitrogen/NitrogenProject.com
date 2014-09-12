@@ -74,7 +74,7 @@ step(3) ->
     [
         #label{text="Enter your fantasy race (required)"},
         #dropdown{id=race, options=[
-            {"Choose Race",""},
+            {"","Choose Race"},
             {"Orc","Orc"},
             {"Human","Human"},
             {"Elf","Elf"},
@@ -82,11 +82,11 @@ step(3) ->
         ]},
         #label{text="Enter your class (Required)"},
         #dropdown{id=class, options=[
-            {"Choose Class",""},
+            {"","Choose Class"},
             {"Wizard","Wizard"},
             {"Fighter","Fighter"},
             {"Thief","Theif"},
-            {"Artificial Intelligence Technician","AI Tech"}
+            {"AI Tech","Artificial Intelligence Technician"}
         ]}
     ].
 

@@ -48,8 +48,10 @@ background_update(ControlID, Count) ->
     % we could just let the function complete.
     wf:flush(),
 
-    % Loop. This process will automatically be killed
-    % once the page stops requesting the output that
-    % it generates.
-    background_update(ControlID, Count + 1).
+	% Loop. This process will automatically be killed once the page stops
+	% requesting the output that it generates.
+	%
+	% Using ?MODULE before the function call will ensure that this process
+	% survives code reloads.
+    ?MODULE:background_update(ControlID, Count + 1).
 
