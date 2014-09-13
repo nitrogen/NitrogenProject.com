@@ -107,6 +107,7 @@ right() ->
         #h2 { text="Advanced Topics" },
         #p{},
         #link { text="Set Content Type and Response Headers", url="/demos/contenttype" }, #br{},
+        #link { text="Smart Extensions (JSON, CSV, etc)", url="/demos/smart_extensions" }, #br{},
         #link { text="Request HTTP Headers", url="/demos/headers" }, #br{},
         #link { text="Security", url="/demos/security" }, #br{},
         #link { text="State", url="/demos/state" }
