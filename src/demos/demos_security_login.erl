@@ -47,7 +47,7 @@ right() ->
         #label { text="Password" },
         #password { id=passTextBox, next=okButton },
         #p{},
-        #button { id=okButton, text="OK", postback=ok }
+        #button { id=okButton, text="OK", postback=ok, enter_clicks=[userTextBox, passTextBox] }
     ].
 
 check_password(_Tag, Value) ->
