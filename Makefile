@@ -9,6 +9,10 @@ update-deps:
 compile:
 	./rebar compile
 
+link-static:
+	(cd static; rm -fr nitrogen; ln -s ../deps/nitrogen_core/www nitrogen)
+	(cd static; rm -fr doc; ln -s ../deps/nitrogen_core/doc/html doc)
+
 copy-static:
 	(cd static; rm -rf nitrogen; mkdir nitrogen; cp -r ../deps/nitrogen_core/www/* nitrogen)
 	(cd static; rm -rf doc; mkdir doc; cp -r ../deps/nitrogen_core/doc/html/* doc)
@@ -19,7 +23,7 @@ clean:
 upgrade: update-deps compile copy-static
 
 DEPS_PLT=$(CURDIR)/.deps_plt
-DEPS=erts kernel stdlib sasl
+DEPS=erts kernel stdlib sasl crypto compiler syntax_tools
 
 $(DEPS_PLT):
 	@echo Building local plt at $(DEPS_PLT)
