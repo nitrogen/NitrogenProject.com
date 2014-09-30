@@ -56,7 +56,7 @@ right() ->
 api_event(apiOne, _, ["Hello Joe!"]) ->
     wf:flash("Hello Joe!");
 
-api_event(apiTwo, _, [[{greeting, "Hello"}, {name, "Mike"}]]) ->
+api_event(apiTwo, _, [[{<<"greeting">>, "Hello"}, {<<"name">>, "Mike"}]]) ->
     wf:flash("Hello Mike!");
 
 api_event(apiThree, _, [hello, robert, 12345]) ->
