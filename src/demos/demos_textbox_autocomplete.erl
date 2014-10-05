@@ -37,7 +37,7 @@ autocomplete_enter_event(SearchTerm, _Tag) ->
       {struct,[{id, Id }, {label, Label}, {value, Value}]} <- Data, 
       string:str(string:to_lower(binary_to_list(Label)), string:to_lower(SearchTerm)) > 0
     ],
-    mochijson2:encode(List).
+    nitro_mochijson2:encode(List).
 
 autocomplete_select_event({struct, [{<<"id">>, _ },{<<"value">>, Value}]} , _Tag) ->
     wf:flash(Value),
