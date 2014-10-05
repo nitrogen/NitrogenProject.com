@@ -248,7 +248,7 @@ platform_downloads("source") ->
         #panel { class=logo, style="height: 100px", body=[
             #image { image="/images/downloads/erlang_logo.png" }
         ]},
-        #span { class=title, text="Or Download Source Code" },
+        #span { class=title, text="Source Code" },
         list_source_download_links([CurrentVersion]),
         #link { url="https://github.com/nitrogen/nitrogen/tarball/master", text="Download Latest Code (.tar.gz)" },
         #link { url="https://github.com/nitrogen", text="Master Nitrogen repositories on GitHub" },
