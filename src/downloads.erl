@@ -212,6 +212,10 @@ right() ->
 
         #panel { class=clear },
         #h2 { text="...or Download the Source Code"},
+
+        platform_downloads("git"),
+        #panel { class=clear },
+
         platform_downloads("source"),
         #panel { class=clear },
 
@@ -229,27 +233,34 @@ right() ->
         platform_downloads("old")
     ].
 
+platform_downloads("git") ->
+    #panel { class=platform, body=[
+        #panel { class=logo, style="height:90px", body=[
+            #image { image="/images/git.png", style="width:80px" }
+        ]},
+        #span {class=title, text="Clone with Git"},
+        <<"<pre style='margin-top:0.5em; color: #333'>git clone git://github.com/nitrogen/nitrogen.git</pre>">>
+    ]};
+
 platform_downloads("source") ->
     CurrentVersion = hd(?ALL_VERSIONS),
     #panel { class=platform, body=[
-        #panel { class=logo, body=[
+        #panel { class=logo, style="height: 100px", body=[
             #image { image="/images/downloads/erlang_logo.png" }
         ]},
-        #span { class=title, text="Source Code" },
+        #span { class=title, text="Or Download Source Code" },
         list_source_download_links([CurrentVersion]),
         #link { url="https://github.com/nitrogen/nitrogen/tarball/master", text="Download Latest Code (.tar.gz)" },
         #link { url="https://github.com/nitrogen", text="Master Nitrogen repositories on GitHub" },
         #link { url="https://github.com/nitrogen/nitrogen/wiki/Nitrogen-Plugins",text="List of Nitrogen Plugins" },
         #link { url="https://github.com/RomanShestakov/nitrogen_elements", text="Community Repository of Nitrogen Elements" },
-        #br{},
-        <<"<b>Or clone with Git:</b>">>,
-        <<"<pre style='margin-top:0.5em'>git clone git://github.com/nitrogen/nitrogen.git</pre>">>
+        #br{}
     ]};
 platform_downloads("old") ->
     OldVersions = tl(?ALL_VERSIONS),
     #panel { class=platform, body=[
         #panel { class=logo, body=[
-            #image { image="/images/downloads/erlang_logo.png" }
+            #image { image="/images/old-downloads.png" }
         ]},
         #span { class=title, text="Old Versions of Nitrogen" },
         list_source_download_links(OldVersions)
