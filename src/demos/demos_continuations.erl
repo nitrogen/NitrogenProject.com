@@ -16,7 +16,7 @@ left() ->
         functionality called continuations. A Nitrogen continuation
         allows you to kick off a function, and then receive a Nitrogen
         postback once that function has completed, where the results
-        of the function are possed to the postback.
+        of the function are posted to the postback.
 
         <p>
         Additionally, Nitrogen continuations support a timeout
