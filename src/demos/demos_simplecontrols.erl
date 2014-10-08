@@ -55,41 +55,43 @@ middle() ->
 
         #p{},   
         #label { text="TextArea (tabs are trapped on this textarea)" },
-        #textarea { text="This is a textarea.", trap_tabs=true },
+        #textarea { id=textarea, text="This is a textarea.", trap_tabs=true },
 
         #p{},   
         #label { text="Password Box" },
-        #password { text="Password" },
+        #password { id=password, text="Password" },
 
         #p{},
-        #dropdown { options=[
-            #option { text="Dropdown" },
-            #option { text="Option 1" },
-            #option { text="Option 2" },
-            #option { text="Option 3" }
+        #dropdown { id=my_dropdown, options=[
+            #option { value="", text="Dropdown" },
+            #option { value="opt1", text="Option 1" },
+            #option { value="opt2", text="Option 2" },
+            #option { value="opt3", text="Option 3" }
         ]},
 
         #p{},
         #dropdown { id=multiple, multiple=true, options=[
-            #option { text="Multiselect 1" },
-            #option { text="Multiselect 2" },
-            #option { text="Multiselect 3" }
+            #option { value="1", text="Multiselect 1" },
+            #option { value="2", text="Multiselect 2" },
+            #option { value="3", text="Multiselect 3" }
         ]},
 
         #p{},
-        #radiogroup { body=[
-            #radio { id=myRadio1, text="Option 1", value="1", checked=true }, #br{},
-            #radio { id=myRadio2, text="Option 2", value="2" }, #br{},
-            #radio { id=myRadio3, text="Option 3", value="3" }, #br{},
-            #radio { id=myRadio4, text="Option 4", value="4" }
+        #radiogroup { id=myRadio, body=[
+            #radio {text="Option 1", value="1", checked=true }, #br{},
+            #radio {text="Option 2", value="2" }, #br{},
+            #radio {text="Option 3", value="3" }, #br{},
+            #radio {text="Option 4", value="4" }
         ]},
 
         #p{},
-        #checkbox { text="Checkbox", checked=true },
+        #checkbox { id=checkbox, value="check1", text="Checkbox 1", checked=true },#br{},
+        #checkbox { id=checkbox, value="check2", text="Checkbox 2", checked=false },#br{},
+        #checkbox { id=checkbox, value="check3", text="Checkbox 3", checked=true },
 
         #p{},
-        #button { text="Button", postback=postback },
-        #button { text="Disabled Button", disabled=true }
+        #button { id=button, text="Button", postback=postback },
+        #button { id=disabled_button, text="Disabled Button", disabled=true }
     ].
 
 right() -> 
@@ -116,3 +118,92 @@ right() ->
 event(postback) ->
     wf:wire(#alert{text=wf:q(textbox)}),
     wf:wire(#alert{text=wf:qs(multiple)}).
+
+%% TESTS BELOW
+
+test_main() ->
+    wf_test:start(fun tests/0),
+    main().
+
+tests() ->
+    ?wf_test_auto(textbox, test_textbox()),
+    ?wf_test_auto(textarea, test_textarea()),
+    ?wf_test_auto(dropdown, test_dropdown()),
+    ?wf_test_auto(radio, undefined, fun check_radio/0),
+    ?wf_test_auto(checkbox, test_checkbox()),
+    ?wf_test_auto(checkbox_changed, test_checkbox_changed()),
+    ?wf_test_auto(insert_after_order, test_insert_after_order()),
+    ?wf_test_auto(multi_dropdown, test_multidropdown()),
+    ?wf_test_auto(multi_dropdown1, test_multidropdown1()),
+    ?wf_test_manual(click_postback, test_remove_multi_click_postback()).
+
+test_textbox() ->
+    Str = "Some new val",
+    {
+        fun() -> wf:set(textbox, Str) end,
+        fun() -> wf:q(textbox)== Str end
+    }.
+
+test_textarea() ->
+    Str = "A long-form\nString",
+    {
+        fun() -> wf:set(textarea, Str) end,
+        fun() -> wf:q(textarea)==Str end
+    }.
+
+test_dropdown() ->
+    {
+        fun() -> wf:set(my_dropdown, "opt2") end,
+        fun() -> wf:q(my_dropdown) == "opt2" end
+    }.
+
+test_checkbox() ->
+    {
+        undefined,
+        fun() -> wf:qs(checkbox) == ["check1","check3"] end
+    }.
+
+test_checkbox_changed() ->
+    {
+        fun() -> wf:set_multiple(checkbox, ["check2", "check3"]) end,
+        fun() -> wf:qs(checkbox) == ["check2","check3"] end
+    }.
+
+test_insert_after_order() ->
+    {
+        fun() ->
+            wf:insert_after(disabled_button, #textbox{id=order1, text="1"}),
+            wf:insert_after(disabled_button, #textbox{id=order1, text="2"}),
+            wf:insert_after(disabled_button, #textbox{id=order1, text="3"})
+        end,
+        fun() ->
+            wf:qs(order1) == ["3","2","1"]
+        end
+    }.
+
+test_multidropdown() ->
+    {
+        fun() -> wf:set_multiple(multiple, ["1", "2", "3"]) end,
+        fun() -> wf:qs(multiple) == ["1","2","3"] end
+    }.
+
+test_multidropdown1() ->
+    {
+        fun() -> wf:set_multiple(multiple, ["2"]) end,
+        fun() -> wf:qs(multiple) == ["2"] end
+    }.
+
+check_radio() ->
+    wf:q(myRadio)=="1".
+
+test_remove_multi_click_postback() ->
+    {
+        fun() ->
+            wf:replace(disabled_button, #button{text="Test Button", id=my_new_button, delegate=wf_test, postback=click_postback}),
+            wf:remove(multiple),
+            wf:defer(my_new_button, #click{})
+        end,
+        fun() ->
+            wf:qs(multiple)==[]
+        end
+    }.
