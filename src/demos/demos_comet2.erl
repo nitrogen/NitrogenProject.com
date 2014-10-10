@@ -36,6 +36,14 @@ left() ->
     ].
 
 right() ->
+	#panel{id=chatwrapper, body=[
+		#span {text="Name of chatroom"},
+		#textbox{id=chatname, text="Chatroom"},
+
+		#button{postback=start_chat, text="Start Chat"}
+	]}.
+
+right_step2(Chatroom) ->
     Body=[
         #span { text="Your chatroom name: " }, 
         #textbox { id=userNameTextBox, text="Anonymous", style="width: 100px;", next=messageTextBox },
@@ -45,25 +53,38 @@ right() ->
 
         #p{},
         #textbox { id=messageTextBox, style="width: 70%;", next=sendButton },
-        #button { id=sendButton, text="Send", postback=chat }
+        #button { id=sendButton, text="Send", postback={chat,Chatroom} }
     ],
 
     % Start a process to listen for messages,
     % and then tell the chatroom that we would like to join.
-    wf:comet_global(fun() -> chat_loop() end, chatroom),
 
     Body.
 
+event(start_chat) ->
+	Chatroom = wf:q(chatname),
+	wf:replace(chatwrapper, right_step2(Chatroom)),
+	wf:wire(#comet{
+		scope=global,
+		pool=Chatroom,
+		function=fun ?MODULE:chat_loop/0,
+		reconnect_actions=[
+			#event{postback={reconnect, Chatroom}}
+		]
+	});
 
-event(chat) ->
+event({chat,Chatroom}) ->
     Username = wf:q(userNameTextBox),
     Message = wf:q(messageTextBox),
-    wf:send_global(chatroom, {message, Username, Message}),
+    wf:send_global(Chatroom, {message, Username, Message}),
     wf:wire("obj('messageTextBox').focus(); obj('messageTextBox').select();");
+
+event({reconnect, Chatroom}) ->
+	wf:comet_global(fun() -> chat_loop() end, Chatroom);
 
 event(_) -> ok.
 
-chat_loop() ->
+chat_loop() -> 
     receive 
         'INIT' ->
             %% The init message is sent to the first process in a comet pool.
@@ -73,7 +94,6 @@ chat_loop() ->
             ],
             wf:insert_bottom(chatHistory, Terms),
             wf:flush();
-
         {message, Username, Message} ->
             %% We got a message, so show it!
             Terms = [
