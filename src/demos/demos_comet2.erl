@@ -53,8 +53,7 @@ right_step2(Chatroom) ->
 
         #p{},
         #textbox { id=messageTextBox, style="width: 70%;", next=sendButton },
-        #button { id=sendButton, text="Send", postback={chat,Chatroom} },
-		#button {text="disconnected status", click="alert('Disc:' + Nitrogen.$disconnected + '. sys event running: ' + Nitrogen.$system_event_is_running + '. sys event started: ' + Nitrogen.$system_event_started)"}
+        #button { id=sendButton, text="Send", postback={chat,Chatroom} }
     ].
 
 event(start_chat) ->
