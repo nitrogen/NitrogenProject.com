@@ -1,3 +1,4 @@
+%% vim: ts=4 sw=4 et
 -module (demos_comet2).
 -include_lib ("nitrogen_core/include/wf.hrl").
 -compile(export_all).
@@ -36,12 +37,12 @@ left() ->
     ].
 
 right() ->
-	#panel{id=chatwrapper, body=[
-		#span {text="Name of chatroom"},
-		#textbox{id=chatname, text="Chatroom"},
+    #panel{id=chatwrapper, body=[
+        #span {text="Name of chatroom"},
+        #textbox{id=chatname, text="Chatroom"},
 
-		#button{postback=start_chat, text="Start Chat"}
-	]}.
+        #button{postback=start_chat, text="Start Chat"}
+    ]}.
 
 right_step2(Chatroom) ->
     [
@@ -57,9 +58,9 @@ right_step2(Chatroom) ->
     ].
 
 event(start_chat) ->
-	Chatroom = wf:q(chatname),
-	wf:replace(chatwrapper, right_step2(Chatroom)),
-	start_chat(Chatroom);
+    Chatroom = wf:q(chatname),
+    wf:replace(chatwrapper, right_step2(Chatroom)),
+    start_chat(Chatroom);
 
 event({chat,Chatroom}) ->
     Username = wf:q(userNameTextBox),
@@ -68,48 +69,48 @@ event({chat,Chatroom}) ->
     wf:wire("obj('messageTextBox').focus(); obj('messageTextBox').select();");
 
 event({reconnect, Chatroom}) ->
-	wf:insert_bottom(chatHistory, [#p{}, #span{text=["Reconnecting to ",Chatroom], class=message }]),
-	start_chat(Chatroom).
+    wf:insert_bottom(chatHistory, [#p{}, #span{text=["Reconnecting to ",Chatroom], class=message }]),
+    start_chat(Chatroom).
 
 start_chat(Chatroom) ->
-	wf:wire(#comet{
-		scope=global,
-		pool=Chatroom,
-		function=fun() -> start_chat_loop(Chatroom) end,
-		reconnect_actions=[
-			#event{postback={reconnect, Chatroom}}
-		]
-	}).
+    wf:wire(#comet{
+        scope=global,
+        pool=Chatroom,
+        function=fun() -> start_chat_loop(Chatroom) end,
+        reconnect_actions=[
+            #event{postback={reconnect, Chatroom}}
+        ]
+    }).
 
 start_chat_loop(Chatroom) ->
-	add_message(["Connected to ",Chatroom]),
-	chat_loop().
+    add_message(["Connected to ",Chatroom]),
+    chat_loop().
 
 chat_loop() -> 
     receive 
         'INIT' ->
             %% The init message is sent to the first process in a comet pool.
-			add_message("You are the only person in the chat room.");
+            add_message("You are the only person in the chat room.");
         {message, Username, MsgText} ->
-			add_message({Username, MsgText})
+            add_message({Username, MsgText})
     end,
     chat_loop().
 
 add_message(Message) ->
-	FormattedTerms = format_message(Message),
-	wf:insert_bottom(chatHistory, FormattedTerms),
-	wf:wire("obj('chatHistory').scrollTop = obj('chatHistory').scrollHeight;"),
-	wf:flush().
+    FormattedTerms = format_message(Message),
+    wf:insert_bottom(chatHistory, FormattedTerms),
+    wf:wire("obj('chatHistory').scrollTop = obj('chatHistory').scrollHeight;"),
+    wf:flush().
 
 format_message({Username, MsgText}) ->
-	[
-		#p{},
-		#span { text=Username, class=username }, ": ",
-		#span { text=MsgText, class=message }
-	];
+    [
+        #p{},
+        #span { text=Username, class=username }, ": ",
+        #span { text=MsgText, class=message }
+    ];
 format_message(MsgText) ->
-	[
-		#p{},
-		#span { text=MsgText, class=message }
-	].
+    [
+        #p{},
+        #span { text=MsgText, class=message }
+    ].
 
