@@ -44,7 +44,7 @@ right() ->
 	]}.
 
 right_step2(Chatroom) ->
-    Body=[
+    [
         #span { text="Your chatroom name: " }, 
         #textbox { id=userNameTextBox, text="Anonymous", style="width: 100px;", next=messageTextBox },
 
@@ -53,25 +53,14 @@ right_step2(Chatroom) ->
 
         #p{},
         #textbox { id=messageTextBox, style="width: 70%;", next=sendButton },
-        #button { id=sendButton, text="Send", postback={chat,Chatroom} }
-    ],
-
-    % Start a process to listen for messages,
-    % and then tell the chatroom that we would like to join.
-
-    Body.
+        #button { id=sendButton, text="Send", postback={chat,Chatroom} },
+		#button {text="disconnected status", click="alert('Disc:' + Nitrogen.$disconnected + '. sys event running: ' + Nitrogen.$system_event_is_running + '. sys event started: ' + Nitrogen.$system_event_started)"}
+    ].
 
 event(start_chat) ->
 	Chatroom = wf:q(chatname),
 	wf:replace(chatwrapper, right_step2(Chatroom)),
-	wf:wire(#comet{
-		scope=global,
-		pool=Chatroom,
-		function=fun ?MODULE:chat_loop/0,
-		reconnect_actions=[
-			#event{postback={reconnect, Chatroom}}
-		]
-	});
+	start_chat(Chatroom);
 
 event({chat,Chatroom}) ->
     Username = wf:q(userNameTextBox),
@@ -80,29 +69,49 @@ event({chat,Chatroom}) ->
     wf:wire("obj('messageTextBox').focus(); obj('messageTextBox').select();");
 
 event({reconnect, Chatroom}) ->
-	wf:comet_global(fun() -> chat_loop() end, Chatroom);
+	wf:insert_bottom(chatHistory, [#p{}, #span{text=["Reconnecting to ",Chatroom], class=message }]),
+	start_chat(Chatroom).
 
-event(_) -> ok.
+start_chat(Chatroom) ->
+	wf:wire(#comet{
+		scope=global,
+		pool=Chatroom,
+		function=fun() -> start_chat_loop(Chatroom) end,
+		reconnect_actions=[
+			#event{postback={reconnect, Chatroom}}
+		]
+	}).
+
+start_chat_loop(Chatroom) ->
+	add_message(["Connected to ",Chatroom]),
+	chat_loop().
 
 chat_loop() -> 
     receive 
         'INIT' ->
             %% The init message is sent to the first process in a comet pool.
-            Terms = [
-                #p{},
-                #span { text="You are the only person in the chat room.", class=message }
-            ],
-            wf:insert_bottom(chatHistory, Terms),
-            wf:flush();
-        {message, Username, Message} ->
-            %% We got a message, so show it!
-            Terms = [
-                #p{},
-                #span { text=Username, class=username }, ": ",
-                #span { text=Message, class=message }
-            ],
-            wf:insert_bottom(chatHistory, Terms),
-            wf:wire("obj('chatHistory').scrollTop = obj('chatHistory').scrollHeight;"),
-            wf:flush()
+			add_message("You are the only person in the chat room.");
+        {message, Username, MsgText} ->
+			error_logger:info_msg("(~p) ~p: ~p",[self(), Username, MsgText]),
+			add_message({Username, MsgText})
     end,
-    chat_loop().	
+    chat_loop().
+
+add_message(Message) ->
+	FormattedTerms = format_message(Message),
+	wf:insert_bottom(chatHistory, FormattedTerms),
+	wf:wire("obj('chatHistory').scrollTop = obj('chatHistory').scrollHeight;"),
+	wf:flush().
+
+format_message({Username, MsgText}) ->
+	[
+		#p{},
+		#span { text=Username, class=username }, ": ",
+		#span { text=MsgText, class=message }
+	];
+format_message(MsgText) ->
+	[
+		#p{},
+		#span { text=MsgText, class=message }
+	].
+
