@@ -92,7 +92,6 @@ chat_loop() ->
             %% The init message is sent to the first process in a comet pool.
 			add_message("You are the only person in the chat room.");
         {message, Username, MsgText} ->
-			error_logger:info_msg("(~p) ~p: ~p",[self(), Username, MsgText]),
 			add_message({Username, MsgText})
     end,
     chat_loop().
