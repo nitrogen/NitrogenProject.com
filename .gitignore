@@ -4,3 +4,9 @@ scratch/*
 *~
 .deps_plt
 *.sw?
+rebar.config
+private_key.recaptcha
+log/
+report.log
+simple_bridge*.auth
+simple_bridge*.access

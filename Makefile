@@ -1,13 +1,33 @@
-all: get-deps compile copy-static
+REBAR:=./rebar
+
+## If rebar.config file doesn't exist, just default to mochiweb backend
+all:
+ifeq ("$(wildcard rebar.config)","")
+	@(echo "No backend specified. Defaulting to mochiweb")
+	@($(MAKE) mochiweb)
+else
+	@($(MAKE) get-deps compile copy-static)
+endif
+
+help:
+	@(echo)
+	@(echo "Build NitrogenProject.com with a custom backend")
+	@(echo)
+	@(echo "   make [cowboy|inets|mochiweb|webmachine|yaws]")
+	@(echo)
+	@(echo "Execute NitrogenProject.com")
+	@(echo)
+	@(echo "   make run")
+	@(echo)
 
 get-deps:
-	./rebar get-deps
+	$(REBAR) get-deps
 
 update-deps:
-	./rebar update-deps
+	$(REBAR) update-deps
 
 compile:
-	./rebar compile
+	$(REBAR) compile
 
 link-static:
 	(cd static; rm -fr nitrogen; ln -s ../deps/nitrogen_core/www nitrogen)
@@ -18,7 +38,32 @@ copy-static:
 	(cd static; rm -rf doc; mkdir doc; cp -r ../deps/nitrogen_core/doc/html/* doc)
 
 clean:
-	./rebar clean
+	$(REBAR) clean
+
+cowboy:
+	@($(MAKE) platform PLATFORM=cowboy)
+
+inets:
+	@($(MAKE) platform PLATFORM=inets)
+
+mochiweb:
+	@($(MAKE) platform PLATFORM=mochiweb)
+
+webmachine:
+	@($(MAKE) platform PLATFORM=webmachine)
+
+yaws:
+	@($(MAKE) platform PLATFORM=yaws)
+
+platform:
+	@(echo "Fetching initial dependencies...")
+	($(REBAR) --config rebar.base.config get-deps)
+	@(deps/simple_bridge/rebar_deps/merge_deps.escript rebar.base.config deps/simple_bridge/rebar_deps/$(PLATFORM).deps rebar.config)
+	@(echo "Updating app.config...")
+	@(sed 's/{backend, [a-z]*}/{backend, $(PLATFORM)}/' < app.config > app.config.temp)
+	@(mv app.config.temp app.config)
+	@($(MAKE) get-deps compile copy-static)
+
 
 upgrade: update-deps compile copy-static
 
