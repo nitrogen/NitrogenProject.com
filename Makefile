@@ -87,3 +87,12 @@ run:
 	-env ERL_FULLSWEEP_AFTER 0 \
 	-eval "inets:start()" \
 	-eval "application:start(nitrogen_website)."
+
+test:
+	erl -pa ebin ./deps/*/ebin ./deps/*/include \
+	-config "app.config" \
+	-name nitrogen@127.0.0.1 \
+	-env ERL_FULLSWEEP_AFTER 0 \
+	-eval "inets:start()" \
+	-eval "application:start(nitrogen_website)." \
+	-eval "wf_test:start_all(nitrogen_website)."
