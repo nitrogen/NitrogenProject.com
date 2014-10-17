@@ -3,9 +3,7 @@
 -compile(export_all).
 
 main() ->
-	wf_context:page_module(demos_simplecontrols),
-    wf_test:start(fun tests/0),
-    demos_simplecontrols:main().
+	wf_test:start_other(demos_simplecontrols, fun tests/0).
 
 tests() ->
     ?wf_test_auto(textbox, test_textbox()),
