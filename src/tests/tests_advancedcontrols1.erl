@@ -11,12 +11,18 @@ tests() ->
 	?wf_test_js(inplace_check2, inplace_check2()),
 	?wf_test_js(inplace_check3, inplace_check3()).
 
+%% A side effect here with the postback request is that the postback's
+%% page_module is calculated as tests_advancedcontrols1 (due to the path and
+%% the page_module not being transferred with the postback context.
 inplace_textbox_event(_, Val) ->
 	Val.
 
 inplace_textarea_event(_, Val) ->
 	Val.
 
+%% This initial setup just performs a handful of changes, but with the current
+%% version of the nitrogen test suite, we need to set up first, then when the
+%% test completes (that is, the postbacks finish completing it all).
 inplace_setup() ->
 	%% set textbox1 to "New Value"
 	wf:wire("##textbox1 > .view", #click{}),
@@ -32,7 +38,6 @@ inplace_setup() ->
 	wf:wire("##textarea > .view", #click{}),
 	wf:set("##textarea > .edit > .textarea", "Other Value"),
 	wf:wire("##textarea > .edit > .inplace_ok", #click{}).
-
 
 
 inplace_check1() ->
