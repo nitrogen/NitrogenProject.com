@@ -64,8 +64,8 @@ right() ->
         #button {
             id=continueButton,
             text="Continue",
-            handle_invalid=true,
-            on_invalid=#alert{text="At least one validator failed client-side (meaning it didn't need to try the server)"},
+            %handle_invalid=true,
+            %on_invalid=#alert{text="At least one validator failed client-side (meaning it didn't need to try the server)"},
             postback=continue
         }
     ],
@@ -98,7 +98,7 @@ right() ->
     Body.
 
 event_invalid(continue) ->
-    wf:wire(#alert{text="A validator failed when checking the server"}).
+    wf:flash("A server-side validator returned false").
 
 event(continue) ->
     Name = wf:q(nameTextBox),

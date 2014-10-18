@@ -22,6 +22,7 @@ left() ->
 right() -> [
     #h2 { text="Line Chart" },
     #google_chart {
+		id=line_chart,
         title="Line Chart", width=400, height=200, grid_x=25, grid_y=33,			
         axes=[
             #chart_axis { position=bottom, labels=["First", "Second", "Third", "Fourth"] },
@@ -39,6 +40,7 @@ right() -> [
 
     #h2 { text="Bar Chart" },
     #google_chart {
+		id=bar_chart,
         title="Bar Chart",	type=grouped_vertical_bar, width=400, height=200,	bar_space=0, bar_group_space=10,
         axes=[
             #chart_axis { position=left, labels=["Good", "Better", "Best"] }
@@ -56,6 +58,7 @@ right() -> [
 
     #h2 { text="3D Pie Chart" },
     #google_chart {
+		id=pie_chart,
         title="3D Pie Chart",
         type=pie3d,
         width=400, height=200,
