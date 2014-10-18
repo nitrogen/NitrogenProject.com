@@ -6,6 +6,8 @@ main() ->
 	wf_test:start_other(demos_validation, fun tests/0).
 
 tests() ->
+	%% suppress any alert boxes for this page
+	wf:wire("alert = function() { };"),
 	?wf_test_js(blank_test, blank_test()),
 	?wf_test_js(fullname_test, fullname_test()),
 	?wf_test_js(allpass_test, allpass_test()),
@@ -18,12 +20,14 @@ tests() ->
 -define(click, wf:wire(continueButton, #click{})).
 -define(count, "return $('.LV_validation_message').length;").
 -define(set(FV), fun() -> set(FV), ?click end).
+-define(opts, [{delay, 100}]).
 
 blank_test() ->
 	{
-		fun() -> ?set([]) end,
+		?set([]),
 		?count,
-		fun([Length]) -> Length==5 end
+		fun([Length]) -> Length==5 end,
+		?opts
 	}.
 
 fullname_test() ->
@@ -36,7 +40,8 @@ fullname_test() ->
 			{numberTextBox, "1"}
 		]),
 		?count,
-		fun([Length=1]) -> Length == 1 end
+		fun([Length]) -> Length == 1 end,
+		?opts
 	}.
 
 allpass_test() ->
@@ -49,7 +54,8 @@ allpass_test() ->
 			{numberTextBox, "1"}
 		]),
 		?count,
-		fun([Length]) -> Length == 0 end
+		fun([Length]) -> Length == 0 end,
+		?opts
 	}.
 
 passwordconfirm_test() ->
@@ -62,7 +68,8 @@ passwordconfirm_test() ->
 			{numberTextBox, "1"}
 		]),
 		?count,
-		fun([Length]) -> Length == 1 end
+		fun([Length]) -> Length == 1 end,
+		?opts
 	}.
 
 	
@@ -76,7 +83,8 @@ shortpassword_test() ->
 			{numberTextBox, "1"}
 		]),
 		?count,
-		fun([Length]) -> Length == 1 end
+		fun([Length]) -> Length == 1 end,
+		?opts
 	}.
 
 badnumber_test() ->
@@ -85,11 +93,12 @@ badnumber_test() ->
 			{nameTextBox, "rusty lastname"},
 			{emailTextBox, "email@email.com"},
 			{passwordTextBox, "password"},
-			{confirmTextBox, "passwordother"},
+			{confirmTextBox, "password"},
 			{numberTextBox, "NaN"} %% not a number
 		]),
 		?count,
-		fun([Length]) -> Length == 1 end
+		fun([Length]) -> Length == 1 end,
+		?opts
 	}.
 
 number_out_of_range_test() ->
@@ -102,7 +111,8 @@ number_out_of_range_test() ->
 			{numberTextBox, "11"} %% range should be 1-10
 		]),
 		?count,
-		fun([Length]) -> Length == 1 end
+		fun([Length]) -> Length == 1 end,
+		?opts
 	}.
 
 
