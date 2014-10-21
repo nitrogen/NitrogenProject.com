@@ -96,3 +96,11 @@ test:
 	-eval "inets:start()" \
 	-eval "application:start(nitrogen_website)." \
 	-eval "wf_test:start_all(nitrogen_website)."
+
+all_test:
+	#$(MAKE) inets test
+	#$(MAKE) cowboy test
+	#$(MAKE) mochiweb test
+	rm -fr deps/mochiweb deps/ibrowse
+	$(MAKE) webmachine test
+	$(MAKE) yaws test
