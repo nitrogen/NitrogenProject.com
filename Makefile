@@ -80,10 +80,13 @@ dialyzer: get-deps compile $(DEPS_PLT)
 
 travis: dialyzer
 
+TESTLOG:=testlog.log
+
 run:
 	erl -pa ebin ./deps/*/ebin ./deps/*/include \
 	-config "app.config" \
 	-name nitrogen@127.0.0.1 \
+	-testlog "$(TESTLOG)" \
 	-env ERL_FULLSWEEP_AFTER 0 \
 	-eval "inets:start()" \
 	-eval "application:start(nitrogen_website)."
@@ -93,14 +96,31 @@ test:
 	-config "app.config" \
 	-name nitrogen@127.0.0.1 \
 	-env ERL_FULLSWEEP_AFTER 0 \
+	-testlog "$(TESTLOG)" \
 	-eval "inets:start()" \
 	-eval "application:start(nitrogen_website)." \
 	-eval "wf_test:start_all(nitrogen_website)."
 
-all_test:
-	#$(MAKE) inets test
-	#$(MAKE) cowboy test
-	#$(MAKE) mochiweb test
+TESTLOGDIR:=testlogs/$(shell date +"%Y-%m-%d.%H%M%S")
+
+test_inets:
+	$(MAKE) inets test TESTLOG="$(TESTLOGDIR)/inets.log"
+
+test_cowboy:
+	$(MAKE) cowboy test TESTLOG="$(TESTLOGDIR)/cowboy.log"
+
+test_mochiweb:
+	rm -fr deps/mochiweb
+	$(MAKE) mochiweb test TESTLOG="$(TESTLOGDIR)/mochiweb.log"
+
+test_webmachine:
 	rm -fr deps/mochiweb deps/ibrowse
-	$(MAKE) webmachine test
-	$(MAKE) yaws test
+	$(MAKE) webmachine test TESTLOG="$(TESTLOGDIR)/webmachine.log"
+
+test_yaws:
+	$(MAKE) yaws test TESTLOG="$(TESTLOGDIR)/yaws.log"
+
+test_all:
+	$(MAKE) test_cowboy test_inets test_mochiweb test_webmachine test_yaws TESTLOGDIR=$(TESTLOGDIR)
+	@(grep SUMMARY $(TESTLOGDIR)/*.log)
+	@(echo "All tests summarized in $(TESTLOGDIR)")
