@@ -75,7 +75,7 @@ $(DEPS_PLT):
 	@echo 
 	@(dialyzer --output_plt $(DEPS_PLT) --build_plt --apps $(DEPS) -r ./deps/)
 
-dialyzer: get-deps compile $(DEPS_PLT)
+dialyzer: mochiweb $(DEPS_PLT)
 	@(dialyzer --fullpath --plt $(DEPS_PLT) -Wrace_conditions -r ./ebin)
 
 travis: dialyzer
