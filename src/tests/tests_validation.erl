@@ -7,7 +7,7 @@ main() ->
 
 tests() ->
 	%% suppress any alert boxes for this page
-	wf:wire("alert = function() { };"),
+	wf:wire("window.alert = function() { };"),
 	reset_values(),
 	?wf_test_js(blank_test, blank_test()),
 	?wf_test_js(fullname_test, fullname_test()),
