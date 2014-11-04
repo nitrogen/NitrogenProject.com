@@ -36,7 +36,7 @@ left() ->
 
 right() -> 
     [
-        #image { image="/demos/contenttype/image" },
+        #image { id=spaceman, image="/demos/contenttype/image" },
         #br{},
         #link { text="Download Image (using wf:header/2)", url="/demos/contenttype/image?mode=content_disposition"},
         #br{},
