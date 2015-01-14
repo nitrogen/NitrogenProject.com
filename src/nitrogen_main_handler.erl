@@ -5,6 +5,7 @@
 	]).
 
 handlers() ->
+	nitrogen:handler(debug_crash_handler, []),
 	nitrogen:handler(website_config_handler, []).
 
 ws_init() ->
