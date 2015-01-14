@@ -259,7 +259,12 @@ thanks() ->
         {"Piotr Nosek"},
         {"Stefan Zegenhagen"},
         {"Mehmet Emin Tok"},
-        {"Stuart Thackray"}
+        {"Stuart Thackray"},
+        {"fooflare", "fooflare"},
+        {"Alex Popov", "seidlitz"},
+        {"Aaron Frantisak"},
+        {"Lloyd R. Prentice"},
+        {"Cameron Frederick", "cammcad"}
     ].
         
 
