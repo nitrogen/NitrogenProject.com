@@ -260,7 +260,7 @@ thanks() ->
         {"Stefan Zegenhagen"},
         {"Mehmet Emin Tok"},
         {"Stuart Thackray"},
-        {"fooflare", "fooflare"},
+        {"Amos Oviedo", "fooflare"},
         {"Alex Popov", "seidlitz"},
         {"Aaron Frantisak"},
         {"Lloyd R. Prentice"},
