@@ -19,6 +19,7 @@
     ]).
 
 -define(ALL_VERSIONS, [
+        "2.3.0",
         "2.2.2",
         "2.2.1",
         "2.2.0",
@@ -100,11 +101,11 @@ server_help() ->
     [
     <<"<b>Cowboy</b> is the newest popular webserver on the Erlang scene.
     Created by Loic Hoguin, and under heavy development, it currently supports
-    SPDY, WebSockets (which Nitrogen will soon support), and follows a model
+    SPDY, WebSockets, and follows a model
     that differentiates itself from the other Erlang webservers: It doesn't
     maintain a process dictionary. Instead, it follows a more 'pure' flow, by
     passing around the a request object to each of Cowboy's functions. It's a
-    lightweight and high performance webserver, and very capable.">>,
+    lightweight, high performance webserver, and very capable.">>,
     #br{},
     #br{},
     <<"<b>Inets</b> is the built-in Erlang Webserver. It's lightweight, and
@@ -120,7 +121,7 @@ server_help() ->
     performant server for most web application uses.">>,
     #br{},
     #br{},
-    <<"<b>Webmachine</b> is a webserver with an emphasis on REST. It's main
+    <<"<b>Webmachine</b> is a webserver with an emphasis on REST. Its main
     focus is for making great RESTful APIs. The perfect use-case for using
     Webmachine with Nitrogen would be to provide a powerful RESTful API for
     external apps (like mobile device APIs), while also providing an
@@ -134,9 +135,9 @@ server_help() ->
     #br{},#br{},
     <<"<b>IN GENERAL</b> if you are completely unsure which webserver to use,
     we recommend choosing either Cowboy or Yaws for production environments, as
-    both provide quality performance, support websockets (which Nitrogen is
-    slated to support as of version 2.3), and both handle large files
-    smoothly">>
+    both provide quality performance, support websockets natively (though any
+    server can support websockets in Nitrogen), and both handle large files
+    smoothly.">>
     ].
 
 
@@ -280,7 +281,7 @@ platform_downloads(Platform) ->
                     ]},
                     #span { class=title, text=[PlatformName," Binaries"] },
                     list_download_links(PlatformName,Platform, CurrentVersion,Suffix,Servers),
-                    <<"(includes Erlang R16B02 compiled for ">>,PlatformName,<<"/">>,Bits,<<")">>
+                    <<"(includes Erlang 17.4 compiled for ">>,PlatformName,<<"/">>,Bits,<<")">>
                 ]}
             ]
     end.
