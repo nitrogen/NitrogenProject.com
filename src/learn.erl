@@ -40,25 +40,47 @@ left() ->
         Nitrogen uses an event-driven model built on top of Erlang pattern
         matching. Nitrogen allows you to tag elements with any Erlang term, and
         then act on the tag in server-side code when the user clicks on, hovers
-        over, or otherwise interacts with the element.  Catching the event is as
+        over, or otherwise interacts with the element.  Handling the event is as
         simple as writing an Erlang function.
         ",
-        
-        #h2 { text="Brainlessly Easy Ajax" },
+       
+        #h2 { text="Browser-Based Testing"},
         #p{},
         "
-        Nitrogen allows you to update or replace a section of your page using
-        Ajax in just one line of code. Most importantly, Nitrogen lets you use
-        the same consistent syntax to both build AND update the page.
+        Nitrogen 2.3 introduces a dependency-free testing framework for
+        validating your pages, postbacks, actions, and elements all work as
+        expected. Create test cases that are instantiated server-side, execute
+        something client-side (such as button presses), and validate the result
+        server-side.
+        <a href='/doc/advanced/testing.html'>View the documentation</a>
+        then check out
+        <a href='https://github.com/nitrogen/NitrogenProject.com/tree/master/src/tests'>the actual tests used by NitrogenProject.com</a>.",
+
+        #h2 { text="Websockets Galore" },
+        #p{},
+        "
+        Update or replace entire sections of your page asynchronously over
+        websockets in a single line of code (with a clean fallback to ajax if
+        Websockets are not supported by the proxy or client). Nitrogen lets you
+        use the same consistent syntax to both build AND update the page.
+        Nitrogen also includes support for long-running processes. By simply
+        wrapping your long-running function call with a single line of code,
+        you can turn a synchronous function into a long-running asynchronous
+        function.
         ",
-        
-        #h2 { text="Ridiculously Simple Comet" },
+
+        #h2{text="Javascript? What is it good for?"},
         #p{},
         "
-        Nitrogen includes Comet support, allowing you to build interactive web
-        applications that push data to the browser. By simply wrapping your
-        function call in one line of code, you can turn a synchronous function
-        into a long-running asynchronous function.
+        With Nitrogen's element construct, you rarely have to shift contexts
+        from a server-side mentality (Erlang) to a client-side mentality (HTML,
+        Javascript). Nitrogen applications can be built in pure Erlang and only
+        rarely require hand-written Javascript or HTML (CSS, unfortunately,
+        still needs to be written). Never shift contexts from client to
+        server and back again.
+        <br>
+        Or put more succinctly, <b>\"Whereas Node.js brings the client-side to
+        the server, Nitrogen brings the server-side to the client.\"</b>.
         ",
         
         #h2 { text="Complex Interfaces: Drag/Drop/Sort" },

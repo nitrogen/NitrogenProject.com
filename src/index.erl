@@ -52,27 +52,37 @@ top_right() ->
 
         #p { class="section_title", body="MAJOR ANNOUNCEMENTS" },
         #p { class=section, body=[
-            #time{ class=section_date, text="November 22nd, 2013", datetime="2013-11-22"},
+            #time{ class=section_date, text="February 2nd, 2015", datetime="2015-02-02"},
             #br{},
             <<"
-            Nitrogen 2.2.2 Released!
+            <b>Nitrogen 2.3.0 Released!</b><br>
             View the <a href='https://github.com/nitrogen/nitrogen/blob/master/CHANGELOG.markdown'>changelog</a>,
             or <b><a href='/downloads'>Download it now &raquo;</a></b>
             ">>
         ]},
         #p { class=section, body=[
-            #time{ class=section_date, text="October 18th, 2013", datetime="2013-10-18"},
+            #time{ class=section_date, text="November 5th, 2014", datetime="2014-11-05"},
             #br{},
             <<"
-            Nitrogen 2.2.1 Released!
-            Read the <a href='https://groups.google.com/d/msg/nitrogenweb/jTgH611hRSo/IbEyfCe5D1wJ'>announcement</a>
+            Zach Kessin interviewed Jesse Gumm for a
+            <a href='http://mostlyerlang.com/2014/11/05/047-nitrogen-web-framework'>Nitrogen Episode</a>
+            of the <a href='http://mostlyerlang.com'><i>Mostly Erlang</i></a> Podcast!
             ">>
         ]},
         #p { class=section, body=[
-            #time{ class=section_date, text="October 3rd, 2013", datetime="2013-10-03"},
+            #time{ class=section_date, text="September 22nd, 2014", datetime="2014-09-22"},
             #br{},
             <<"
-            Nitrogen 2.2.0 Released!
+            Nitrogen featured at the Chicago Erlang Conference 2014!<br>
+            <a href='https://www.youtube.com/watch?v=nlV4gm8SpVA'>Watch the video</a> or
+            <a href='http://slides.sigma-star.com/view/ChicagErlangConference-Nitrogen#/'>View the slides</a>.
+            ">>
+        ]},
+        #p { class=section, body=[
+            #time{ class=section_date, text="September 22nd, 2014", datetime="2014-09-22"},
+            #br{},
+            <<"
+            <a href='http://builditwith.com/nitrogen'>Build it with Nitrogen: The fast-off-the-block Erlang web framework</a> is being written by Nitrogen lead Jesse Gumm and author Lloyd Prentice. Pre-order or download the beta version at <a href='http://builditwith.com/nitrogen'>builditwith.com/nitrogen</a>
             ">>
         ]},
         #p { class="section_title", body="LATEST TWEETS" },

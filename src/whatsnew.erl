@@ -47,7 +47,8 @@ left() ->
         #h2 { text="New Elements" },
         "
         <p>
-        Nitrogen 2.x includes great new elements, deployment methods, and improvements to old elements and actions:
+        Nitrogen 2.x includes great new elements, deployment methods, and
+        improvements to old elements and actions:
 
         <p>
         Significantly improved support for jQuery Mobile, including
@@ -143,12 +144,24 @@ left() ->
 
 right() ->
     [
+        #h2 { text="Browser-based testing framework!"},
+        "
+        <p>
+        Nitrogen 2.3 introduces a dependency-free testing framework for
+        validating your pages, postbacks, actions, and elements all work as
+        expected. Create test cases that are instantiated server-side, execute
+        something client-side (such as button presses), and validate the result
+        server-side.
+        <a href='/doc/advanced/testing.html'>View the documentation</a>
+        then check out
+        <a href='https://github.com/nitrogen/NitrogenProject.com/tree/master/src/tests'>the actual tests used by NitrogenProject.com</a>.",
+
         #h2 { text="Plugin System" },
         "
         <p>
         Easily add custom elements, actions, and more to your Nitrogen apps
         with Nitrogen's <a href='/docs/plugins.html'>plugin system</a>. You can
-        <a href='https://github.com/choptastic/sample_nitrogen_plugin'>Create your
+        <a href='https://github.com/nitrogen/sample_nitrogen_plugin'>Create your
         own plugin</a>, then add your plugin to our
         <a href='https://github.com/nitrogen/nitrogen/wiki/Nitrogen-Plugins'>List of
         Nitrogen Plugins</a>.",
@@ -188,8 +201,9 @@ right() ->
         Nitrogen now receives all requests through <a
         href='http://github.com/nitrogen/simple_bridge'>SimpleBridge</a>,
         a layer that unifies the interface to various Erlang HTTP
-        servers. (The list currently includes Mochiweb, Yaws, Cowboy, 
-        Webmachine, Inets, and the deprecated Misultin.)
+        servers. The list currently includes Mochiweb, Yaws, Cowboy, 
+        Webmachine, and Inets. SimpleBridge is capable of adding websocket
+        support even to servers that don't support websockets.
 
         <p> 
         This makes the Nitrogen codebase cleaner, and allows you to

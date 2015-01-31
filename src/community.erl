@@ -89,6 +89,16 @@ articles() ->
 
         #h1 { text="Articles and Talks and Presentations" },
     
+        #h2 { text="November 2014"},
+        #p{},
+        #link { text="Mostly Erlang episode about Nitrogen", url="http://mostlyerlang.com/2014/11/05/047-nitrogen-web-framework"},
+
+        #h2 { text="September 2014"},
+        #p{},
+        #link { text="Video: Building Web-Scale Applications with Nitrogen", url="https://www.youtube.com/watch?v=nlV4gm8SpVA"},
+        " [",#link { text="Slides", url="http://slides.sigma-star.com/view/ChicagErlangConference-Nitrogen#/"},"]",
+        #p{},
+        
         #h2 { text="July 2014"},
         #p{},
         #link { text="Deploying a Nitrogen App on Heroku", url="http://cstar.io/2014/07/02/nitrogen-on-heroku.html"},
