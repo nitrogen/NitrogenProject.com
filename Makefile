@@ -47,9 +47,11 @@ inets:
 	@($(MAKE) platform PLATFORM=inets)
 
 mochiweb:
+	rm -fr deps/mochiweb
 	@($(MAKE) platform PLATFORM=mochiweb)
 
 webmachine:
+	rm -fr deps/mochiweb
 	@($(MAKE) platform PLATFORM=webmachine)
 
 yaws:
