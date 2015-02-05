@@ -286,7 +286,8 @@ thanks() ->
         {"Alex Popov", "seidlitz"},
         {"Aaron Frantisak"},
         {"Lloyd R. Prentice"},
-        {"Cameron Frederick", "cammcad"}
+        {"Cameron Frederick", "cammcad"},
+        {"Xue Hongwei"}
     ].
         
 
