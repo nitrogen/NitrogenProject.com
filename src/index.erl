@@ -52,10 +52,10 @@ top_right() ->
 
         #p { class="section_title", body="MAJOR ANNOUNCEMENTS" },
         #p { class=section, body=[
-            #time{ class=section_date, text="February 2nd, 2015", datetime="2015-02-02"},
+            #time{ class=section_date, text="February 18th, 2015", datetime="2015-02-19"},
             #br{},
             <<"
-            <b>Nitrogen 2.3.0 Released!</b><br>
+            <b>Nitrogen 2.3.1 Released!</b><br>
             View the <a href='https://github.com/nitrogen/nitrogen/blob/master/CHANGELOG.markdown'>changelog</a>,
             or <b><a href='/downloads'>Download it now &raquo;</a></b>
             ">>
@@ -85,6 +85,9 @@ top_right() ->
             <a href='http://builditwith.com/nitrogen'>Build it with Nitrogen: The fast-off-the-block Erlang web framework</a> is being written by Nitrogen lead Jesse Gumm and author Lloyd Prentice. Pre-order or download the beta version at <a href='http://builditwith.com/nitrogen'>builditwith.com/nitrogen</a>
             ">>
         ]},
+        #p { class="section_title", body="NITROGEN AT THE CHICAGO ERLANG CONFERENCE"},
+      
+        #iframe{width=420, style="position:relative;", height=315, src="https://www.youtube-nocookie.com/embed/nlV4gm8SpVA", frameborder=0, allowfullscreen=true},
         #p { class="section_title", body="LATEST TWEETS" },
         #panel{class=twitter_button_wrapper,body=[
             <<"<a href=\"https://twitter.com/nitrogenproject\" data-show-count=\"false\" class=\"twitter-follow-button\" data-dnt=\"true\">Follow @nitrogenproject</a>
