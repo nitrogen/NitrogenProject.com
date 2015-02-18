@@ -33,11 +33,11 @@
         "1.0"]).
 
 -define(PLATFORMS, [
-        {"linux", "Linux", ?UNIX_SERVERS, "64bit"},
-        {"mac", "Mac OSX", ?UNIX_SERVERS, "64bit"},
-        {"windows", "Windows", ?WINDOWS_SERVERS, "32bit"},
-        {"freebsd", "FreeBSD", ?UNIX_SERVERS, "64bit"},
-        {"raspberrypi", "Raspberry Pi (Raspbian)", ?UNIX_SERVERS, "64bit"}
+        {"linux", "Linux", ?UNIX_SERVERS, "17.4", "64bit"},
+        {"mac", "Mac OSX", ?UNIX_SERVERS, "17.1", "64bit"},
+        {"windows", "Windows", ?WINDOWS_SERVERS, "17.4", "32bit"},
+        {"freebsd", "FreeBSD", ?UNIX_SERVERS, "17.4", "64bit"},
+        {"raspberrypi", "Raspberry Pi", ?UNIX_SERVERS, "17.4", "64bit"}
     ]).
 
 main() -> #template { file="./templates/grid.html" }.
@@ -117,9 +117,8 @@ server_help() ->
     #br{},
     #br{},
     <<"<b>Mochiweb</b> is a simple webserver that sticks mostly to maintenance
-    releases these days, new features are no longer being added, so it seems
-    Mochiweb will forever not support Websockets. But it is a perfectly
-    performant server for most web application uses.">>,
+    releases these days, new features are rarely added. But it is a perfectly
+    performant and lightweight server for most web application uses.">>,
     #br{},
     #br{},
     <<"<b>Webmachine</b> is a webserver with an emphasis on REST. Its main
@@ -185,7 +184,7 @@ platform_dropdown(Default) ->
     Opts = 
         [#option{text="Choose Platform", value="choose"}]
         ++ [#option{text=[PlatformName," Binaries"], value=Platform}
-            || {Platform, PlatformName, _, _} <- ?PLATFORMS],
+            || {Platform, PlatformName, _, _, _} <- ?PLATFORMS],
     #dropdown{
         id=platform,
         value=RealDefault,
@@ -261,7 +260,7 @@ platform_downloads("source") ->
 platform_downloads("old") ->
     OldVersions = tl(?ALL_VERSIONS),
     #panel { class=platform, body=[
-        #panel { class=logo, body=[
+        #panel { class=logo, style="height:300px", body=[
             #image { image="/images/old-downloads.png" }
         ]},
         #span { class=title, text="Old Versions of Nitrogen" },
@@ -270,7 +269,7 @@ platform_downloads("old") ->
 platform_downloads(Platform) ->
     case lists:keyfind(Platform,1,?PLATFORMS) of 
         false -> [];
-        {_,PlatformName,Servers,Bits} ->
+        {_, PlatformName, Servers, ErlVersion, Bits} ->
             CurrentVersion = hd(?ALL_VERSIONS),
             Suffix = ?WF_IF(Platform=="windows","-win.zip",".tar.gz"),
             [
@@ -281,8 +280,8 @@ platform_downloads(Platform) ->
                         #image { image=["/images/downloads/",Platform,"_logo.png"] }
                     ]},
                     #span { class=title, text=[PlatformName," Binaries"] },
-                    list_download_links(PlatformName,Platform, CurrentVersion,Suffix,Servers),
-                    <<"(includes Erlang 17.4 compiled for ">>,PlatformName,<<"/">>,Bits,<<")">>
+                    list_download_links(PlatformName,Platform, CurrentVersion, Suffix, Servers),
+                    <<"(includes Erlang ">>,ErlVersion,<<" compiled for ">>,PlatformName,<<"/">>,Bits,<<")">>
                 ]}
             ]
     end.
