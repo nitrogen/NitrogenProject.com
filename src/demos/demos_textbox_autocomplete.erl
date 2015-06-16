@@ -35,7 +35,7 @@ does_search_match(LangRec, SearchTerm0) ->
 	%% We extract the label from the passed Lang "Rec" (which is just a proplist)
 	Label0 = proplists:get_value(label, LangRec),
 	%% And convert it ot lower case
-	Label = string:to_lower(wf:to_list(Label0)),
+	Label = string:to_lower(wf:to_unicode_list(Label0)),
 	%% and also convert the SearchTerm to lowercase
 	SearchTerm = string:to_lower(SearchTerm0),
 	%% Then see if SearchTerm is contained anywhere in the Label
