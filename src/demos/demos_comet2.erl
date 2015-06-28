@@ -94,7 +94,8 @@ chat_loop() ->
         {message, Username, MsgText} ->
             add_message({Username, MsgText})
     end,
-    chat_loop().
+    %% Call with ?MODULE: prefix to survive code reloads
+    ?MODULE:chat_loop().
 
 add_message(Message) ->
     FormattedTerms = format_message(Message),
