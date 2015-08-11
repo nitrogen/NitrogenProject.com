@@ -41,12 +41,12 @@ verify_click_postback() ->
 	wf:q(textbox) == "New".
 
 delayed_postback() ->
-	wf:session(start, now()),
+	wf:session(start, os:timestamp()),
 	wf:wire(#event{type=timer, delay=1000, postback=delayed_postback_with_session}).
 
 verify_delayed_postback() ->
 	Then = milliseconds(wf:session(start)),
-	Now = milliseconds(now()),
+	Now = milliseconds(os:timestamp()),
 	Diff = Now - Then,
 	Diff >= 1000.
 
