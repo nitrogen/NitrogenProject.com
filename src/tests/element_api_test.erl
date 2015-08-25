@@ -6,14 +6,14 @@
 -include("records.hrl").
 
 render_element(Record = #api_test{}) ->
-	Callback = Record#api_test.callback,
+    Callback = Record#api_test.callback,
     wf:wire(#api{ anchor=page, name=api_test_element, tag={callback, Callback}, delegate=?MODULE }),
-	#button{
+    #button{
         text="An api button",
-		id=Record#api_test.id,
-		class=Record#api_test.class,
-		click="page.api_test_element()"
-	}.
+        id=Record#api_test.id,
+        class=Record#api_test.class,
+        click="page.api_test_element()"
+    }.
 
 api_event(api_test_element, {callback, Callback}, []) ->
-	Callback().
+    Callback().
