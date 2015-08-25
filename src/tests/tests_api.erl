@@ -1,6 +1,7 @@
 -module(tests_api).
 -compile(export_all).
 -include_lib("nitrogen_core/include/wf.hrl").
+-include("records.hrl").
 
 main() ->
 	wf_test:start(fun tests/0),
@@ -16,7 +17,8 @@ tests() ->
 	?wf_test_manual(two_arg, two_arg()),
 	?wf_test_manual(two_byte_string, two_byte_string()),
 	?wf_test_manual(four_byte_string, four_byte_string()),
-	?wf_test_manual(really_long_string, really_long_string()).
+	?wf_test_manual(really_long_string, really_long_string()),
+	?wf_test_manual(api_within_element, api_within_element()).
 
 one_arg() ->
 	String = random_string(16),
@@ -67,7 +69,20 @@ two_arg() ->
 		end
 	}.
 
+api_within_element() ->
+	{
+		fun() ->
+			wf:insert_bottom(updates, "Testing api_within_element<br>"),
+			wf:insert_after(updates, #api_test{id=api_button, callback=fun test_element_complete/0}),
+			wf:wire(api_button, #event{type=timer, delay=500, actions=#click{}})
+		end,
+		fun() ->
+			true
+		end
+	}.
 
+test_element_complete() ->
+	wf_test:event(api_within_element).
 
 api_event(test_api, _, [Arg1]) ->
 	wf:session(arg1, Arg1),	
