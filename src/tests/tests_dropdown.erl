@@ -13,7 +13,8 @@ layout() ->
 		test3_dropdown(),
 		test4_dropdown(),
 		test5_dropdown(),
-		test6_dropdown()
+		test6_dropdown(),
+		test7_dropdown()
 	].
 
 test1_dropdown() ->
@@ -65,11 +66,20 @@ test6_dropdown() ->
 		{banana, "banana"}
 	]}.
 
+test7_dropdown() ->
+	%% apple should be selected (added from report from https://github.com/nitrogen/nitrogen_core/pull/98#issuecomment-171199670 )
+	#dropdown{id=test7, value=apple, options=[
+		#option{value=banana, text="Banana"},
+		#option{value=apple, text="Apple"},
+		#option{value=orange, text="Orange"}
+   ]}.
+
 
 tests() ->
-	?wf_test_auto(test1_none_selected, undefined, fun() -> wf:q(test1)=="apple" end),
-	?wf_test_auto(test2_last_selected, undefined, fun() -> wf:q(test2)=="banana" end),
-	?wf_test_auto(test3_value_selected, undefined, fun() -> wf:q(test3)=="orange" end),
-	?wf_test_auto(test4_value_selected_with_other, undefined, fun() -> lists:member(wf:q(test4), ["orange","banana"]) end),
-	?wf_test_auto(test5_value_selected_with_false, undefined, fun() -> wf:q(test5)=="banana" end),
-	?wf_test_auto(test6_proplist_options, undefined, fun() -> wf:q(test6)=="banana" end).
+	?wf_test_auto(test1_none_selected, undefined, 				fun() -> wf:q(test1)=="apple" end),
+	?wf_test_auto(test2_last_selected, undefined, 				fun() -> wf:q(test2)=="banana" end),
+	?wf_test_auto(test3_value_selected, undefined, 				fun() -> wf:q(test3)=="orange" end),
+	?wf_test_auto(test4_value_selected_with_other, undefined, 	fun() -> lists:member(wf:q(test4), ["orange","banana"]) end),
+	?wf_test_auto(test5_value_selected_with_false, undefined, 	fun() -> wf:q(test5)=="banana" end),
+	?wf_test_auto(test6_proplist_options, undefined, 			fun() -> wf:q(test6)=="banana" end),
+	?wf_test_auto(test7_shuffled, undefined, 					fun() -> wf:q(test7)=="apple" end).
