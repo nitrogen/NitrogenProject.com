@@ -88,7 +88,23 @@ articles() ->
     [
 
         #h1 { text="Articles and Talks and Presentations" },
-    
+  
+        #h2 { text="January 2016"},
+        #p{},
+        #link { text="Raspberry Pi GPIO interface with Nitrogen", url="https://github.com/stuart-thackray/pi_gpio_web/"},
+        #p{},
+        #h2 { text="December 2015"},
+        #p{},
+        #link { text="Full-stack Nitrogen hosting platform launches beta", url="https://liquid-nitrogen.org/"},
+        #p{},
+        #h2{ text="October 2015"},
+        #link{ text="Nitrogen with Heroku (slides in French)", url="https://speakerdeck.com/erlangparis/nitrogen-sur-heroku"},
+        #p{},
+        #h2 { text="April 2015"},
+        #p{},
+        #link{ text="Video: Roman Galeev: Erlang and Nitrogen Web Framework", url="https://www.youtube.com/watch?v=02NRlE2rmBc"},
+        " [",#link{text="Slides", url="http://slides.com/romangaleev/nitrogen#/"},"]",
+        #p{},
         #h2 { text="November 2014"},
         #p{},
         #link { text="Mostly Erlang episode about Nitrogen", url="http://mostlyerlang.com/2014/11/05/047-nitrogen-web-framework"},
@@ -276,8 +292,17 @@ articles() ->
         #h1 { text="Projects on Github" },
 
         #p{},
+        #link { text="Raspberry Pi GPIO Web Interface", url="https://github.com/stuart-thackray/pi_gpio_web/"},
+        " - See and update the status of the various pins on your Raspberry Pi.",
+
+        #p{},
+        #link { text="RISE (by Sovereign Prime)", url="https://github.com/SovereignPrime/RISE"},
+        " - An ambitious open source project to create a fully peer-to-peer, distributed, masterless collaboration and project management tool.",
+        " [",#link{text="SovereignPrime Homepage", url="http://sovereignprime.com"},"] ",
+        #p{},
         #link { text="http://github.com/CoBug/cobug.org", url="http://github.com/CoBug/cobug.org"},
         " - Homepage source code for CoBug, the Colorado BSD User Group",
+        " [", #link{text="Homepage", url="http://cobug.org"},
         #p{},
         #link { text="http://github.com/choptastic/sliderl", url="http://github.com/choptastic/sliderl"},
         " - Sliderl a simple markdown slideshow server written with Nitrogen and Reveal.js",
