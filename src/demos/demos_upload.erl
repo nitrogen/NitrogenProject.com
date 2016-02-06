@@ -103,5 +103,5 @@ finish_upload_event(_Tag, undefined, _, _) ->
 
 finish_upload_event(Tag, FileName, LocalFileName, Node) ->
     FileSize = filelib:file_size(LocalFileName),
-    wf:flash(wf:f("Uploaded file (~p): ~s (~p bytes) to ~s on node ~s.", [Tag, FileName, FileSize, LocalFileName, Node])),
+    wf:flash(wf:f("Uploaded file (~p): ~ts (~p bytes) to ~s on node ~s.", [Tag, FileName, FileSize, LocalFileName, Node])),
     ok.
