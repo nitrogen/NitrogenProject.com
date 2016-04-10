@@ -28,8 +28,9 @@ left() ->
         connected clients, with the 'database' here being a simple text file on
         the hard drive.
         <p>
-        To fully appreciate this demo, you'll want more than one browser window
-        opened on this page to see the contents change in the other window.
+        To fully appreciate this demo, you'll want more than one browser
+        window opened on this page to see the contents change in the other
+        window.
         <p>
         To help you understand why this is useful, there is a <a
         href='http://sigma-star.com/blog/post/sync_panel'>blog post describing
@@ -47,7 +48,7 @@ left() ->
 %% that the new version of body_function/0 will be called.
 right() -> 
     _Body = [
-        #label { text="Click some buttons" },
+        #panel{ text="Open this page in a couple browser windows then click some of the buttons below" },
         #sync_panel{
             style="border: dotted 2px black",
             pool=demo_sync_panel,
