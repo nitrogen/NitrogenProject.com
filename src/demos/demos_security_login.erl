@@ -56,4 +56,4 @@ check_password(_Tag, Value) ->
 event(ok) ->
     User = wf:q(userTextBox),
     wf:user(User),
-    wf:redirect_from_login("/web/samples/security").
+    wf:redirect_from_login("/demos/security").
