@@ -32,7 +32,12 @@ step4_main() ->
     wf_test:start(fun() -> step4_tests(OtherCookieVal) end).
 
 step1_tests() ->
+    %% Verify that the cookie works
 	?wf_test_auto(get_cookie, get_cookie_test()),
+    %% Now we set to the cookie to something else. Being inside a websocket
+    %% connection, this will force the system to use the #set_cookie{} action
+    %% rather than writing a cookie header to the response (which wouldn't make
+    %% sense after the websocket handshake).
 	?wf_test_auto(set_cookie, set_cookie_test([])).
 
 get_cookie_test() ->
@@ -81,8 +86,14 @@ step3_tests() ->
 	?wf_test_auto(check_deleted_cookie, check_deleted_cookie()).
 
 step4_tests(OtherVal) ->
+    %% The HTTP cookie was set before the websocket, and we're in an HTTP
+    %% Request, so it should "just work"
     ?wf_test_auto(http_only_get_cookie, get_cookie_test()),
+    %% The other_test_cookie_val was set in the normal fashion, and so should
+    %% be readable by javascript.
     ?wf_test_js(non_http_only_get_cookie_js, get_cookie_js_test(other_test_cookie_val, OtherVal)),
+    %% However, the normal test_cookie_val was set with http_only, so it should
+    %% *not* be readable by javascript.
     ?wf_test_js(http_only_get_cookie_js, get_cookie_js_test(test_cookie_val, "")).
     %% FIXME: http_only cookies cannot be set in javascript. So wf:cookie
     %% called in a websocket postback *must* generate a separate HTTP request
