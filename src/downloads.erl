@@ -240,7 +240,7 @@ platform_downloads("git") ->
             #image { image="/images/git.png", style="width:80px" }
         ]},
         #span {class=title, text="Clone with Git"},
-        <<"<pre style='margin-top:0.5em; color: #333'>git clone git://github.com/nitrogen/nitrogen.git</pre>">>
+        <<"<pre style='margin-top:0.5em; color: #333'>git clone https://github.com/nitrogen/nitrogen.git</pre>">>
     ]};
 
 platform_downloads("source") ->
