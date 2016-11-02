@@ -12,7 +12,7 @@ to see an example of how you can embed Nitrogen inside other applications.
 To get started, simply run:
 
 ```bash
-    git clone git://github.com/nitrogen/NitrogenProject.com.git
+    git clone https://github.com/nitrogen/NitrogenProject.com.git
 
     cd NitrogenProject.com
     make
