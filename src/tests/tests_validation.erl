@@ -19,7 +19,9 @@ tests() ->
 	?wf_test_js(unicode_value_test, unicode_value_test()),
 	?wf_test_js(unicode_comparison_test, unicode_comparison_test()),
 	?wf_test_js(unicode_comparison_pass_test, unicode_comparison_pass_test()),
-	?wf_test_js(unicode_validator_test, unicode_validator_test()).
+	?wf_test_js(unicode_validator_test, unicode_validator_test()),
+    ?wf_test_js(clear_validation_test, clear_validation_test()),
+    ?wf_test_js(unicode_integer_test, badnumber_unicode_test()).
 
 
 -define(click, wf:wire(continueButton, #click{})).
@@ -92,8 +94,41 @@ shortpassword_test() ->
 		?opts
 	}.
 
+clear_validation_test() ->
+    {
+        fun() ->
+            wf:wire(#clear_validation{})
+        end,
+        ?count,
+        fun([Length]) -> Length == 0 end,
+        ?opts
+    }.
+
+badnumber_unicode_test() ->
+	{
+        fun() ->
+            wf:eager(#clear_validation{}),
+            wf:eager(continueButton, numberTextBox, #validate{validators=[
+                %#is_integer{text="something"}
+                #is_integer{text="値は数値でなければなりません"}
+            ]}),
+            Fun = ?set([
+                {nameTextBox, "rusty lastname"},
+                {emailTextBox, "email@email.com"},
+                {passwordTextBox, "password"},
+                {confirmTextBox, "password"},
+                {numberTextBox, "!@#"} %% not a number
+            ]),
+            Fun()
+        end,
+		?count,
+		fun([Length]) -> Length == 1 end,
+		?opts
+	}.
+
 badnumber_test() ->
 	{
+        
 		?set([
 			{nameTextBox, "rusty lastname"},
 			{emailTextBox, "email@email.com"},
@@ -134,6 +169,7 @@ unicode_value_test() ->
 		fun([Length]) -> Length == 1 end,
 		?opts
 	}.
+
 
 unicode_comparison_test() ->
 	{
