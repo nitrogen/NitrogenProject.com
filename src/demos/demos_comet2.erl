@@ -32,8 +32,7 @@ left() ->
         <p>
         Try opening a few different browser windows and chatting with
         yourself.
-        ",
-        linecount:render()
+        "
     ].
 
 right() ->
