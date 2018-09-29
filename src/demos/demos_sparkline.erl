@@ -20,8 +20,8 @@ left() ->
     ].
 
 middle() ->
-    Data = [crypto:rand_uniform(1,100) || _ <- lists:seq(1,15)],
-    PieData = [crypto:rand_uniform(1,100) || _ <- lists:seq(1,3)],
+    Data = [?WF_RAND_UNIFORM(100) || _ <- lists:seq(1,15)],
+    PieData = [?WF_RAND_UNIFORM(100) || _ <- lists:seq(1,3)],
     [
         #h2{text="Simple"},
         #h3{text="(No options specified)"},
@@ -59,7 +59,7 @@ format_tristate(N) when N > 66 -> 1;
 format_tristate(_) -> 0.
 
 right() ->
-    Data = [crypto:rand_uniform(1,100) || _ <- lists:seq(1,15)],
+    Data = [?WF_RAND_UNIFORM(100) || _ <- lists:seq(1,15)],
     [
         #h2{text="Advanced"},
         #h3{text="(customized with options)"},

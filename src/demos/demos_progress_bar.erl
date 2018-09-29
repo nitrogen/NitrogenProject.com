@@ -48,13 +48,13 @@ middle() ->
         #progress_bar{value=70, color="700"},
 
         #h3{text="Random Colors and Custom Label Types"},
-        #progress_bar{value=crypto:rand_uniform(1, 1337), color=random_color(), max=1337, label=ratio},
+        #progress_bar{value=?WF_RAND_UNIFORM(1, 1337), color=random_color(), max=1337, label=ratio},
         #br{},
-        #progress_bar{value=crypto:rand_uniform(1, 1337), color=random_color(), max=1337, label=percent},
+        #progress_bar{value=?WF_RAND_UNIFORM(1, 1337), color=random_color(), max=1337, label=percent},
         #br{},
-        #progress_bar{value=crypto:rand_uniform(1, 1337), color=random_color(), max=1337, label=both},
+        #progress_bar{value=?WF_RAND_UNIFORM(1, 1337), color=random_color(), max=1337, label=both},
         #br{},
-        #progress_bar{value=crypto:rand_uniform(1, 1337), color=random_color(), max=1337, label="A custom label"}
+        #progress_bar{value=?WF_RAND_UNIFORM(1, 1337), color=random_color(), max=1337, label="A custom label"}
     ].
 
 right() ->
@@ -74,16 +74,16 @@ event(start_server_updating) ->
     wf:comet(fun() -> progress_bar_loop(random_delay(), 0) end).
 
 random_color() ->
-    {ok, Color} = wf:hex_encode([crypto:rand_uniform(0,256) || _ <- lists:seq(1,3)]),
+    {ok, Color} = wf:hex_encode([?WF_RAND_UNIFORM(0,256) || _ <- lists:seq(1,3)]),
     Color.
 
 random_delay() ->
     %% random delay between 100 and 1000 miliseconds
-    crypto:rand_uniform(100, 500).
+    ?WF_RAND_UNIFORM(100, 500).
 
 random_increment() ->
     %% And we'll randomly increment each comet step by somewhere between 1 and 20
-    crypto:rand_uniform(1, 20).
+    ?WF_RAND_UNIFORM(1, 20).
 
 progress_bar_loop(Delay, Value) when is_integer(Delay), is_integer(Value) ->
     wf:set(comet_progress_bar, Value),

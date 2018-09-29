@@ -95,4 +95,4 @@ api_event(test_api, _, [Arg1, Arg2]) ->
     wf_test:event(two_arg).
 
 random_string(Length) ->
-    [crypto:rand_uniform($a, $z+1) || _ <- lists:seq(1, Length)].
+    [?WF_RAND_UNIFORM($a, $z+1) || _ <- lists:seq(1, Length)].
