@@ -75,10 +75,10 @@ DEPS=erts kernel stdlib sasl crypto compiler syntax_tools
 $(DEPS_PLT):
 	@echo Building local plt at $(DEPS_PLT)
 	@echo 
-	@(dialyzer --output_plt $(DEPS_PLT) --build_plt --apps $(DEPS) -r ./deps/)
+	@(dialyzer --statistics --output_plt $(DEPS_PLT) --build_plt --apps $(DEPS) -r ./deps/)
 
 dialyzer: mochiweb $(DEPS_PLT)
-	@(dialyzer --fullpath --plt $(DEPS_PLT) -Wrace_conditions -r ./ebin)
+	@(dialyzer --statistics --fullpath --plt $(DEPS_PLT) -Wrace_conditions -r ./ebin)
 
 travis: dialyzer
 
