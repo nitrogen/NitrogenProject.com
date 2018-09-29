@@ -78,7 +78,7 @@ $(DEPS_PLT):
 	@(dialyzer --statistics --output_plt $(DEPS_PLT) --build_plt --apps $(DEPS) -r ./deps/)
 
 dialyzer: mochiweb $(DEPS_PLT)
-	@(dialyzer --statistics --fullpath --plt $(DEPS_PLT) -Wrace_conditions -r ./ebin)
+	@(dialyzer --statistics --verbose --fullpath --plt $(DEPS_PLT) -Wrace_conditions -r ./ebin)
 
 travis: dialyzer
 
