@@ -40,6 +40,9 @@ copy-static:
 clean:
 	$(REBAR) clean
 
+wipe_deps:
+	rm -fr deps/*
+
 cowboy:
 	@($(MAKE) platform PLATFORM=cowboy)
 
@@ -77,7 +80,7 @@ $(DEPS_PLT):
 	@echo 
 	@(dialyzer --statistics --output_plt $(DEPS_PLT) --build_plt --apps $(DEPS) -r ./deps/)
 
-dialyzer: mochiweb $(DEPS_PLT)
+dialyzer: $(DEPS_PLT)
 	@(dialyzer --statistics --verbose --fullpath --plt $(DEPS_PLT) -Wrace_conditions -r ./ebin)
 
 
@@ -87,10 +90,17 @@ ERLANG_VERSION = $(shell $(ERLANG_VERSION_CHECK))
 # This is primarily for Travis build testing, as each build instruction will overwrite the previous
 travis: $(ERLANG_VERSION)
 
-17: inets mochiweb webmachine yaws
+17:
+	$(MAKE) inets
+	$(MAKE) mochiweb
+	$(MAKE) webmachine
+	$(MAKE) yaws
 18: 17
 19: cowboy 17
-20: 19 dialyzer
+	$(MAKE) cowboy
+20: 19
+	$(MAKE) wipe_deps clean
+	$(MAKE) dialyzer
 21: 20
 
 
