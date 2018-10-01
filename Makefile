@@ -80,7 +80,19 @@ $(DEPS_PLT):
 dialyzer: mochiweb $(DEPS_PLT)
 	@(dialyzer --statistics --verbose --fullpath --plt $(DEPS_PLT) -Wrace_conditions -r ./ebin)
 
-travis: dialyzer
+
+ERLANG_VERSION_CHECK := erl -eval "io:format(\"~s\",[erlang:system_info(otp_release)]), halt()."  -noshell
+ERLANG_VERSION = $(shell $(ERLANG_VERSION_CHECK))
+
+# This is primarily for Travis build testing, as each build instruction will overwrite the previous
+travis: $(ERLANG_VERSION)
+
+17: inets mochiweb webmachine yaws
+18: 17
+19: cowboy 17
+20: 19 dialyzer
+21: 20
+
 
 TESTLOG:=testlog.log
 
