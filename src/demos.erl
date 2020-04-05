@@ -46,6 +46,7 @@ middle() ->
         #link { text="Simple Controls", url="/demos/simplecontrols" }, #br{}, 
         #link { text="In-Place Textbox", url="/demos/advancedcontrols1" }, #br{}, 
         #link { text="Google Charts", url="/demos/advancedcontrols2" }, #br{}, 
+        #link { text="Mermaid Flowchars and Diagrams", url="/demos/mermaid1" },#br{},
         #link { text="QR Codes", url="/demos/qr" }, #br{}, 
         #link { text="Sparkline", url="/demos/sparkline" },#br{},
         #link { text="Radio Buttons", url="/demos/radio" }, #br{}, 
@@ -87,6 +88,7 @@ right() ->
         #link { text="Spinner", url="/demos/spinner" }, #br{},
         #link { text="JQuery Paths", url="/demos/jquerypaths" }, #br{}, 
         #link { text="Javascript API", url="/demos/api" }, #br{},
+        #link { text="Mermaid with Postbacks", url="/demos/mermaid2" },#br{},
 
         #h2 { text="Comet/Asynchronous Calls" },
         #p{},
@@ -96,6 +98,7 @@ right() ->
         #link { text="Continuations", url="/demos/continuations" }, #br{},
         #link { text="Progress Bars", url="/demos/progress_bar" },#br{},
         #link { text="Synchronized Panels (using comet)", url="/demos/sync_panel" },#br{},
+        #link { text="Mermaid Async Updates", url="/demos/mermaid3" },#br{},
 
         #h2 { text="Mobile Integration" },
         #p{},
