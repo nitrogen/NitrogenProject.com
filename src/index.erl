@@ -1,6 +1,7 @@
 % vim: ts=4 sw=4 et
 -module (index).
 -include_lib ("nitrogen_core/include/wf.hrl").
+%-compile({parse_transform, nitrogen_precompile}).
 -compile(export_all).
 
 main() -> #template { file="./templates/grid.html" }.
@@ -65,8 +66,8 @@ top_right() ->
             #br{},
             <<"
             Zach Kessin interviewed Jesse Gumm for a
-            <a href='http://mostlyerlang.com/2014/11/05/047-nitrogen-web-framework'>Nitrogen Episode</a>
-            of the <a href='http://mostlyerlang.com'><i>Mostly Erlang</i></a> Podcast!
+            <a href='https://podcasts.apple.com/us/podcast/047-nitrogen-web-framework/id638766008?i=1000322780999'>Nitrogen Episode</a>
+            of the <a href='https://podcasts.apple.com/us/podcast/podcast-mostly-erlang/id638766008'><i>Mostly Erlang</i></a> Podcast!
             ">>
         ]},
         #p { class=section, body=[

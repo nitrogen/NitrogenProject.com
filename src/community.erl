@@ -31,10 +31,11 @@ top_sections() ->
     [
         {true,false,"Discussion","googlegroups.gif","http://groups.google.com/group/nitrogenweb","Subscribe to the <a target=_blank href='http://groups.google.com/group/nitrogenweb'>Nitrogen Google Group</a>."},
         {false,false,"Questions","stackoverflow.gif","http://stackoverflow.com/questions/tagged/nitrogen","Ask and answer questions at <a target=_blank href='http://stackoverflow.com/questions/tagged/nitrogen'>StackOverflow</a>."},
-        {false,false,"Chat","freenode.png","irc://chat.freenode.net#nitrogen","Join <code>#nitrogen</code> on <a href='irc://chat.freenode.net#nitrogen'>irc.freenode.net</a>."},
+        {false,false,"Roadmap", "trello.png", "http://trello.nitrogenproject.com", "Nitrogen's Current Development and Roadmap"},
+        {false,false,"Chat","discord.png","https://discord.gg/ppGBxhM","Join our <a target=_new href='https://discord.gg/ppGBxhM'>Discord Server</a>."},
         {false,false,"Bugs","github-issues.png","http://github.com/nitrogen/nitrogen/issues","Submit feature requests and file bugs using <a target=_blank href='http://github.com/nitrogen/nitrogen/issues'>GitHub Issues</a>."},
-        {false,false,"Contribute","github.png","http://github.com/nitrogen","Fork Nitrogen on <a target=_blank href='http://github.com/nitrogen/nitrogen'>GitHub</a>. Pull requests are welcome!"},
-        {false,true,"Summaries","ohloh.png","https://www.ohloh.net/p/nitrogen-web-framework","See code, contribution, contributor, trends, and other project summaries on <a target=_blank href='https://www.ohloh.net/p/nitrogen-web-framework'>Ohloh</a>."}
+        {false,true,"Contribute","github.png","http://github.com/nitrogen","Fork Nitrogen on <a target=_blank href='http://github.com/nitrogen/nitrogen'>GitHub</a>. Pull requests are welcome!"}
+%        {false,true,"Summaries","ohloh.png","https://www.ohloh.net/p/nitrogen-web-framework","See code, contribution, contributor, trends, and other project summaries on <a target=_blank href='https://www.ohloh.net/p/nitrogen-web-framework'>Ohloh</a>."}
     ].
 
 top() -> 
@@ -60,22 +61,18 @@ top() ->
             #hr {}
         ]},
 
-        #grid_clear {},
+%        #grid_clear {},
         
-        #grid_12 { alpha=true, omega=true, body=[
-            #h2 { text="Donate" },
-            
-            #p{},
-            "
-            Do you use Nitrogen? Help fund Nitrogen development.
-            <p>
-            <a href='http://www.pledgie.com/campaigns/2057'><img alt='Click here to lend your support to: nitrogen and make a donation at www.pledgie.com !' src='http://www.pledgie.com/campaigns/2057.png?skin_name=chrome' border='0' /></a>
- <!--           <p>
-            Alternatively, show your appreciation by sending books, t-shirts, mugs, gadgets, and other shwag to:
-            <p>
-            Basho Technologies / Rusty Klophaus / 196 Broadway / Cambridge, MA 02139-->
-            "
-        ]},
+%        #grid_12 { alpha=true, omega=true, body=[
+%            #h2 { text="Donate" },
+%            
+%            #p{},
+%            "
+%            Do you use Nitrogen? Help fund Nitrogen development.
+%            <p>
+%            <a href='http://www.pledgie.com/campaigns/2057'><img alt='Click here to lend your support to: nitrogen and make a donation at www.pledgie.com !' src='http://www.pledgie.com/campaigns/2057.png?skin_name=chrome' border='0' /></a>
+%            "
+%        ]},
 
         #grid_clear{},
         
