@@ -31,11 +31,11 @@ compile:
 
 link-static:
 	(cd static; rm -fr nitrogen; ln -s ../deps/nitrogen_core/www nitrogen)
-	(cd static; rm -fr doc; ln -s ../deps/nitrogen_core/doc/html doc)
+	(cd static; rm -fr doc; ln -s ../deps/nitrogen_core/doc/markdown doc)
 
 copy-static:
 	(cd static; rm -rf nitrogen; mkdir nitrogen; cp -r ../deps/nitrogen_core/www/* nitrogen)
-	(cd static; rm -rf doc; mkdir doc; cp -r ../deps/nitrogen_core/doc/html/* doc)
+	(cd static; rm -rf doc; mkdir doc; cp -r ../deps/nitrogen_core/doc/markdown/* doc)
 
 clean:
 	$(REBAR) clean
@@ -100,7 +100,7 @@ travis: $(ERLANG_VERSION)
 	$(MAKE) cowboy
 20: 19
 	$(MAKE) wipe_deps clean
-	$(MAKE) dialyzer
+	$(MAKE) yaws dialyzer
 21: 20
 
 
