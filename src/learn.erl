@@ -292,7 +292,12 @@ thanks() ->
         {"Aaron Bieber"},
         {"Tobias Weisenthal"},
         {"Franklin Brauning"},
-        {"Olivier Boudeville"}
+        {"Olivier Boudeville"},
+        {"Alex Ksandra"},
+        {"Ramkrishna Kulkarni"},
+        {"Meike Hecker"},
+        {"João Henrique Ferreira de Freitas"}
+
     ].
         
 
