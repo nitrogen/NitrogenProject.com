@@ -22,7 +22,7 @@ left() ->
 
 
 right() -> 
-    Headers = [{wf:to_list(Key), wf:to_list(Value)} || {Key, Value} <- wf:headers()],
+    Headers = [{wf:to_list(Key), wf:to_list(Value)} || {Key, Value} <- maps:to_list(wf:headers())],
 
     [
         #table { rows=[

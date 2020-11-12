@@ -47,7 +47,7 @@ left() ->
         #h2 { text="Browser-Based Testing"},
         #p{},
         "
-        Nitrogen 2.3 introduces a dependency-free testing framework for
+        Nitrogen 2.3 introduced a dependency-free testing framework for
         validating your pages, postbacks, actions, and elements all work as
         expected. Create test cases that are instantiated server-side, execute
         something client-side (such as button presses), and validate the result
@@ -161,7 +161,7 @@ right() ->
         "
         <p>
         <a href='/doc/index.html'>Nitrogen documentation</a> is available for 
-        browsing online.  It is also included in the source code under <i>/doc/html</i>, and
+        browsing online.  It is also included in the source code under <code>/doc</code>, and
         is packaged in all binary downloads.
         
         <p>
@@ -222,7 +222,7 @@ format_contrib({Name,URL,TwitterName,Role}) ->
 
 maintainers() ->
     [ 
-        {"Jesse Gumm","http://sigma-star.com/page/jesse","jessegumm","Project Leader"}
+        {"Jesse Gumm","http://jesegumm.com","jessegumm","Project Leader"}
     ].
 
 thanks() ->
@@ -288,7 +288,11 @@ thanks() ->
         {"Lloyd R. Prentice"},
         {"Cameron Frederick", "cammcad"},
         {"Xue Hongwei"},
-        {"Steve Vinoski", "stevevinoski"}
+        {"Steve Vinoski", "stevevinoski"},
+        {"Aaron Bieber"},
+        {"Tobias Weisenthal"},
+        {"Franklin Brauning"},
+        {"Olivier Boudeville"}
     ].
         
 
