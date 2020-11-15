@@ -23,9 +23,9 @@ start_link() ->
 init([]) ->
     %% Start the Process Registry...
 	application:start(crypto),
+    application:ensure_all_started(nitro_cache),
     application:start(nprocreg),
 	application:start(simple_bridge),
-    application:start(simple_cache),
 
     {ok, { {one_for_one, 5, 10}, []} }.
 

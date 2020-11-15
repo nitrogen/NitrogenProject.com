@@ -296,6 +296,8 @@ thanks() ->
         {"Alex Ksandra"},
         {"Ramkrishna Kulkarni"},
         {"Meike Hecker"},
+        {"Mikael Bylund"},
+        {"Alexander Sedov"},
         {"João Henrique Ferreira de Freitas"}
 
     ].

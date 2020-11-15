@@ -20,7 +20,7 @@ header(Selected) ->
         #link { id=home, url='/', text="HOME" },
         #link { id=downloads, url='/downloads', text="DOWNLOADS" },
         #link { id=demos, url='/demos', text="DEMOS" },
-        #link { id=docs, url='/doc/index.html', text="DOCUMENTATION" },
+        #link { id=docs, url='/doc/index', text="DOCUMENTATION" },
         #link { id=learn, url='/learn', text="LEARN MORE" },
         #link { id=community, url='/community', text="GET INVOLVED" }
     ]}.
@@ -37,13 +37,15 @@ footer() ->
     ]}.
 
 github_fork() ->
-    Body = #image{
-                image="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png",
-                style="position:absolute; top:0; left: 0; border: 0;z-index:1000",
-                alt="Fork me on GitHub"
-            },
-    #link{
-        style="position:absolute;top:0; left:0;",
-        url="https://github.com/nitrogen",
-        body=Body
-    }.
+    [].
+
+%    Body = #image{
+%                image="https://s3.amazonaws.com/github/ribbons/forkme_left_red_aa0000.png",
+%                style="position:absolute; top:0; left: 0; border: 0;z-index:1000",
+%                alt="Fork me on GitHub"
+%            },
+%    #link{
+%        style="position:absolute;top:0; left:0;",
+%        url="https://github.com/nitrogen",
+%        body=Body
+%    }.

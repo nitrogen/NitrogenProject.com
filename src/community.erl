@@ -31,7 +31,7 @@ top_sections() ->
     [
         {true,false,"Discussion","googlegroups.gif","http://groups.google.com/group/nitrogenweb","Subscribe to the <a target=_blank href='http://groups.google.com/group/nitrogenweb'>Nitrogen Google Group</a>."},
         {false,false,"Questions","stackoverflow.gif","http://stackoverflow.com/questions/tagged/nitrogen","Ask and answer questions at <a target=_blank href='http://stackoverflow.com/questions/tagged/nitrogen'>StackOverflow</a>."},
-        {false,false,"Roadmap", "trello.png", "http://trello.nitrogenproject.com", "Nitrogen's Current Development and Roadmap"},
+        {false,false,"Roadmap", "trello.png", "http://trello.nitrogenproject.com", "Nitrogen's Current Development and Roadmap at <a target=_blank href='http://trello.nitrogenproject.com'>Trello</a>."},
         {false,false,"Chat","discord.png","https://discord.gg/ppGBxhM","Join our <a target=_new href='https://discord.gg/ppGBxhM'>Discord Server</a>."},
         {false,false,"Bugs","github-issues.png","http://github.com/nitrogen/nitrogen/issues","Submit feature requests and file bugs using <a target=_blank href='http://github.com/nitrogen/nitrogen/issues'>GitHub Issues</a>."},
         {false,true,"Contribute","github.png","http://github.com/nitrogen","Fork Nitrogen on <a target=_blank href='http://github.com/nitrogen/nitrogen'>GitHub</a>. Pull requests are welcome!"}
