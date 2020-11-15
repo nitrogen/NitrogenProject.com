@@ -102,6 +102,8 @@ travis: $(ERLANG_VERSION)
 	$(MAKE) wipe_deps clean
 	$(MAKE) yaws dialyzer
 21: 20
+22: 20
+23: 20
 
 
 TESTLOG:=testlog.log
