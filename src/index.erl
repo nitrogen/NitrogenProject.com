@@ -61,10 +61,13 @@ top_right() ->
             or <b><a href='/downloads'>Download it now &raquo;</a></b>
             ">>,
             #br{},#br{},
+            <<"<b>Nitrogen Book Released!</b>">>,
+            #br{},
+            <<"<img src='/images/book-3d.jpg'>">>,
+            #br{},
             <<"
-            <a href='http://builditwith.com/nitrogen'>Build it with Nitrogen: The fast-off-the-block Erlang web framework has been released!
-                <img src='/images/book-3d.jpg'>
-            </a>
+            Get the <a href='https://www.amazon.com/Build-Nitrogen-Fast-Off-Block-Framework/dp/0982589247'>Paperback Book</a>
+            or the <a href='https://leanpub.com/builditwithnitrogen'>eBook</a> of <b>Build it with Nitrogen</b>!
             ">>
         ]},
         #p { class=section_title, body="MORE NITROGEN MEDIA"},
