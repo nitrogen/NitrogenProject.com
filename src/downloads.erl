@@ -19,6 +19,7 @@
     ]).
 
 -define(ALL_VERSIONS, [
+        "2.4.0",
         "2.3.1",
         "2.3.0",
         "2.2.2",
@@ -33,11 +34,11 @@
         "1.0"]).
 
 -define(PLATFORMS, [
-        {"linux", "Linux", ?UNIX_SERVERS, "17.4", "64bit"},
-        {"mac", "Mac OSX", ?UNIX_SERVERS, "17.1", "64bit"},
-        {"windows", "Windows", ?WINDOWS_SERVERS, "17.4", "32bit"},
-        {"freebsd", "FreeBSD", ?UNIX_SERVERS, "17.4", "64bit"},
-        {"raspberrypi", "Raspberry Pi", ?UNIX_SERVERS, "17.4", "64bit"}
+        {"linux", "Linux", ?UNIX_SERVERS, "23.1", "64bit"},
+        {"mac", "Mac OSX", ?UNIX_SERVERS, "23.0", "64bit"},
+        {"windows", "Windows", ?WINDOWS_SERVERS, "23.1", "64bit"},
+        {"freebsd", "FreeBSD", ?UNIX_SERVERS, "21.3", "64bit"},
+        {"raspberrypi", "Raspberry Pi", ?UNIX_SERVERS, "22.1", "64bit"}
     ]).
 
 main() -> #template { file="./templates/grid.html" }.
@@ -64,10 +65,10 @@ headline() -> "Downloads".
 
 left() -> 
     Servers = [
-        {"Cowboy", "https://github.com/extend/cowboy","High performance HTTP server developed by Loïc Hoguin."},
+        {"Cowboy", "https://github.com/ninenines/cowboy","High performance HTTP server developed by Loïc Hoguin."},
         {"Inets","http://www.erlang.org/doc/man/httpd.html","Lightweight HTTP server built into Erlang."},
         {"Mochiweb","https://github.com/mochi/mochiweb","Lightweight HTTP server developed by Bob Ippolito/MochiMedia."},
-        {"Webmachine","http://webmachine.basho.com/","HTTP resource server developed by Basho Technologies (runs on Mochiweb under the hood.)"},
+        {"Webmachine","https://github.com/webmachine/webmachine","HTTP resource server developed by Basho Technologies (runs on Mochiweb under the hood.)"},
         {"Yaws","http://yaws.hyber.org/","A mature high-performance HTTP server developed by Claes \"Klacke\" Wikstrom."}
     ],
 
@@ -106,7 +107,7 @@ server_help() ->
     that differentiates itself from the other Erlang webservers: It doesn't
     maintain a process dictionary. Instead, it follows a more 'pure' flow, by
     passing around the a request object to each of Cowboy's functions. It's a
-    lightweight, high performance webserver, and very capable.">>,
+    lightweight, high performance webserver, and extermely capable.">>,
     #br{},
     #br{},
     <<"<b>Inets</b> is the built-in Erlang Webserver. It's lightweight, and
@@ -225,8 +226,8 @@ right() ->
                 #image { image="/images/downloads/documentation.png" }
             ]},
             #span { class=title, text="Nitrogen Documentation" },
-            #link { class=link, url="/doc/index.html", text="View Documentation Online" },
-            #link { class=link, url="/doc/tutorial.html", text="View the Nitrogen Tutorial" },
+            #link { class=link, url="/doc/index", text="View Documentation Online" },
+            #link { class=link, url="/doc/tutorial", text="View the Nitrogen Tutorial" },
             "Docs are also included in platform downloads."
         ]},
 

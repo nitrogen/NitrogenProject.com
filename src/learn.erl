@@ -43,7 +43,7 @@ left() ->
         over, or otherwise interacts with the element.  Handling the event is as
         simple as writing an Erlang function.
         ",
-       
+
         #h2 { text="Browser-Based Testing"},
         #p{},
         "
@@ -82,6 +82,16 @@ left() ->
         Or put more succinctly, <b>\"Whereas Node.js brings the client-side to
         the server, Nitrogen brings the server-side to the client.\"</b>.
         ",
+
+        #h2 { text="Built-In Caching"},
+        #p{},
+        "
+        Use Nitrogen's Cache Handler to locally cache pages or parts of pages to
+        'turbo-ize' your pages.  Uses ",#link{new=true, text="NitroCache", url="https://github.com/nitrogen/nitro_cache"},
+        " by default, but as with all Nitrogen's handlers, you can write your own
+        cache handler to tap into Mnesia, Redis, Memcached, or any other cache system
+        you want
+        ",
         
         #h2 { text="Complex Interfaces: Drag/Drop/Sort" },
         #p{},
@@ -98,7 +108,8 @@ left() ->
         Nitrogen includes a simple but powerful template system, allowing you
         to define a consistent style for your application. You can add headers,
         footers, and parameterized plugins to your page using a simple callout
-        mechanism.
+        mechanism.  With Pandoc, make templates from non-HTML sources as well.
+        That includes Markdown, LaTeX, RTF, PDF, and more!
         ",
         
         #h2 { text="Data Binding" },
@@ -150,7 +161,8 @@ left() ->
         #p{},
         "
         Nitrogen uses JQuery and the JQuery UI library for client side
-        Javascript and the JQuery Mobile library for mobile development.
+        Javascript.  JQuery Mobile is included for now, but is deprecated and will
+        be removed.
         "
     ].
 
@@ -176,7 +188,7 @@ right() ->
         Klophaus</a> (<a href='http://www.twitter.com/rustyio'>@rustyio</a>).
         In June 2011, <a href='http://sigma-star.com/page/jesse/'>Jesse Gumm</a>
         (<a href='http://www.twitter.com/jessegumm'>@jessegumm</a>) took over
-        as project lead. It is in active development and is available for use
+        as project lead. It is in active development, in use in industry, and is available for use
         under the MIT License.
         ",
 
