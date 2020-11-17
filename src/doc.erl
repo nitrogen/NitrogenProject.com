@@ -66,7 +66,8 @@ github_path(File) ->
 documentation_menu() ->
     #template{
         file="static/doc/header.md",
-        from_type=gfm
+        from_type=gfm,
+        callouts=false
     }.
 
 documentation() ->
@@ -78,7 +79,8 @@ documentation() ->
             [
                 #template{
                     file=internal_path(Page),
-                    from_type=gfm
+                    from_type=gfm,
+                    callouts=false
                 },
                 #br{},#br{},
                 #link{url=github_path(Page), body="View Source or Submit Corrections for this Documentation Page"}
