@@ -38,3 +38,12 @@ inplace_textbox_event(Tag, Value) ->
 
 	%% Return the new value to be displayed.
 	Value.
+
+inplace_textarea_event(Tag, Value) ->
+	%% Notify the user of what was entered
+	Msg = wf:f("You entered: '~s' into the inplace control tagged '~s'", [Value, Tag]),
+	wf:flash(Msg),
+
+	%% Return the new value to be displayed.
+	Value.
+
