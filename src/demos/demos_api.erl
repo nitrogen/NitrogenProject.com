@@ -44,12 +44,19 @@ right() ->
     wf:wire(#api { name=apiOne, tag=f1 }),
     wf:wire(#api { name=apiTwo, tag=f2 }),
     wf:wire(#api { name=apiThree, tag=f3 }),
+    wf:wire(#api { name=apiFour, tag=f4 }),
     [
         #flash{},
         #p{},
-	"<a onclick=\"page.apiOne('Hello Joe!');\">page.apiOne('Hello Joe!')</a><br>"
-	"<a onclick=\"page.apiTwo({ greeting:'Hello', name:'Mike' });\">page.apiTwo({ greeting:'Hello', name:'Mike' })</a><br>"
-	"<a onclick=\"page.apiThree(Bert.atom('hello'), Bert.atom('robert'), 12345);\">page.apiThree(Bert.atom('hello'), Bert.atom('robert'), 12345)</a>"
+        %% In a normal Nitrogen application, these HTML elements would usually be #link{} elements,
+        %% however, to demonstrate the fact that the elements work with pure javascript with no
+        %% Nitrogen trickery, we're using raw <a> elements with javascript bound directly to them
+        "<a href=\"javascript: page.apiOne('Hello Joe!');\">page.apiOne('Hello Joe!')</a><br>"
+        "<a href=\"javascript: page.apiTwo({ greeting:'Hello', name:'Mike' });\">page.apiTwo({ greeting:'Hello', name:'Mike' })</a><br>"
+        "<a href=\"javascript: page.apiThree(Bert.atom('hello'), Bert.atom('robert'), 12345);\">page.apiThree(Bert.atom('hello'), Bert.atom('robert'), 12345)</a>",
+        #br{},
+        #textbox{id=name, text="Bruce Banner"},
+        "<a href=\"javascript: page.apiFour()\">Send Name = page.apiFour()</a>"
     ].
 
 % Notice the argument pattern matching!	
@@ -61,6 +68,10 @@ api_event(apiTwo, _, [[{<<"greeting">>, "Hello"}, {<<"name">>, "Mike"}]]) ->
 
 api_event(apiThree, _, [hello, robert, 12345]) ->
     wf:flash("Hello Robert!");
+
+api_event(apiFour, _, []) ->
+    Name = wf:q(name),
+    wf:flash(wf:f("You entered ~p",[Name]));
 
 api_event(A, B, C) ->
     ?PRINT(A), ?PRINT(B), ?PRINT(C).
