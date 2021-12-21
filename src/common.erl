@@ -19,7 +19,7 @@ header(Selected) ->
     #panel { class=menu, body=[
         #link { id=home, url="/", text="HOME" },
         #link { id=downloads, url="/downloads", text="DOWNLOADS" },
-        #link { id=source, url="https://github.com/nitrogen/nitrogen", text="GITHUB"},
+        #link { id=source, url="https://github.com/nitrogen", text="GITHUB"},
         #link { id=demos, url="/demos", text="DEMOS" },
         #link { id=docs, url="/doc/index", text="DOCUMENTATION" },
         #link { id=learn, url="/learn", text="LEARN MORE" },
