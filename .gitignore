@@ -11,3 +11,4 @@ report.log
 simple_bridge*.auth
 simple_bridge*.access
 testlogs/
+_build/
