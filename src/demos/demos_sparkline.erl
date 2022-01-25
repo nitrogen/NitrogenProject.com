@@ -3,7 +3,7 @@
 -include_lib ("nitrogen_core/include/wf.hrl").
 -compile(export_all).
 
-main() -> #template { file="./templates/demos433.html" }.
+main() -> #template { file=common:template_location("demos433.html") }.
 
 title() -> "Sparkline".
 

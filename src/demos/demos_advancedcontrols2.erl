@@ -3,7 +3,7 @@
 -include_lib ("nitrogen_core/include/google_chart.hrl").
 -compile(export_all).
 
-main() -> #template { file="./templates/demos46.html" }.
+main() -> #template { file=common:template_location("demos46.html") }.
 
 title() -> "Google Charts".
 headline() -> "Google Charts".

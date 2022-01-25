@@ -4,7 +4,7 @@
 -compile(export_all).
 -include_lib("nitrogen_core/include/wf.hrl").
 
-main() -> #template { file="./templates/demos46.html" }.
+main() -> #template { file=common:template_location("demos46.html") }.
 
 title() -> "Dynamically Removing Validation".
 

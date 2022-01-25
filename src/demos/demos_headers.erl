@@ -3,7 +3,7 @@
 -compile(export_all).
 
 main() -> 
-    #template { file="./templates/demos46.html" }.
+    #template { file=common:template_location("demos46.html") }.
 
 title() -> "Headers".
 
