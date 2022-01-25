@@ -3,7 +3,7 @@
 -include_lib ("nitrogen_core/include/wf.hrl").
 -compile(export_all).
 
-main() -> #template { file="./templates/grid.html" }.
+main() -> #template { file=common:template_location("grid.html") }.
 
 title() -> "Documentation".
 
@@ -58,14 +58,14 @@ doc_page() ->
     end.
 
 internal_path(File) ->
-    filename:join(["static","doc",File]).
+    filename:join(["priv", "static", "doc",File]).
 
 github_path(File) ->
     "https://github.com/nitrogen/nitrogen_core/blob/master/doc/markdown/" ++ File.
 
 documentation_menu() ->
     #template{
-        file="static/doc/header.md",
+        file=internal_path("header.md"),
         from_type=gfm,
         callouts=false
     }.

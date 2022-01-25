@@ -3,7 +3,7 @@
 -include_lib ("nitrogen_core/include/wf.hrl").
 -compile(export_all).
 
-main() -> #template { file="./templates/grid.html" }.
+main() -> #template { file=common:template_location("grid.html") }.
 
 title() -> "Learn More".
 

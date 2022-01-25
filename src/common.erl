@@ -3,6 +3,15 @@
 -include_lib ("nitrogen_core/include/wf.hrl").
 -compile(export_all).
 
+%template(Filename) ->
+%    #template{file=template_location(Filename)}.
+
+%% This produces a location like:
+%% "priv/templates/Filename.html"
+%% Except "priv" will be relative to the nitrogen_website application
+template_location(Filename) ->
+    filename:join([code:priv_dir(nitrogen_website),templates,Filename]).
+
 platform() ->
     UA = wf:header(user_agent),
     %% Below is a hack for quickstart so it diesn't rely on having the useragent dep.

@@ -4,7 +4,7 @@
 %-compile({parse_transform, nitrogen_precompile}).
 -compile(export_all).
 
-main() -> #template { file="./templates/grid.html" }.
+main() -> #template { file=common:template_location("grid.html")}.
 
 title() -> "Nitrogen Web Framework for Erlang".
 

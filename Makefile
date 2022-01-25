@@ -1,13 +1,7 @@
 REBAR:=./rebar3
 
 ## If rebar.config file doesn't exist, just default to mochiweb backend
-all:
-ifeq ("$(wildcard rebar.config)","")
-	@(echo "No backend specified. Defaulting to cowboy")
-	@($(MAKE) cowboy)
-else
-	@($(MAKE) compile copy-static)
-endif
+all: cowboy
 
 help:
 	@(echo)
@@ -38,7 +32,7 @@ clean:
 	$(REBAR) clean
 
 unlock:
-	$(REBAR) unlock
+	$(REBAR) unlock --all
 
 cowboy:
 	@($(MAKE) platform PLATFORM=cowboy)
@@ -56,11 +50,12 @@ yaws:
 	@($(MAKE) platform PLATFORM=yaws)
 
 platform: unlock
+	@(echo $(PLATFORM) > last_platform)
 	@(echo "Updating app.config...")
 	@(sed 's/{backend, [a-z]*}/{backend, $(PLATFORM)}/' < app.config > app.config.temp)
 	@(mv app.config.temp app.config)
 	$(REBAR) as $(PLATFORM) deps
-	$(REBAR) as $(PLATFORM) copy-static
+	make copy-static
 	$(REBAR) as $(PLATFORM) compile
 
 upgrade: update-deps compile copy-static
@@ -82,7 +77,7 @@ travis: test
 TESTLOG:=testlog.log
 
 run:
-	$(REBAR) as $(PLATFORM) run
+	$(REBAR) as `cat last_platform` run
 
 test:
 	erl -pa ebin ./deps/*/ebin ./deps/*/include \
