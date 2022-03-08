@@ -1,6 +1,6 @@
 REBAR:=./rebar3
 
-## If rebar.config file doesn't exist, just default to mochiweb backend
+## If rebar.config file doesn't exist, just default to cowboy backend
 all: cowboy
 
 help:
@@ -11,7 +11,11 @@ help:
 	@(echo)
 	@(echo "Execute NitrogenProject.com")
 	@(echo)
-	@(echo "   make run")
+	@(echo "   make [run_dev|run_release]"
+	@(echo)
+	@(echo "Upgrade a Running Production Release")
+	@(echo)
+	@(echo "   make upgrade_release"
 	@(echo)
 
 compile:
@@ -52,32 +56,32 @@ yaws:
 platform: unlock
 	@(echo $(PLATFORM) > last_platform)
 	@(echo "Updating app.config...")
-	@(sed 's/{backend, [a-z]*}/{backend, $(PLATFORM)}/' < app.config > app.config.temp)
-	@(mv app.config.temp app.config)
+	@(sed 's/{backend, [a-z]*}/{backend, $(PLATFORM)}/' < etc/app.config > etc/app.config.temp)
+	@(mv etc/app.config.temp etc/app.config)
 	$(REBAR) as $(PLATFORM) deps
 	make copy-static
 	$(REBAR) as $(PLATFORM) compile
 
 upgrade: update-deps compile copy-static
 
-DEPS_PLT=$(CURDIR)/.deps_plt
-DEPS=erts kernel stdlib sasl crypto compiler syntax_tools
 
-$(DEPS_PLT):
-	@echo Building local plt at $(DEPS_PLT)
-	@echo 
-	@(dialyzer --statistics --output_plt $(DEPS_PLT) --build_plt --apps $(DEPS) -r ./deps/)
-
-dialyzer: $(DEPS_PLT)
-	@(dialyzer --statistics --verbose --fullpath --plt $(DEPS_PLT) -Wrace_conditions -r ./ebin)
-
+dialyzer:
+	$(REBAR) dialyzer
 
 travis: test
 
 TESTLOG:=testlog.log
 
-run:
+last_platform: cowboy
+
+release: last_platform
+	$(REBAR) as `cat last_platform` release
+
+run_release: last_platform
 	$(REBAR) as `cat last_platform` run
+
+run_dev: last_platform
+	$(REBAR) as `cat last_platform` shell
 
 test:
 	erl -pa ebin ./deps/*/ebin ./deps/*/include \
