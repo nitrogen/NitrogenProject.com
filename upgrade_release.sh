@@ -6,16 +6,17 @@ APPNAME=nitrogen
 CURRENT_VSN=`cat version.current`
 PREVIOUS_VSN=`cat version.previous`
 TARBALL=$APPNAME-$CURRENT_VSN.tar.gz
+PROFILE=`cat last_platform`
 
 echo "Generating Release, Relup, and Release Tarball"
-./rebar3 do release, appup generate --previous_version $PREVIOUS_VSN, relup -n $APPNAME -u $PREVIOUS_VSN -v $CURRENT_VSN, tar -o ./releases
-mv releases/$APPNAME/$TARBALL _build/default/rel/$APPNAME/releases/
+./rebar3 as `cat last_platform` do release, appup generate --previous_version $PREVIOUS_VSN, relup -n $APPNAME -u $PREVIOUS_VSN -v $CURRENT_VSN, tar -o ./releases
+mv releases/$APPNAME/$TARBALL _build/$PROFILE/rel/$APPNAME/releases/
 
 echo "Cleaning up releases directory (no longer needed)"
 rm -fr releases
 
 echo "Running the Upgrade: $PREVIOUS_VSN => $CURRENT_VSN"
-cd _build/default/rel/$APPNAME
+cd _build/$PROFILE/rel/$APPNAME
 bin/$APPNAME upgrade $CURRENT_VSN
 
 

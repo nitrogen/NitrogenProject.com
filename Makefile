@@ -75,13 +75,26 @@ TESTLOG:=testlog.log
 last_platform: cowboy
 
 release: last_platform
-	$(REBAR) as `cat last_platform` release
+	./make_version_file.escript go && \
+	$(REBAR) as `cat last_platform` release && \
+	make finish_version
 
 run_release: last_platform
 	$(REBAR) as `cat last_platform` run
 
 run_dev: last_platform
 	$(REBAR) as `cat last_platform` shell
+
+upgrade_running:
+	./make_version_file.escript go && \
+	./upgrade_release.sh && \
+	make finish_version
+
+finish_version:
+	./make_version_file.escript finish
+
+revert_version:
+	./make_version_file.escript revert
 
 test:
 	erl -pa ebin ./deps/*/ebin ./deps/*/include \
