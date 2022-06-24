@@ -22,12 +22,14 @@ compile:
 	$(REBAR) compile
 
 link-static:
-	(rm -fr priv/static/nitrogen; ln -s `pwd`/_build/default/lib/nitrogen_core/www priv/static/nitrogen)
-	(rm -fr priv/static/doc; ln -s `pwd`/_build/default/lib/nitrogen_core/doc/markdown priv/static/doc)
+	@(./copy_static.escript link)
+	#(rm -fr priv/static/nitrogen; ln -s `pwd`/_build/default/lib/nitrogen_core/www priv/static/nitrogen)
+	#(rm -fr priv/static/doc; ln -s `pwd`/_build/default/lib/nitrogen_core/doc/markdown priv/static/doc)
 
 copy-static:
-	(rm -rf priv/static/nitrogen; mkdir priv/static/nitrogen; cp -r `pwd`/_build/default/lib/nitrogen_core/www/* priv/static/nitrogen)
-	(rm -rf priv/static/doc; mkdir priv/static/doc; cp -r `pwd`/_build/default/lib/nitrogen_core/doc/markdown/* priv/static/doc)
+	@(./copy_static.escript copy)
+	#(rm -rf priv/static/nitrogen; mkdir priv/static/nitrogen; cp -r `pwd`/_build/default/lib/nitrogen_core/www/* priv/static/nitrogen)
+	#(rm -rf priv/static/doc; mkdir priv/static/doc; cp -r `pwd`/_build/default/lib/nitrogen_core/doc/markdown/* priv/static/doc)
 
 deps:
 	$(REBAR) deps
@@ -59,7 +61,7 @@ platform: unlock
 	@(sed 's/{backend, [a-z]*}/{backend, $(PLATFORM)}/' < etc/app.config > etc/app.config.temp)
 	@(mv etc/app.config.temp etc/app.config)
 	$(REBAR) as $(PLATFORM) deps
-	make copy-static
+	make link-static
 	$(REBAR) as $(PLATFORM) compile
 
 upgrade: update-deps compile copy-static
@@ -83,7 +85,10 @@ run_release: last_platform
 	$(REBAR) as `cat last_platform` run
 
 run_dev: last_platform
-	$(REBAR) as `cat last_platform` shell
+	$(REBAR) as `cat last_platform` shell --name nitrogen@127.0.0.1
+
+run_test: last_platform
+	$(REBAR) as `cat last_platform` shell --name nitrogen@127.0.0.1 --eval "wf_test:start_all(nitrogen_core)."
 
 upgrade_running:
 	./make_version_file.escript go && \
@@ -96,15 +101,18 @@ finish_version:
 revert_version:
 	./make_version_file.escript revert
 
-test:
-	erl -pa ebin ./deps/*/ebin ./deps/*/include \
-	-config "app.config" \
-	-name nitrogen@127.0.0.1 \
-	-env ERL_FULLSWEEP_AFTER 0 \
-	-testlog "$(TESTLOG)" \
-	-eval "inets:start()" \
-	-eval "application:start(nitrogen_website)." \
-	-eval "wf_test:start_all(nitrogen_website)."
+test: run_test
+#test:
+#
+#	make run_dev -name nitrogen@127.0.0.1 EXTRA_ARGS="-eval \"wf_test:start_all(nitrogen_core).\""
+#	erl -pa ebin ./deps/*/ebin ./deps/*/include \
+#	-config "app.config" \
+#	-name nitrogen@127.0.0.1 \
+#	-env ERL_FULLSWEEP_AFTER 0 \
+#	-testlog "$(TESTLOG)" \
+#	-eval "inets:start()" \
+#	-eval "application:start(nitrogen_website)." \
+#	-eval "wf_test:start_all(nitrogen_core)."
 
 TESTLOGDIR:=testlogs/$(shell date +"%Y-%m-%d.%H%M%S")
 

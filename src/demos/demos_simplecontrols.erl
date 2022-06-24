@@ -117,4 +117,5 @@ right() ->
 
 event(postback) ->
     wf:wire(#alert{text=wf:q(textbox)}),
-    wf:wire(#alert{text=wf:qs(multiple)}).
+    ?PRINT(wf:qs(multiple)).
+
