@@ -9,6 +9,18 @@ else
 	@($(MAKE) get-deps compile copy-static)
 endif
 
+rebar:
+	@(echo "Building rebar2 for your platform...")
+	@(mkdir -p tmp)
+	@(cd tmp && \
+	git clone https://github.com/choptastic/rebar && \
+	cd rebar && \
+	./bootstrap)
+	@(echo "Moving rebar executable into thge NitrogenProject directory")
+	@(mv tmp/rebar/rebar .)
+	@(echo "Cleaning up rebar remnants")
+	@(rm -fr tmp)
+
 help:
 	@(echo)
 	@(echo "Build NitrogenProject.com with a custom backend")
@@ -20,13 +32,13 @@ help:
 	@(echo "   make run")
 	@(echo)
 
-get-deps:
+get-deps: rebar
 	$(REBAR) get-deps
 
-update-deps:
+update-deps: rebar
 	$(REBAR) update-deps
 
-compile:
+compile: rebar
 	$(REBAR) compile
 
 link-static:
@@ -60,7 +72,7 @@ webmachine:
 yaws:
 	@($(MAKE) platform PLATFORM=yaws)
 
-platform:
+platform: rebar
 	@(echo "Fetching initial dependencies...")
 	($(REBAR) --config rebar.base.config get-deps)
 	@(deps/simple_bridge/rebar_deps/merge_deps.escript rebar.base.config deps/simple_bridge/rebar_deps/$(PLATFORM).deps rebar.config)
