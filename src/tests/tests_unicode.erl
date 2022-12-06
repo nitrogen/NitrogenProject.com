@@ -36,6 +36,8 @@ tests() ->
 	?wf_test_js(test_raw, test_raw()),
 	?wf_test_auto(add_unicode_textbox, add_unicode_textbox()),
 	?wf_test_auto(set_unicode_textbox_raw, set_unicode_textbox_raw()),
+	?wf_test_auto(add_unicode_dropdown, add_unicode_dropdown()),
+	?wf_test_auto(set_unicode_dropdown_raw, set_unicode_dropdown_raw()),
 	ok.
 
 title_test() ->
@@ -76,9 +78,27 @@ add_unicode_textbox() ->
 		fun() -> wf:q(unicode)==Str end
 	}.
 
+
 set_unicode_textbox_raw() ->
 	Str = which_string(2),
 	{
 		fun() -> wf:set(unicode, Str) end,
 		fun() -> wf:q(unicode)==Str end
 	}.
+
+add_unicode_dropdown() ->
+    Str1 = which_string(1),
+    Str2 = which_string(2),
+    Options = [{Str1, Str1}, {Str2, Str2}],
+    {
+        fun() -> wf:replace(unicode, #dropdown{id=unicode2, selected=Str1, options=Options}) end,
+        fun() -> wf:q(unicode2)==Str1 end
+    }.
+
+set_unicode_dropdown_raw() ->
+	Str = which_string(2),
+	{
+		fun() -> wf:set(unicode2, Str) end,
+		fun() -> wf:q(unicode2)==Str end
+	}.
+
