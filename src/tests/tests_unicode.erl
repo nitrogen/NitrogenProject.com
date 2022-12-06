@@ -91,7 +91,7 @@ add_unicode_dropdown() ->
     Str2 = which_string(2),
     Options = [{Str1, Str1}, {Str2, Str2}],
     {
-        fun() -> wf:replace(unicode, #dropdown{id=unicode2, selected=Str1, options=Options}) end,
+        fun() -> wf:replace(unicode, #dropdown{id=unicode2, value=Str1, options=Options}) end,
         fun() -> wf:q(unicode2)==Str1 end
     }.
 

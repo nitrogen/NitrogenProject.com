@@ -156,6 +156,7 @@ test_webmachine:
 	$(MAKE) webmachine test TESTLOG="$(TESTLOGDIR)/webmachine.log"
 
 test_yaws:
+	rm -fr deps/yaws
 	$(MAKE) yaws test TESTLOG="$(TESTLOGDIR)/yaws.log"
 
 test_all:
