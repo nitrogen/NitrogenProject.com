@@ -36,6 +36,7 @@ middle() ->
             #image{image="/images/MiniSpaceman.png"},
             " with an image in it"
         ]},
+        #p{body = ["Some very ", #i{body = "important"}, " text"]},
         #p{},
         #hr{},
 
