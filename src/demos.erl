@@ -100,6 +100,7 @@ right() ->
         #link { text="Progress Bars", url="/demos/progress_bar" },#br{},
         #link { text="Synchronized Panels (using comet)", url="/demos/sync_panel" },#br{},
         #link { text="Mermaid Async Updates", url="/demos/mermaid3" },#br{},
+        #link { text="Custom Websocket Functionality", url="/demos/websocket"},#br{},
 
         #h2 { text="Mobile Integration" },
         #p{},

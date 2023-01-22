@@ -13,4 +13,4 @@ ws_init() ->
 
 run() ->
 	handlers(),
-    nitrogen:run().
+    wf_core:run().
