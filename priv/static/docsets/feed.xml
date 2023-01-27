@@ -1,0 +1,13 @@
+<entry>
+	<name>Nitrogen</name>
+	<version>3.0.0</version>
+	<!--
+	<url>https://kapeli.com/feeds/zzz/user_contributed/build/Nitrogen/Nitrogen.tgz</url>
+	<url>https://sanfrancisco.kapeli.com/feeds/zzz/user_contributed/build/Nitrogen/Nitrogen.tgz</url>
+	<url>https://newyork.kapeli.com/feeds/zzz/user_contributed/build/Nitrogen/Nitrogen.tgz</url>
+	<url>https://london.kapeli.com/feeds/zzz/user_contributed/build/Nitrogen/Nitrogen.tgz</url>
+	<url>https://frankfurt.kapeli.com/feeds/zzz/user_contributed/build/Nitrogen/Nitrogen.tgz</url>
+	<other-versions> </other-versions>
+	-->
+	<url>https://nitrogenproject.com/docsets/Nitrogen.tgz</url>
+</entry>

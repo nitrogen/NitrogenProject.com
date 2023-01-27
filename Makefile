@@ -31,6 +31,14 @@ copy-static:
 	#(rm -rf priv/static/nitrogen; mkdir priv/static/nitrogen; cp -r `pwd`/_build/default/lib/nitrogen_core/www/* priv/static/nitrogen)
 	#(rm -rf priv/static/doc; mkdir priv/static/doc; cp -r `pwd`/_build/default/lib/nitrogen_core/doc/markdown/* priv/static/doc)
 
+dash-docs: _checkouts/nitrogen_core
+	cd _checkouts/nitrogen_core; make dash-docs
+	mv _checkouts/nitrogen_core/Nitrogen.tgz priv/static/docsets
+
+_checkouts/nitrogen_core:
+	mkdir -p _checkouts
+	cd _checkouts; git clone http://github.com/nitrogen/nitrogen_core -b rebar3
+
 deps:
 	$(REBAR) deps
 
