@@ -44,6 +44,7 @@ middle() ->
         #h2 { text="Controls and Validation" },
         #p{},
         #link { text="Simple Controls", url="/demos/simplecontrols" }, #br{}, 
+        #link { text="Limiting Postbacks with Vessels", url="/demos/vessel"}, #br{},
         #link { text="In-Place Textbox", url="/demos/advancedcontrols1" }, #br{}, 
         #link { text="Google Charts", url="/demos/advancedcontrols2" }, #br{}, 
         #link { text="Mermaid Flowchars and Diagrams", url="/demos/mermaid1" },#br{},
