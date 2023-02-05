@@ -90,6 +90,9 @@ middle() ->
         #checkbox { id=checkbox, value="check3", text="Checkbox 3", checked=true },
 
         #p{},
+        #range{id=range, value=50, min=1, max=100},
+
+        #p{},
         #button { id=button, text="Button", postback=postback },
         #button { id=disabled_button, text="Disabled Button", disabled=true }
     ].
