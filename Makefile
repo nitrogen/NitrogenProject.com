@@ -22,14 +22,12 @@ compile:
 	$(REBAR) compile
 
 link-static:
-	@(./copy_static.escript link)
-	#(rm -fr priv/static/nitrogen; ln -s `pwd`/_build/default/lib/nitrogen_core/www priv/static/nitrogen)
-	#(rm -fr priv/static/doc; ln -s `pwd`/_build/default/lib/nitrogen_core/doc/markdown priv/static/doc)
+	@(./copy_static.escript link static)
+	@(./copy_static.escript copy doc)
 
 copy-static:
-	@(./copy_static.escript copy)
-	#(rm -rf priv/static/nitrogen; mkdir priv/static/nitrogen; cp -r `pwd`/_build/default/lib/nitrogen_core/www/* priv/static/nitrogen)
-	#(rm -rf priv/static/doc; mkdir priv/static/doc; cp -r `pwd`/_build/default/lib/nitrogen_core/doc/markdown/* priv/static/doc)
+	@(./copy_static.escript copy static)
+	@(./copy_static.escript copy doc)
 
 dash-docs: _checkouts/nitrogen_core
 	cd _checkouts/nitrogen_core; make dash-docs
@@ -82,6 +80,9 @@ travis: test
 
 TESTLOG:=testlog.log
 
+## remember, this is a Makefile.  IF the last_platform file exists, this won't be run.
+## This rule is only here to ensure that if there is no last_platform file, that the system
+## will default to cowboy.
 last_platform: cowboy
 
 release: last_platform

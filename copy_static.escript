@@ -12,18 +12,46 @@
 %% priv/static/nitrogen directory based on where it finds the nitrogen_core
 %% directory (checkouts or lib)
 
+prefix(checkouts) ->
+    "_checkouts/nitrogen_core";
+prefix(build_checkouts) ->
+    "_build/default/checkouts/nitrogen_core";
+prefix(build_lib) ->
+    "_build/default/lib/nitrogen_core".
+
+possible_locations("static") ->
+    [
+        prefix(checkouts) ++ "/www", %% old loc, but let's check
+        prefix(checkouts) ++ "/priv/www",
+        prefix(build_checkouts) ++ "/priv/www",
+        prefix(build_lib) ++ "/priv/www"
+    ];
+possible_locations("doc") ->
+    Doc = "/doc/markdown",
+    [
+        prefix(checkouts) ++ Doc,
+        prefix(build_checkouts) ++ Doc,
+        prefix(build_lib) ++ Doc
+    ].
+
+dest("static") ->
+    "priv/static/nitrogen";
+dest("doc") ->
+    "priv/static/doc".
+
 main([]) ->
-    main(["copy"]);
-main([Action]) when Action=="copy"; Action=="link" ->
-    PossibleLocations = [
-        "_checkouts/nitrogen_core/www", %% old loc, but let's check
-        "_checkouts/nitrogen_core/priv/www",
-        "_build/default/checkouts/nitrogen_core/priv/www",
-        "_build/default/lib/nitrogen_core/priv/www"
-    ],
+    main(["copy", "static"]);
+main([Action]) ->
+    main([Action, "static"]);
+main([Action, Item])
+        when (Action=="copy" orelse Action=="link") andalso 
+             (Item=="static" orelse Item=="doc") ->
+    PossibleLocations = possible_locations(Item),
     Src = find_first_loc(PossibleLocations),
-    Dest = "priv/static/nitrogen",
-    
+    Dest = dest(Item),
+    do_action(Action, Src, Dest).
+
+do_action(Action, Src, Dest) ->
     cmd("rm -fr " ++ Dest),
     case Action of
         "copy" ->
