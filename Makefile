@@ -94,7 +94,7 @@ run_release: last_platform
 	$(REBAR) as `cat last_platform` run
 
 run_dev: last_platform
-	$(REBAR) as `cat last_platform` shell --name nitrogen@127.0.0.1
+	$(REBAR) as `cat last_platform` shell --name nitrogen@127.0.0.1 --eval "sync:go()."
 
 run_test: last_platform
 	$(REBAR) as `cat last_platform` shell --name nitrogen@127.0.0.1 --eval "wf_test:start_all(nitrogen_core)."
