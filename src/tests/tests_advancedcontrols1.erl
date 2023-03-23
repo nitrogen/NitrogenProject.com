@@ -14,10 +14,10 @@ tests() ->
 %% A side effect here with the postback request is that the postback's
 %% page_module is calculated as tests_advancedcontrols1 (due to the path and
 %% the page_module not being transferred with the postback context.
-inplace_textbox_event(_, Val) ->
+inplace_textbox_event(_Tag, Val) ->
 	Val.
 
-inplace_textarea_event(_, Val) ->
+inplace_textarea_event(_Tag, Val) ->
 	Val.
 
 %% This initial setup just performs a handful of changes, but with the current
@@ -57,6 +57,6 @@ inplace_check2() ->
 inplace_check3() ->
 	{
 		undefined,
-		"return $('.wfid_textarea > .view > .inplace_textarea').text()",
+		"return $('.wfid_textarea > .view > .label').text()",
 		fun([Val]) -> Val == "Other Value" end
 	}.
