@@ -10,7 +10,6 @@ layout() ->
 	#panel{id=wrapper}.
 
 event(slow_postback) ->
-    ?PRINT(received_hit),
     wf:send(slow_postback_tracker, hit),
     timer:sleep(12000),
     wf:send(slow_postback_tracker, finished),
