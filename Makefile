@@ -75,7 +75,7 @@ yaws:
 platform: rebar
 	@(echo "Fetching initial dependencies...")
 	($(REBAR) --config rebar.base.config get-deps)
-	@(deps/simple_bridge/rebar_deps/merge_deps.escript rebar.base.config deps/simple_bridge/rebar_deps/$(PLATFORM).deps rebar.config)
+	@(rebar_deps/merge_deps.escript rebar.base.config rebar_deps/$(PLATFORM).deps rebar.config)
 	@(echo "Updating app.config...")
 	@(sed 's/{backend, [a-z]*}/{backend, $(PLATFORM)}/' < app.config > app.config.temp)
 	@(mv app.config.temp app.config)
