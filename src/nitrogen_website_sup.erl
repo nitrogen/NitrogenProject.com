@@ -22,10 +22,18 @@ start_link() ->
 
 init([]) ->
     %% Start the Process Registry...
-	application:start(crypto),
+    application:ensure_all_started(nitrogen_core),
+    application:start(crypto),
     application:ensure_all_started(nitro_cache),
     application:start(nprocreg),
-	application:start(simple_bridge),
+    application:start(simple_bridge),
+
+    case erlang:function_exported(nitrogen, global_handler, 2) of
+        true ->
+            nitrogen:global_handler(debug_crash_handler, []);
+        false ->
+            ok
+    end,
 
     {ok, { {one_for_one, 5, 10}, []} }.
 
