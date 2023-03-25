@@ -28,6 +28,8 @@ init([]) ->
     application:start(nprocreg),
     application:start(simple_bridge),
 
+    %% This is only used for an experimental feature. Keeping for now, since
+    %% it's safe if the feature doesn't exist.
     case erlang:function_exported(nitrogen, global_handler, 2) of
         true ->
             nitrogen:global_handler(debug_crash_handler, []);
