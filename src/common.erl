@@ -89,3 +89,10 @@ view_profile(Filename) ->
 nitrogen_modules() ->
     {ok, Mods} = application:get_key(nitrogen_core, modules),
     Mods.
+
+print_stats() ->
+    Pid = self(),
+    {_, Reductions} = erlang:process_info(Pid, reductions),
+    {_, Heap} = erlang:process_info(Pid, heap_size),
+    {_, TotalMem} = erlang:process_info(Pid, memory),
+    io:format("~p, ~p, ~p, ~p~n", [Pid, Reductions, Heap, TotalMem]).
