@@ -5,7 +5,8 @@
     ]).
 
 handlers() ->
-    %nitrogen:handler(debug_crash_handler, []).
+    %nitrogen:handler(debug_crash_handler, []),
+    ok.
 
 ws_init() ->
     handlers(). 
