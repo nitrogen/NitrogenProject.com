@@ -58,6 +58,7 @@ middle() ->
         #link { text="Wizard", url="/demos/wizard" },#br{},
         #link { text="RESTful Forms", url="/demos/restful" }, #br{},
         #link { text="HTML and Custom Encoding", url="/demos/htmlencode"},#br{},
+        #link { text="Rest API handler", url="/demos/rest"}, #br{},
 %        #link { text="Recaptcha", url="/demos/recaptcha"},#br{},
 
         #h2 { text="Drag, Drop & Sort" },
