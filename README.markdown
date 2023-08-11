@@ -15,8 +15,7 @@ To get started, simply run:
     git clone https://github.com/nitrogen/NitrogenProject.com.git
 
     cd NitrogenProject.com
-    make
-    make run
+    make run_dev
 
     open http://localhost:8000
 ```
