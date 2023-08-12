@@ -59,7 +59,6 @@ middle() ->
         #link { text="Wizard", url="/demos/wizard" },#br{},
         #link { text="RESTful Forms", url="/demos/restful" }, #br{},
         #link { text="HTML and Custom Encoding", url="/demos/htmlencode"},#br{},
-        #link { text="Rest API handler", url="/demos/rest"}, #br{},
 %        #link { text="Recaptcha", url="/demos/recaptcha"},#br{},
 
         #h2 { text="Drag, Drop & Sort" },
@@ -115,6 +114,7 @@ right() ->
         #h2 { text="Advanced Topics" },
         #p{},
         #link { text="Set Content Type and Response Headers", url="/demos/contenttype" }, #br{},
+        #link { text="Rest API Handler", url="/demos/rest"}, #br{},
         #link { text="Smart Extensions (JSON, CSV, etc)", url="/demos/smart_extensions" }, #br{},
         #link { text="Request HTTP Headers", url="/demos/headers" }, #br{},
         #link { text="Security (User management)", url="/demos/security" }, #br{},
