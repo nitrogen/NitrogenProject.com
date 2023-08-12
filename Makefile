@@ -18,7 +18,9 @@ help:
 	@(echo "   make upgrade_release"
 	@(echo)
 
-compile:
+
+
+compile: rebar3
 	$(REBAR) compile
 
 link-static:
@@ -61,7 +63,7 @@ webmachine:
 yaws:
 	@($(MAKE) platform PLATFORM=yaws)
 
-platform: unlock
+platform: rebar3 unlock
 	@(echo $(PLATFORM) > last_platform)
 	@(echo "Updating app.config...")
 	@(sed 's/{backend, [a-z]*}/{backend, $(PLATFORM)}/' < etc/app.config > etc/app.config.temp)
@@ -70,10 +72,8 @@ platform: unlock
 	make link-static
 	$(REBAR) as $(PLATFORM) compile
 
-upgrade: update-deps compile copy-static
 
-
-dialyzer:
+dialyzer: rebar3
 	$(REBAR) dialyzer
 
 travis: test
@@ -144,3 +144,14 @@ test_all:
 	$(MAKE) test_cowboy test_inets test_mochiweb test_webmachine test_yaws TESTLOGDIR=$(TESTLOGDIR)
 	@(grep SUMMARY $(TESTLOGDIR)/*.log)
 	@(echo "All tests summarized in $(TESTLOGDIR)")
+
+rebar3:
+	echo "Fetching and compiling updated rebar3 (this will not replace your system-wide rebar3, if you have one)"
+	@(cd /tmp && \
+	git clone https://github.com/erlang/rebar3 && \
+	cd rebar3 && \
+	./bootstrap)
+	echo "Installing rebar3 into Nitrogen directory"
+	@(mv /tmp/rebar3/rebar3 .)
+	echo "Cleaning up..."
+	@(rm -fr /tmp/rebar3)
