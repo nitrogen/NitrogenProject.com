@@ -1,7 +1,14 @@
-REBAR:=./rebar3
-
 ## If rebar.config file doesn't exist, just default to cowboy backend
 all: cowboy
+
+# Check if rebar3.mk exists, and if not, download it
+ifeq ("$(wildcard rebar3.mk)","")
+$(shell curl -O https://raw.githubusercontent.com/choptastic/rebar3.mk/master/rebar3.mk)
+endif
+
+# rebar3.mk adds a new rebar3 rule to your Makefile
+# (see https://github.com/choptastic/rebar3.mk) for full info
+include rebar3.mk
 
 help:
 	@(echo)
@@ -144,14 +151,3 @@ test_all:
 	$(MAKE) test_cowboy test_inets test_mochiweb test_webmachine test_yaws TESTLOGDIR=$(TESTLOGDIR)
 	@(grep SUMMARY $(TESTLOGDIR)/*.log)
 	@(echo "All tests summarized in $(TESTLOGDIR)")
-
-rebar3:
-	echo "Fetching and compiling updated rebar3 (this will not replace your system-wide rebar3, if you have one)"
-	@(cd /tmp && \
-	git clone https://github.com/erlang/rebar3 && \
-	cd rebar3 && \
-	./bootstrap)
-	echo "Installing rebar3 into Nitrogen directory"
-	@(mv /tmp/rebar3/rebar3 .)
-	echo "Cleaning up..."
-	@(rm -fr /tmp/rebar3)
