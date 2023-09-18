@@ -30,7 +30,7 @@ left() ->
         The arguments are an Erlang term that maps to the arguments
         you specified in Javascript. These are true Erlang arguments,
         and can be used for pattern matching. Nitrogen uses <a
-        href='http://github.com/rklophaus/BERT-JS'>BERT-JS</a> to
+        href='http://github.com/rustyio/BERT-JS'>BERT-JS</a> to
         encode Javascript terms into an Erlang binary.
 
         <p>
