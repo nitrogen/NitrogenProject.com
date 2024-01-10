@@ -25,5 +25,5 @@ profile_file() ->
     "nitrogen_profile-" ++ DateTime ++ ".csv".
 
 home_dir() ->
-    {ok, [[Home]] = init:get_argument(home),
-     Home.
+    {ok, [[Home]]} = init:get_argument(home),
+    Home.
