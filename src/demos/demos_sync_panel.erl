@@ -5,7 +5,7 @@
 
 -define(TEXTFILE, "./scratch/comet_demo_text").
 
-main() -> #template { file="./templates/demos46.html" }.
+main() -> #template { file=common:template_location("demos46.html") }.
     
 title() -> "Synchronized Elements".
 

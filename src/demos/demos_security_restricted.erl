@@ -8,7 +8,7 @@ main() ->
         false -> wf:redirect_to_login("/demos/security/login")
     end.
 
-main_authorized() -> #template { file="./templates/demos46.html" }.
+main_authorized() -> #template { file=common:template_location("demos46.html") }.
 
 title() -> "Security - Restricted Page".
 

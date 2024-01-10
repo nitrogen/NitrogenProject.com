@@ -1,7 +1,9 @@
+%% vim: ft=erlang ts=4 sw=4 et sts=4
 {application, nitrogen_website, [
     {description,  "NitrogenProject.com Website"},
-    {vsn,          "2.3.1"},
+    {vsn,          {git, vsn}},
     {applications, [kernel, stdlib]},
     {registered, []},
+    {loaded_applications, [nitrogen_core]},
     {mod, {nitrogen_website_app, []}}
 ]}.

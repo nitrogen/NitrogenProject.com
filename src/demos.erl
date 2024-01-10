@@ -3,7 +3,7 @@
 -include_lib ("nitrogen_core/include/wf.hrl").
 -compile(export_all).
 
-main() -> #template { file="./templates/grid.html" }.
+main() -> #template { file=common:template_location("grid.html") }.
 
 title() -> "Demos".
 
@@ -44,6 +44,7 @@ middle() ->
         #h2 { text="Controls and Validation" },
         #p{},
         #link { text="Simple Controls", url="/demos/simplecontrols" }, #br{}, 
+        #link { text="Limiting Postbacks with Vessels", url="/demos/vessel"}, #br{},
         #link { text="In-Place Textbox", url="/demos/advancedcontrols1" }, #br{}, 
         #link { text="Google Charts", url="/demos/advancedcontrols2" }, #br{}, 
         #link { text="Mermaid Flowchars and Diagrams", url="/demos/mermaid1" },#br{},
@@ -100,6 +101,7 @@ right() ->
         #link { text="Progress Bars", url="/demos/progress_bar" },#br{},
         #link { text="Synchronized Panels (using comet)", url="/demos/sync_panel" },#br{},
         #link { text="Mermaid Async Updates", url="/demos/mermaid3" },#br{},
+        #link { text="Custom Websocket Functionality", url="/demos/websocket"},#br{},
 
         #h2 { text="Mobile Integration" },
         #p{},
@@ -112,6 +114,7 @@ right() ->
         #h2 { text="Advanced Topics" },
         #p{},
         #link { text="Set Content Type and Response Headers", url="/demos/contenttype" }, #br{},
+        #link { text="Rest API Handler", url="/demos/rest"}, #br{},
         #link { text="Smart Extensions (JSON, CSV, etc)", url="/demos/smart_extensions" }, #br{},
         #link { text="Request HTTP Headers", url="/demos/headers" }, #br{},
         #link { text="Security (User management)", url="/demos/security" }, #br{},

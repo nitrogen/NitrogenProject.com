@@ -3,13 +3,14 @@
 -include_lib("nitrogen_core/include/wf.hrl").
 -compile(export_all).
 
-main() -> #template { file="./templates/demosmobile.html" }.
+main() -> #template { file=common:template_location("demosmobile.html") }.
 
 title() -> "Dynamically Adding Mobile Controls".
 
 headline() -> title().
 
-body() -> 
+body() ->
+    Tempbuttonid = wf:temp_id(),
     [
         "
         <p>
@@ -20,6 +21,7 @@ body() ->
         #button{text="Add a Toggle", postback={add,toggle}},
         #button{text="Add a Range", postback={add, range}},
         #button{text="Add a Textbox", postback={add, textbox}},
+        #button{id=Tempbuttonid, text="Replace this Button with another", postback={replace, Tempbuttonid}},
 
         #panel{id=new_elements,body=[
             "New elements will go below:",
@@ -45,6 +47,13 @@ toggle() ->
 range() ->
     #range{min=10,max=100,step=10,value=50}.
 
+event({replace, Tempbuttonid}) ->
+    Newbuttonid = wf:temp_id(),
+    Label = "New Button ID = " ++ Newbuttonid,
+    Button = #button{id=Newbuttonid, text=Label, postback={replace, Tempbuttonid}},
+    wf:defer("$('#pagediv').trigger('create'); Nitrogen.$fix_jquery_mobile_ids()"),
+    wf:replace(Tempbuttonid, Button);
+    
 event({add, Type}) ->
     NewElement = case Type of
         textbox -> textbox();

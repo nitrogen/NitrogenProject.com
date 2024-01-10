@@ -110,7 +110,8 @@ badnumber_unicode_test() ->
             wf:eager(#clear_validation{}),
             wf:eager(continueButton, numberTextBox, #validate{validators=[
                 %#is_integer{text="something"}
-                #is_integer{text="値は数値でなければなりません"}
+                #is_integer { text="debe ingresar número" }
+                %#is_integer{text="値は数値でなければなりません"}
             ]}),
             Fun = ?set([
                 {nameTextBox, "rusty lastname"},

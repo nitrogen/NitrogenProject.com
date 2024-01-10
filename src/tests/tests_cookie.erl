@@ -9,7 +9,7 @@ main() ->
 		"3" -> step3_main();
         "4" -> step4_main()
 	end,
-	#template{file="templates/grid.html"}.
+	#template{file="priv/templates/grid.html"}.
 
 step1_main() ->
 	InitialCookieVal = wf_utils:guid(),

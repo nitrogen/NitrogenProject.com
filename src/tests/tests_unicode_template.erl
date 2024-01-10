@@ -4,7 +4,7 @@
 
 main() ->
 	wf_test:start(fun tests/0),
-	#template{file="templates/unicode-test.html"}.
+	#template{file="priv/templates/unicode-test.html"}.
 
 tests() ->
 	?wf_test_js(unicode_template_text, unicode_template("text")),

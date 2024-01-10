@@ -5,7 +5,7 @@
 
 main() ->
     wf_test:start(fun tests/0),
-    #template{file="templates/grid.html"}.
+    #template{file="priv/templates/grid.html"}.
 
 layout() ->
     [

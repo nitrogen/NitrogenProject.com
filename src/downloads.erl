@@ -41,7 +41,7 @@
         {"raspberrypi", "Raspberry Pi", ?UNIX_SERVERS, "22.1", "64bit"}
     ]).
 
-main() -> #template { file="./templates/grid.html" }.
+main() -> #template { file=common:template_location("grid.html")}.
 
 title() -> "Downloads".
 

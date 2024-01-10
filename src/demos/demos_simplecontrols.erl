@@ -3,7 +3,7 @@
 -include_lib ("nitrogen_core/include/wf.hrl").
 -compile(export_all).
 
-main() -> #template { file="./templates/demos433.html" }.
+main() -> #template { file=common:template_location("demos433.html") }.
 
 title() -> "Simple Controls".
 
@@ -91,6 +91,9 @@ middle() ->
         #checkbox { id=checkbox, value="check3", text="Checkbox 3", checked=true },
 
         #p{},
+        #range{id=range, value=50, min=1, max=100},
+
+        #p{},
         #button { id=button, text="Button", postback=postback },
         #button { id=disabled_button, text="Disabled Button", disabled=true }
     ].
@@ -118,4 +121,5 @@ right() ->
 
 event(postback) ->
     wf:wire(#alert{text=wf:q(textbox)}),
-    wf:wire(#alert{text=wf:qs(multiple)}).
+    ?PRINT(wf:qs(multiple)).
+

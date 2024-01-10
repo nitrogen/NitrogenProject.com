@@ -4,7 +4,7 @@
 
 -record(mydata, {title, author, description, postback}).
 
-main() -> #template { file="./templates/demos433.html" }.
+main() -> #template { file=common:template_location("demos433.html") }.
 
 title() -> "Record-Based Binding".
 

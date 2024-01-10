@@ -3,7 +3,7 @@
 -compile(export_all).
 -define (STYLE, "border: solid 1px #cde; margin: 7px; float: left; width: 100px; line-height: 40px; text-align: center; height: 40px;").
 
-main() -> #template { file="./templates/demos46.html" }.
+main() -> #template { file=common:template_location("demos46.html") }.
 
 title() -> "JQuery Paths".
 

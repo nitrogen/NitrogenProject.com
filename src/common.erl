@@ -1,7 +1,16 @@
 % vim: ts=4 sw=4 et
 -module(common).
--include_lib ("nitrogen_core/include/wf.hrl").
+-include_lib("nitrogen_core/include/wf.hrl").
 -compile(export_all).
+
+%template(Filename) ->
+%    #template{file=template_location(Filename)}.
+
+%% This produces a location like:
+%% "priv/templates/Filename.html"
+%% Except "priv" will be relative to the nitrogen_website application
+template_location(Filename) ->
+    filename:join([code:priv_dir(nitrogen_website),templates,Filename]).
 
 platform() ->
     UA = wf:header(user_agent),
@@ -60,3 +69,30 @@ github_fork() ->
 %        url="https://github.com/nitrogen",
 %        body=Body
 %    }.
+
+
+start_profiling(Secs) when is_integer(Secs) ->
+    Filename = "nitrogen_trace_" ++ qdate:to_string("Y-m-d-H-i-s"),
+    eep:start_file_tracing(Filename, [], nitrogen_modules()),
+    timer:sleep(Secs*1000),
+    eep:stop_tracing(),
+    eep:convert_tracing(Filename),
+    io:format("When the file is finished being processed, open with:\n\n   common:view_profile(\"" ++ Filename ++ "\").\n\n\n").
+
+view_profile(Filename) ->
+    spawn(fun() ->
+        os:cmd("grep -v \"^ob=\" callgrind.out." ++ Filename ++ " > callgrind.out.merged_" ++ Filename),
+        os:cmd("rm callgrind.out." ++ Filename),
+        os:cmd("kcachegrind callgrind.out.merged_" ++ Filename)
+    end).
+
+nitrogen_modules() ->
+    {ok, Mods} = application:get_key(nitrogen_core, modules),
+    Mods.
+
+print_stats() ->
+    Pid = self(),
+    {_, Reductions} = erlang:process_info(Pid, reductions),
+    {_, Heap} = erlang:process_info(Pid, heap_size),
+    {_, TotalMem} = erlang:process_info(Pid, memory),
+    io:format("~p, ~p, ~p, ~p~n", [Pid, Reductions, Heap, TotalMem]).
