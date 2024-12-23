@@ -14,15 +14,15 @@ help:
 	@(echo)
 	@(echo "Build NitrogenProject.com with a custom backend")
 	@(echo)
-	@(echo "   make [cowboy|inets|mochiweb|webmachine|yaws]")
+	@(echo "   $(MAKE) [cowboy|inets|mochiweb|webmachine|yaws]")
 	@(echo)
 	@(echo "Execute NitrogenProject.com")
 	@(echo)
-	@(echo "   make [run_dev|run_release]"
+	@(echo "   $(MAKE) [run_dev|run_release]")
 	@(echo)
 	@(echo "Upgrade a Running Production Release")
 	@(echo)
-	@(echo "   make upgrade_release"
+	@(echo "   $(MAKE) upgrade_release")
 	@(echo)
 
 compile: rebar3
@@ -37,7 +37,7 @@ copy-static:
 	@(./copy_static.escript copy doc)
 
 dash-docs: _checkouts/nitrogen_core
-	cd _checkouts/nitrogen_core; make dash-docs
+	cd _checkouts/nitrogen_core; $(MAKE) dash-docs
 	mv _checkouts/nitrogen_core/Nitrogen.tgz priv/static/docsets
 
 _checkouts/nitrogen_core:
@@ -70,11 +70,11 @@ yaws:
 
 platform: rebar3 unlock
 	@(echo $(PLATFORM) > last_platform)
-	@(echo "Updating app.config...")
-	@(sed 's/{backend, [a-z]*}/{backend, $(PLATFORM)}/' < etc/app.config > etc/app.config.temp)
-	@(mv etc/app.config.temp etc/app.config)
+	@(echo "Updating simple_bridge.config...")
+	@(sed 's/{backend, [a-z]*}/{backend, $(PLATFORM)}/' < etc/simple_bridge.config > etc/simple_bridge.config.temp)
+	@(mv etc/simple_bridge.config.temp etc/simple_bridge.config)
 	$(REBAR) as $(PLATFORM) deps
-	make link-static
+	$(MAKE) link-static
 	$(REBAR) as $(PLATFORM) compile
 
 
@@ -88,12 +88,13 @@ TESTLOG:=testlog.log
 ## remember, this is a Makefile.  IF the last_platform file exists, this won't be run.
 ## This rule is only here to ensure that if there is no last_platform file, that the system
 ## will default to cowboy.
-last_platform: cowboy
+last_platform:
+	$(MAKE) cowboy
 
 release: last_platform
 	./make_version_file.escript go && \
 	$(REBAR) as `cat last_platform` release && \
-	make finish_version
+	$(MAKE) finish_version
 
 run_release: last_platform
 	$(REBAR) as `cat last_platform` run
@@ -107,7 +108,7 @@ run_test: last_platform
 upgrade_running:
 	./make_version_file.escript go && \
 	./upgrade_release.sh && \
-	make finish_version
+	$(MAKE) finish_version
 
 finish_version:
 	./make_version_file.escript finish

@@ -41,7 +41,7 @@ right() -> [
     #h2 { text="Bar Chart" },
     #google_chart {
 		id=bar_chart,
-        title="Bar Chart",	type=grouped_vertical_bar, width=400, height=200,	bar_space=0, bar_group_space=10,
+        title="Bar Chart", type=grouped_vertical_bar, width=400, height=200,
         axes=[
             #chart_axis { position=left, labels=["Good", "Better", "Best"] }
         ],
@@ -61,13 +61,13 @@ right() -> [
 		id=pie_chart,
         title="3D Pie Chart",
         type=pie3d,
-        width=400, height=200,
+        width=400, height=300,
 
         axes=[
             #chart_axis { position=bottom, labels=["First", "Second", "Third", "Fourth"] }
         ],
         data=[
-            #chart_data { legend="Data 1", 
+            #chart_data { legend="Data 1",
                 values=[10, 20, 30, 20] 
             }
         ]

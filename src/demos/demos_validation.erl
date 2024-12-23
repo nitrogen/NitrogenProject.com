@@ -91,7 +91,7 @@ right() ->
     ]}),
     
     wf:wire(continueButton, numberTextBox, #validate { attach_to=continueButton, validators=[
-        #is_required { text="A Number is Required (note this is attached to the button instead)"},
+        #is_required { text="A number is required (note this is attached to the button instead)"},
         #is_integer { text="This must be a number between 1 and 10", min=1, max=10}
     ]}),
 

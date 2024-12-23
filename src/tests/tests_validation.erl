@@ -25,7 +25,7 @@ tests() ->
 
 
 -define(click, wf:wire(continueButton, #click{})).
--define(count, "return $('.LV_validation_message').length;").
+-define(count, "return $('.' + Nitrogen.$validation_message_class).length;").
 -define(set(FV), fun() -> set(FV), ?click end).
 -define(opts, [{delay, 300}]).
 
@@ -237,7 +237,7 @@ unicode_validator_test() ->
 
 
 set(FieldValues) ->	
-	wf:wire("$('.LV_validation_message').remove();"),
+	wf:wire("$('.' + Nitrogen.$validation_message_class).remove();"),
 	[wf:set(F, V) || {F,V} <- FieldValues].
 
 reset_values() ->
