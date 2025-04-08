@@ -20,8 +20,9 @@ left() ->
     contained in the named vessel.
     <p>
     If the <code>vessel</code> attribute is an atom, then it will be treated as
-    an element ID.  If the attribute is anything else (string, binary, iolist),
-    then it will be treated as a CSS/jQuery selector.    
+    an element ID. If the attribute is anything else (string, binary, iolist),
+    then it will be treated as a CSS/jQuery selector.  If it's a list, then
+    it'll be treated as a list of elements or CSS selectors.
     ">>, 
     linecount:render() 
 ].
