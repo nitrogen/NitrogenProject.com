@@ -1,6 +1,6 @@
 % vim: ts=4 sw=4 et
--module (demos).
--include_lib ("nitrogen_core/include/wf.hrl").
+-module(demos).
+-include_lib("nitrogen_core/include/wf.hrl").
 -compile(export_all).
 
 main() -> #template { file=common:template_location("grid.html") }.
@@ -47,7 +47,7 @@ middle() ->
         #link { text="Limiting Postbacks with Vessels", url="/demos/vessel"}, #br{},
         #link { text="In-Place Textbox", url="/demos/advancedcontrols1" }, #br{}, 
         #link { text="Google Charts", url="/demos/advancedcontrols2" }, #br{}, 
-        #link { text="Mermaid Flowchars and Diagrams", url="/demos/mermaid1" },#br{},
+        #link { text="Mermaid Flowcharts and Diagrams", url="/demos/mermaid1" },#br{},
         #link { text="QR Codes", url="/demos/qr" }, #br{}, 
         #link { text="Sparkline", url="/demos/sparkline" },#br{},
         #link { text="Radio Buttons", url="/demos/radio" }, #br{}, 
@@ -89,7 +89,9 @@ right() ->
         #link { text="Spinner", url="/demos/spinner" }, #br{},
         #link { text="JQuery Paths", url="/demos/jquerypaths" }, #br{}, 
         #link { text="Javascript API", url="/demos/api" }, #br{},
+        #link { text="Modals Popups", url="/demos/modal" },#br{},
         #link { text="Mermaid with Postbacks", url="/demos/mermaid2" },#br{},
+
 
         #h2 { text="Comet/Asynchronous Calls" },
         #p{},
@@ -103,13 +105,13 @@ right() ->
         #link { text="Mermaid Async Updates", url="/demos/mermaid3" },#br{},
         #link { text="Custom Websocket Functionality", url="/demos/websocket"},#br{},
 
-        #h2 { text="Mobile Integration" },
-        #p{},
-        #link { text="Side Panel", url="/demos/mobile_panel" },#br{},
-        #link { text="Mobile Lists", url="/demos/mobile_list" },#br{},
-        #link { text="Mobile Controls with Postbacks", url="/demos/mobile_controls" },#br{},
-        #link { text="Mobile Collapsibles", url="/demos/mobile_collapsibles" },#br{},
-        #link { text="Dynamically adding Mobile Elements", url="/demos/mobile_controls2" },#br{},
+        %#h2 { text="Mobile Integration" },
+        %#p{},
+        %#link { text="Side Panel", url="/demos/mobile_panel" },#br{},
+        %#link { text="Mobile Lists", url="/demos/mobile_list" },#br{},
+        %#link { text="Mobile Controls with Postbacks", url="/demos/mobile_controls" },#br{},
+        %#link { text="Mobile Collapsibles", url="/demos/mobile_collapsibles" },#br{},
+        %#link { text="Dynamically adding Mobile Elements", url="/demos/mobile_controls2" },#br{},
 
         #h2 { text="Advanced Topics" },
         #p{},
