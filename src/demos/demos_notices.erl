@@ -34,14 +34,14 @@ left() ->
         <h2>Alert Box</h2>
         
         <p>
-        The <code>#alert {}</code> action displays a simple
+        The <code>#alert{}</code> action displays a simple
         Javascript alert to the user.
 
         <p>
         <h2>Confirm Box</h2>
 
         <p>
-        The <code>#confirm {}</code> action displays a Javascript
+        The <code>#confirm{}</code> action displays a Javascript
         confirm box to the user, and posts back if the 'OK' button is
         clicked.
         ",
@@ -52,17 +52,41 @@ right() ->
     [
         #flash{},
 
-	#p{},
-	#button { text="Show Flash Message", postback=show_flash },
-
-	#p{},
-	#button { text="Show Advanced Flash Message", postback=show_advanced_flash },
-
-	#p{},	
-	#button { text="Show Javascript Alert", postback=show_alert },
-
-	#p{},	
-	#button { text="Show Javascript Confirm", postback=show_confirm }	
+	    #p{},
+        #table{rows=[
+            #tablerow{cells=[
+                #tablecell{body=[
+                    #button{text="Show Flash Message", postback=show_flash}
+                ]},
+                #tablecell{body=[
+                    #button{text="Show Advanced Flash Message", postback=show_advanced_flash}
+                ]}
+            ]},
+            #tablerow{cells=[
+                #tablecell{body=[
+                    #button{text="Show Javascript Alert", postback=show_alert}
+                ]},
+                #tablecell{body=[
+                    #button{text="Show Modal", postback=show_modal}
+                ]}
+            ]},
+            #tablerow{cells=[
+                #tablecell{body=[
+                    #button{text="Show Javascript Confirm", postback=show_confirm}
+                ]},
+                #tablecell{body=[
+                    #button{text="Show Modal Confirm", postback=show_modal_confirm}
+                ]}
+            ]},
+            #tablerow{cells=[
+                #tablecell{body=[
+                    #button{text="Show Javascript Prompt", postback=show_prompt}
+                ]},
+                #tablecell{body=[
+                    #button{text="Show Modal Prompt", postback=show_modal_prompt}
+                ]}
+            ]}
+        ]}
     ].
 
 event(show_flash) ->
@@ -78,15 +102,35 @@ event(show_advanced_flash) ->
 
 event({advanced_flash_click, FlashID}) ->
     wf:flash("You clicked the button."),
-    wf:wire(FlashID, #hide { effect=blind, speed=100 });
+    wf:wire(FlashID, #hide{effect=blind, speed=100});
 
 event(show_alert) ->
-    wf:wire(#alert { text="This is a Javascript Alert" });
+    wf:wire(#alert{text="This is a Javascript Alert"});
+
+event(show_modal) ->
+    wf:wire(#modal{text="This is a Modal Popup"});
 
 event(show_confirm) ->
-    wf:wire(#confirm { text="This is a Javascript Confirm", postback=confirm_ok });
+    wf:wire(#confirm{text="This is a Javascript Confirm", basic=true, postback=confirm_ok});
+
+event(show_modal_confirm) ->
+    wf:wire(#confirm{text="This is a Modal Confirm", postback=confirm_ok});
+
+event(show_prompt) ->
+    wf:wire(#prompt{text="Enter your name", default="Jesse", basic=true});
+
+event(show_modal_prompt) ->
+    wf:wire(#prompt{text="Enter your name", basic=false});
 
 event(confirm_ok) ->
-    wf:wire(#alert { text="You pressed the OK button." });
+    wf:wire(#alert{text="You pressed the OK button."}).
 
-event(_) -> ok.
+%% ValueMap will be a list of:
+%% [{"field_name", "value"},
+%%  {"field_name2", "Value2"},
+%%  ...
+%% ]
+%% Because this is using the basic (aka Javascript prompt), we'll just grab the first value from the first element
+prompt_event(_, ValueMap) ->
+    [{_, Val}] = ValueMap,
+    wf:wire(#alert{text=wf:f("You entered ~ts into the prompt", [Val])}).
