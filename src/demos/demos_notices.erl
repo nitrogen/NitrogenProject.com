@@ -120,7 +120,7 @@ event(show_prompt) ->
     wf:wire(#prompt{text="Enter your name", default="Jesse", basic=true});
 
 event(show_modal_prompt) ->
-    wf:wire(#prompt{text="Enter your name", basic=false});
+    wf:wire(#prompt{text="Enter someone else's name", default="Homer", basic=false});
 
 event(confirm_ok) ->
     wf:wire(#alert{text="You pressed the OK button."}).
