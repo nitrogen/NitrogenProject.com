@@ -83,15 +83,15 @@ right() ->
         #link { text="Postbacks", url="/demos/postback" }, #br{}, 
         #link { text="Postbacks with Form Fields", url="/demos/postback2" }, #br{}, 
         #link { text="Priority Wiring", url="/demos/priority_wiring"}, #br{},
+        #link { text="Javascript Conditional Events", url="/demos/conditionals"}, #br{},
         #link { text="AJAX Updates", url="/demos/ajax" }, #br{}, 
         #link { text="AJAX Replace", url="/demos/replace" }, #br{},
         #link { text="AJAX Remove", url="/demos/remove" }, #br{},
         #link { text="Spinner", url="/demos/spinner" }, #br{},
         #link { text="JQuery Paths", url="/demos/jquerypaths" }, #br{}, 
         #link { text="Javascript API", url="/demos/api" }, #br{},
-        #link { text="Modals Popups", url="/demos/modal" },#br{},
+        #link { text="Modal Popups", url="/demos/modal" },#br{},
         #link { text="Mermaid with Postbacks", url="/demos/mermaid2" },#br{},
-
 
         #h2 { text="Comet/Asynchronous Calls" },
         #p{},

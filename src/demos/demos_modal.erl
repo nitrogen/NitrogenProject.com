@@ -25,6 +25,7 @@ right() -> [
     #button{text="Open Modal that has multiple buttons", postback=open_multi},
     #br{},
     #button{text="Open 3 modals, then close the middle one after one second", postback=open_three},
+    #br{},
     #button{text="Open a more complex modal", postback=open_complex}
 ].
 
