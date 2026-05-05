@@ -45,6 +45,7 @@ middle() ->
         {"Controls and Validation", [
             {"Simple Controls","/demos/simplecontrols"},
             {"Limiting Postbacks with Vessels","/demos/vessel"},
+            {"Quick Forms","/demos/quickform"},
             {"In-Place Textbox","/demos/advancedcontrols1"},
             {"Radio Buttons","/demos/radio"},
             {"File Uploading","/demos/upload"},
