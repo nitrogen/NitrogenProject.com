@@ -38,13 +38,15 @@ left() ->
             no arguments), and returns the first non-empty value.  This can be
             perferred over <code>wf:coalesce/1</code> in case items in the list are
             slow, longer-running functions (say, API calls, for example).</li>
-        <li><code>wf:lazy_coalesce/1</code> uses some Erlang trickery to combine
-            the two methods above.  <code>wf:lazy_coalesce/1</code> must take an
-            explicitly defined list.<br>
+        <li><code>wf:lazy_coalesce/1</code> combines the two methods above.
+            <code>wf:lazy_coalesce/1</code> must take an explicitly defined
+            list (that is, the elements of the list must need to be evaluated
+            inside the function call rather than assigned to a variable and the
+            variable passed to the list)<br>
             For example:<br>
             This works: <code>wf:lazy_coalesce([fun1(), fun2()])</code><br>
             This does not: <code>L = [fun1(), fun2()], wf:lazy_coalesce(L)</code><br><br>
-            This relies on some Erlang trickery in order to work this. At compile-time,
+            This relies on some Erlang trickery in order to work. At compile-time,
             Nitrogen will wrap the calls to <code>fun1()</code> and <code>fun2()</code>
             with anonymous functions (e.g. <code>fun() -> fun1() end</code>) then convert
             `wf:lazy_coalesce/` to `wf:eval_coalesce/1`.  This purpose of this is to make
