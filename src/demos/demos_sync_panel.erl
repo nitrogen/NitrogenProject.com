@@ -3,7 +3,7 @@
 -include_lib ("nitrogen_core/include/wf.hrl").
 -compile(export_all).
 
--define(TEXTFILE, "./scratch/comet_demo_text").
+-define(TEXTFILE, text_file_path()).
 
 main() -> #template { file=common:template_location("demos46.html") }.
     
@@ -77,6 +77,15 @@ body_function() ->
         #span{style="font-weight:bold", text="Boromir Says: "},
         #span{text=Msg}
     ].
+
+text_file_path() ->
+    % This fallback is just in case we're running this in Nitrogen 2 and we can't trust the app is named nitrogen_website
+    Prefix = case code:priv_dir(nitrogen_website) of
+        {error, _} -> "/tmp";
+        Dir -> Dir
+    end,
+    filename:join(Prefix, "sync_panel_text.txt").
+
 
 %% This emulates our database by reading text from a file.
 read_contents() ->
